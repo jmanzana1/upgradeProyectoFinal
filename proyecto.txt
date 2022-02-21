@@ -1,3 +1,26 @@
+SiteMap
+=========
+
+Backend	= Javi 
+Base de Datos = Javi
+
+- Home = Ivan 
+	* Hero
+	* Cartelera ( Comparte componente con cartelera )
+- Navbar = Juan
+- Login / Register
+- Cartelera = Juan 
+- Footer = Juan
+- Ficha Pelicula 
+- Proceso compra entrada
+- Admin
+	* CRUD de Películas
+	* Relacionar películas con salas ( Salar y horarios)
+
+- Usuario??
+
+
+
 Requisitos Proyecto
 -------------------
 
