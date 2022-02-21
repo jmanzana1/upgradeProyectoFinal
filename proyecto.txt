@@ -1,0 +1,34 @@
+Requisitos Proyecto
+-------------------
+
+Temática a elegir por el equipo
+
+## Stack ##
+
+- BBDD en MongoDB (o similar)
+  - Modelos y entidades para manejo de la API REST
+  - Extra:
+    - Despliegue en Heroku, Netlify, Vercel (o similar)
+
+- Backend NODE (API REST)
+  - Autenticación / Login
+  - Registro
+  - CRUD (listado-detalle)
+  - Extras:
+     - Carga de imágenes
+     - Carga de ficheros
+     - Securización de la API
+     - Despliegue en Heroku, Netlify, Vercel (o similar)
+
+- Frontend en REACT/ANGULAR
+  - Autenticación / Login / Registro
+  - Manejo de la sesión
+  - CRUD (listado-detalle)
+  - LazyLoad
+  - Rutas
+  - Responsive
+  - Extras:
+    - i18n / internacionalización
+    - ComponentsLib (Angular Material / Material UI / similar)
+    - Despliegue en Heroku, Netlify, Vercel (o similar)
+    - etc
