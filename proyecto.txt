@@ -19,6 +19,9 @@ Base de Datos = Javi
 
 - Usuario??
 
+=============
+https://github.com/mistryakshar54/angular-seat-charts
+=============
 
 
 Requisitos Proyecto
