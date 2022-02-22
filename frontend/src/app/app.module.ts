@@ -12,6 +12,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
 
 // PrimeNg Componentes
 import {MenubarModule} from 'primeng/menubar';
+import { CardPeliculaComponent } from './shared/card-pelicula/card-pelicula.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {MenubarModule} from 'primeng/menubar';
 		AppComponent,
   		NavbarComponent,
 		FooterComponent,
+  CardPeliculaComponent,
 	],
 	imports: [
 		BrowserModule,
