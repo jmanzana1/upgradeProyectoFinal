@@ -5,6 +5,10 @@ import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 
+import {CarouselModule} from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +17,10 @@ import { CarouselComponent } from './components/carousel/carousel.component';
   ],
   imports: [
     CommonModule,
-    HomepageRoutingModule
+    HomepageRoutingModule,
+    CarouselModule,
+    ButtonModule,
+    ToastModule
   ]
 })
 export class HomepageModule { }
