@@ -1,0 +1,15 @@
+.product-item-content {
+    position: relative;
+    .acceder {
+        position: absolute;
+        z-index: 9999;
+        bottom: 10px;
+        right: 10px;
+        background-color: white;
+        border: 3px #000 solid;
+        padding: 5px;
+    }
+    img {
+        width: 100%;
+    }
+}
