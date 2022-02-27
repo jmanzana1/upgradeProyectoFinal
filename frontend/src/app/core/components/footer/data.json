@@ -1,0 +1,141 @@
+{"movies" : [
+    {
+      "name":"Cine Español",
+      "link":"/xxxx"
+    },
+    {
+      "name": "Descúbrela",
+      "link": "/cccc"
+    },
+    {
+      "name": "Emociónate",
+      "link": "/cccc"
+    },
+    {
+      "name": "En Familia",
+      "link": "/cccc"
+    },
+    {
+      "name": "Todas las Películas",
+      "link": "/cccc"
+    },
+    {
+      "name": "V.S.O.",
+      "link": "/cccc"
+    }
+  ],
+  "events" : [
+    {
+      "name":"Kids at the movies",
+      "link":"/xxxx"
+    },
+    {
+      "name": "Ballet en Kinépolis",
+      "link": "/cccc"
+    },
+    {
+      "name": "Ópera en Kinépolis",
+      "link": "/cccc"
+    },
+    {
+      "name": "Clásicos",
+      "link": "/cccc"
+    },
+    {
+      "name": "Hipnosis y Mentalismo - Mágia",
+      "link": "/cccc"
+    },
+    {
+      "name": "Kinepolis Live (Espectáculos en vivo)",
+      "link": "/cccc"
+    },
+    {
+      "name": "Monólogos en vivo",
+      "link": "/cccc"
+    },
+    {
+      "name": "Musicales",
+      "link": "/cccc"
+    }
+  ],
+  "group" : [
+    {
+      "name":"Sobre Kinépolis",
+      "link":"/xxxx"
+    },
+    {
+      "name": "Kinépolis para Empresas",
+      "link": "/cccc"
+    },
+    {
+      "name": "Información financiera",
+      "link": "/cccc"
+    },
+    {
+      "name": "Trabajar en Kinépolis",
+      "link": "/cccc"
+    },
+    {
+      "name": "Notas de prensa",
+      "link": "/cccc"
+    }
+  ],
+  "theaters" : [
+    {
+      "name":"Kinépolis Alicante Plaza Mar 2",
+      "link":"/xxxx"
+    },
+    {
+      "name": "Kinépolis Alzira",
+      "link": "/cccc"
+    },
+    {
+      "name": "Kinépolis Granada",
+      "link": "/cccc"
+    },
+    {
+      "name": "Kinépolis Madrid Ciudad de la Imagen",
+      "link": "/cccc"
+    },
+    {
+      "name": "Kinépolis Madrid Diversia",
+      "link": "/cccc"
+    },
+    {
+      "name": "Kinépolis Nevada",
+      "link": "/cccc"
+    },
+    {
+      "name": "Kinépolis Valencia",
+      "link": "/cccc"
+    }
+  ],
+  "technologies" : [
+    {
+      "name":"3D",
+      "link":"/xxxx"
+    },
+    {
+      "name": "Atmos",
+      "link": "/cccc"
+    },
+    {
+      "name": "Láser Ultra",
+      "link": "/cccc"
+    }
+  ],
+  "social" : [
+    {
+      "name":"Mi visita",
+      "link":"/xxxx"
+    },
+    {
+      "name": "Mi Kinepolis",
+      "link": "/cccc"
+    },
+    {
+      "name": "Contacto",
+      "link": "/cccc"
+    }
+  ]
+}

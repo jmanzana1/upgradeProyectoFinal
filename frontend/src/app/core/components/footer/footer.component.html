@@ -1,1 +1,40 @@
-<p>footer works!</p>
+<div class="footerMain">
+    <ul>
+        <li><h4>Movies</h4></li>
+        <li *ngFor="let item of movies">
+            <a href={{item.link}} title={{item.name}}>{{item.name}}</a>
+        </li>
+    </ul>
+    <ul>
+        <li><h4>Events</h4></li>
+        <li *ngFor="let item of events">
+            <a href={{item.link}} title={{item.name}}>{{item.name}}</a>
+        </li>
+    </ul>
+    <ul>
+        <li><h4>Kinepolis Group</h4></li>
+        <li *ngFor="let item of group">
+            <a href={{item.link}} title={{item.name}}>{{item.name}}</a>
+        </li>
+    </ul>
+    <ul>
+        <li><h4>Theaters</h4></li>
+        <li *ngFor="let item of theaters">
+            <a href={{item.link}} title={{item.name}}>{{item.name}}</a>
+        </li>
+    </ul>
+    <ul>
+        <li><h4>Technologies</h4></li>
+        <li *ngFor="let item of technologies">
+            <a href={{item.link}} title={{item.name}}>{{item.name}}</a>
+        </li>
+    </ul>
+    <ul>
+        <li><h4>Follow Us</h4></li>
+        <li>F - T - Y - I</li>
+        <li><h4>Social</h4></li>
+        <li *ngFor="let item of social">
+            <a href={{item.link}} title={{item.name}}>{{item.name}}</a>
+        </li>
+    </ul>
+</div>
