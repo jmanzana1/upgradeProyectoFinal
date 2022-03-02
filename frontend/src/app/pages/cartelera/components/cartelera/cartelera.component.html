@@ -1,1 +1,7 @@
-<p>cartelera works!</p>
+
+<div class="row">
+	<div class="col m-2" *ngFor="let pelicula of peliculas">
+		<app-card-pelicula [titulo]="pelicula.titulo" [urlImage]="pelicula.urlImage" [boton]="botonVisible"></app-card-pelicula> 
+	</div>
+</div>
+
