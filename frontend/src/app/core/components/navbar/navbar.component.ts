@@ -14,6 +14,18 @@ export class NavbarComponent implements OnInit {
 	constructor() {
 		this.items = [
             {
+                label:'Portada',
+                url:'/'
+            },
+            {
+                label:'Cartelera',
+                url:'cartelera'
+            },
+            {
+                label:'Admin',
+                url:'admin'
+            },
+            {
                 label:'File',
                 icon:'pi pi-fw pi-file',
                 items:[

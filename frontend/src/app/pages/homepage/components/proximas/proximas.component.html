@@ -1,0 +1,13 @@
+
+
+<div class="row">
+	<div class="col m-2" *ngFor="let pelicula of pelis">
+		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [id]="pelicula.id" [boton]="botonVisible"></app-card-peli>
+	</div>
+</div>
+<!-- <div class="row">
+	<div class="col m-2" *ngFor="let pelicula of pelis"> -->
+		<!-- <app-card-pelicula [titulo]="pelicula.nombre" [urlImage]="pelicula.imgCaratula" [boton]="botonVisible"></app-card-pelicula> -->
+        <!-- <app-card-peli></app-card-peli>  -->
+	<!-- </div>
+</div> -->

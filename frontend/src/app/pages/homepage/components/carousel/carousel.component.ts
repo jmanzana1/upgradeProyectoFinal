@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CarouselService } from 'src/app/services/carousel.service';
+import { HomeService } from 'src/app/services/home.services';
 import { Carousel } from './carousel/Carousel';
 
 @Component({
@@ -10,7 +10,7 @@ import { Carousel } from './carousel/Carousel';
 export class CarouselComponent {
   carousels!: Carousel[];
   responsiveOptions;
-  constructor( private carouselservice: CarouselService) {
+  constructor( private homeservice: HomeService) {
     this.responsiveOptions = [
       {
           breakpoint: '1024px',
@@ -31,7 +31,7 @@ export class CarouselComponent {
   }
 
   ngOnInit() {
-		this.carouselservice.getProductsSmall().then(carousels => {
+		this.homeservice.getPelisCarousel().then(carousels => {
 			this.carousels = carousels;
 		});
     }

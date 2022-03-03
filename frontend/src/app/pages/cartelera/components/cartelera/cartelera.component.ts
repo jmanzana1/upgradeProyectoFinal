@@ -11,28 +11,28 @@ export class CarteleraComponent implements OnInit {
 
 	public peliculas = [
 		{
-			titulo: 	'La abuela',
-			urlImage: 	'assets/laabuela_peq.jpg'
+			nombre: 	'La abuela',
+			imgCaratula: 	'assets/laabuela_peq.jpg'
 		},
 		{
-			titulo: 	'Avengers Endgame',
-			urlImage: 	'assets/advengers_endgame_peq.jpg'
+			nombre: 	'Avengers Endgame',
+			imgCaratula: 	'assets/advengers_endgame_peq.jpg'
 		},
 		{
-			titulo: 	'Coda',
-			urlImage: 	'assets/coda_peq.jpg'
+			nombre: 	'Coda',
+			imgCaratula: 	'assets/coda_peq.jpg'
 		},
 		{
-			titulo: 	'el Método Williams',
-			urlImage: 	'assets/elmetodowilliams_peq.jpg'
+			nombre: 	'el Método Williams',
+			imgCaratula: 	'assets/elmetodowilliams_peq.jpg'
 		},
 		{
-			titulo: 	'Spiderman no Way Home',
-			urlImage: 	'assets/spider-man-no-way-home_peq.jpg'
+			nombre: 	'Spiderman no Way Home',
+			imgCaratula: 	'assets/spider-man-no-way-home_peq.jpg'
 		},
 		{
 			titulo: 	'Uncharter',
-			urlImage: 	'assets/uncharter_peq.jpg'
+			imgCaratula: 	'assets/uncharter_peq.jpg'
 		}
 	]
 
