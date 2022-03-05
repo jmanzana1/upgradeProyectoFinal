@@ -5,7 +5,33 @@ const authorize = require("../middlewares/auth");
 
 
 router.route('/').get((req, res, next) => {
-    Pelicula.find({'estado':"activa"})
+    Pelicula.find()
+        .then((pelicula) => {
+            if (pelicula=="") {
+                return res.status(404).json('No se encontro ninguna Pelicula');
+            }
+            return res.json(pelicula);
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
+router.route('/carousel').get((req, res, next) => {
+    Pelicula.find({'carousel':true})
+        .then((pelicula) => {
+            if (pelicula=="") {
+                return res.status(404).json('No se encontro ninguna Pelicula');
+            }
+            return res.json(pelicula);
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
+router.route('/estreno').get((req, res, next) => {
+    Pelicula.find({'estreno':true})
         .then((pelicula) => {
             if (pelicula=="") {
                 return res.status(404).json('No se encontro ninguna Pelicula');
@@ -20,12 +46,12 @@ router.route('/').get((req, res, next) => {
 
 router.route('/:id').get((req, res, next) => {
     const id = req.params.id;
-    Categorias.findById(id)
-        .then(categoria => {
-            if (!categoria) {
-                return res.status(404).json('Categoria no encontrada');
+    Pelicula.findById(id)
+        .then(pelicula => {
+            if (!pelicula) {
+                return res.status(404).json('Pelicula no encontrada');
             }
-            return res.json(categoria)
+            return res.json(pelicula)
         })
         .catch((error) => {
             next(error)
@@ -33,16 +59,31 @@ router.route('/:id').get((req, res, next) => {
 });
 
 
+
+
 router.route('/').post(authorize, (req, res, next) => {
 
-    const newCategoria = new Categorias({
+    const newPelicula = new Pelicula({
         nombre: req.body.nombre,
-        estado:req.body.estado
+        descripcion: req.body.descripcion,
+        imgCarousel: req.body.imgCarousel,
+        imgFicha: req.body.imgFicha,
+        imgCaratula: req.body.imgCaratula,
+        trailer: req.body.trailer,
+        genero: req.body.genero,
+        duracion: req.body.duracion,
+        pais: req.body.pais,
+        imdb: req.body.imdb,
+        director: req.body.director,
+        actores: req.body.actores,
+        carousel: req.body.carousel,
+        estreno: req.body.estreno,
+        proximo: req.body.proximo,
     });
 
-    newCategoria.save()
+    newPelicula.save()
         .then(() => {
-            return res.status(201).json(newCategoria);
+            return res.status(201).json(newPelicula);
         }).catch((error) => {
             next(error);
         });
@@ -51,12 +92,12 @@ router.route('/').post(authorize, (req, res, next) => {
 
 router.route('/:id').put(authorize, (req, res, next) => {
 
-    const categoriaid = req.params.id;
-    const categoriamodificar = new Categorias(req.body);
-    categoriamodificar._id = categoriaid;
-    Categorias.findByIdAndUpdate(categoriaid, categoriamodificar, { new: true })
-        .then(catactualizado => {
-            res.status(200).json(catactualizado);
+    const peliculaid = req.params.id;
+    const peliculamodificar = new Pelicula(req.body);
+    peliculamodificar._id = peliculaid;
+    Pelicula.findByIdAndUpdate(peliculaid, peliculamodificar, { new: true })
+        .then(pelactualizado => {
+            res.status(200).json(pelactualizado);
         })
         .catch(error => {
             next(error);
@@ -68,10 +109,10 @@ router.route('/:id').put(authorize, (req, res, next) => {
 
 
 router.route('/:id/').delete(authorize, (req, res, next) => {
-    const gimnasioid = req.params.id;
-    Gimnasio.findByIdAndDelete(gimnasioid)
+    const peliculaid = req.params.id;
+    Pelicula.findByIdAndDelete(peliculaid)
         .then(() => {
-            return res.status(200).json(`Gimnasio con id ${gimnasioid} eliminado`);
+            return res.status(200).json(`Pelicula con id ${peliculaid} ha sido eliminada`);
         })
         .catch(error => {
             next(error);
