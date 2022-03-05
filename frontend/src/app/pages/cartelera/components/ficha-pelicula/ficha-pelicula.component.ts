@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FichaPeliculaComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+	public nombre: string = 'La abuela';
+	public imgCaratula: string = 'assets/laabuela_peq.jpg';
+	public botonVisible: boolean = false
+	
+	constructor() { }
+	
+	ngOnInit(): void {
+	}
 
 }
