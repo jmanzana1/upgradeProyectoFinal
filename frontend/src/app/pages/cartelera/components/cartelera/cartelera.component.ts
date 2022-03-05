@@ -31,7 +31,7 @@ export class CarteleraComponent implements OnInit {
 			imgCaratula: 	'assets/spider-man-no-way-home_peq.jpg'
 		},
 		{
-			titulo: 	'Uncharter',
+			nombre: 	'Uncharter',
 			imgCaratula: 	'assets/uncharter_peq.jpg'
 		}
 	]

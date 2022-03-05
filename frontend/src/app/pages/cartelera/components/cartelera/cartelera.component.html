@@ -1,7 +1,17 @@
 
+<div class="contenedor">
+	<div class="m-2" *ngFor="let pelicula of peliculas">
+		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [boton]="botonVisible"></app-card-peli> 
+	</div>
+</div>
+
+{{peliculas | json}}
+
+<!-- 
 <div class="row">
 	<div class="col m-2" *ngFor="let pelicula of peliculas">
 		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [boton]="botonVisible"></app-card-peli> 
 	</div>
 </div>
 
+ -->
