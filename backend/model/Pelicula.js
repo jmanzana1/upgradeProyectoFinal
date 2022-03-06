@@ -2,13 +2,16 @@ const mongoose=require('mongoose');
 const Schema = mongoose.Schema;
 
 // Creamos el esquema de personajes
+
+// imgFicha: 220x330
+// imgCarousel: 1200x600
+
 const PeliculaSchema = new Schema(
     {
       nombre: { type: String, required: true },
       descripcion: { type: String, required: true},
       imgCarousel: { type: String, required: true},
       imgFicha: { type: String, required: true},
-      imgCaratula: { type: String},
       trailer: { type: String},
       genero: { type: String, required: true},
       duracion: { type: Number, required: true},
@@ -18,7 +21,7 @@ const PeliculaSchema = new Schema(
       actores: { type: String, required: true},
       carousel: { type: Boolean, required: true},
       estreno: { type: Boolean, required: true},
-      proximo: { type: String, required: true}
+      proximo: { type: Boolean, required: true}
 
     },
     {

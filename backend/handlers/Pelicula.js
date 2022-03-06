@@ -2,6 +2,22 @@ const express = require('express')
 const router = express.Router()
 const Pelicula = require('../model/Pelicula');
 const authorize = require("../middlewares/auth");
+const multer  = require('multer')
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  })
+  
+const upload = multer({ storage: storage })
+
+
+
+
 
 
 router.route('/').get((req, res, next) => {
@@ -58,17 +74,21 @@ router.route('/:id').get((req, res, next) => {
         })
 });
 
+const cpUpload = upload.fields([{ name: 'imgCarousel' }, { name: 'imgFicha' }, { name: 'trailer' }])
+
+router.route('/testhtml').post(cpUpload,(req, res, next) => {
+    console.log(req.body.nspeakers)
+
+})
 
 
-
-router.route('/').post(authorize, (req, res, next) => {
+router.route('/').post(authorize, cpUpload, (req, res, next) => {
 
     const newPelicula = new Pelicula({
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         imgCarousel: req.body.imgCarousel,
         imgFicha: req.body.imgFicha,
-        imgCaratula: req.body.imgCaratula,
         trailer: req.body.trailer,
         genero: req.body.genero,
         duracion: req.body.duracion,
