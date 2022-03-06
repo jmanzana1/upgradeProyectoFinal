@@ -31,8 +31,8 @@ app.use('/usuarios', usaurios)
 
 
   
-app.listen(process.env.PORT || 3000, () => {
-      console.log(`Servidor arrancado en el puerto 3000`);
+app.listen(process.env.PORT || 3001, () => {
+      console.log(`Servidor arrancado en el puerto 3001`);
     });
 
 

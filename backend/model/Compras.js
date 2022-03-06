@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 // Creamos el esquema de personajes
 const ComprasSchema = new Schema(
     {
-      Fecha: { type: Date, required: true },
-      Asientos_Reservados: { type: String, required: true },
-      Precio: { type: Number, required: true},
-      Id_Pelicula: [{ type: mongoose.Types.ObjectId, ref: 'Pelicula' }],
-      Id_SalaSession: [{ type: mongoose.Types.ObjectId, ref: 'Sala' }]
+      fecha: { type: Date, required: true },
+      asientosReservados: { type: String, required: true },
+      precio: { type: Number, required: true},
+      idPelicula: [{ type: mongoose.Types.ObjectId, ref: 'Pelicula' }],
+      idSalaSesion: [{ type: mongoose.Types.ObjectId, ref: 'Sala' }],
+      localizador:{ type: String, required: true }
     },
     {
       timestamps: true,
