@@ -1,9 +1,8 @@
 .footerMain {
+    display: block;
     background-color: #064460;
-    color: #FFF;
-    display: flex;
-    justify-content: center;
     padding: 40px 0;
+    color: #FFF;
     ul {
         list-style: none;
         li {
@@ -21,4 +20,36 @@
             }
         }
     }
+    
+} 
+
+
+
+
+
+
+
+@media (min-width: 400px) {
+   .footerMain {
+       display: block;
+       font-size: 25px;
+       
+   } 
 }
+
+@media (min-width: 768px) {
+    .footerMain {
+        display: flex;
+        flex-wrap: wrap;
+    } 
+ }
+
+@media (min-width:1024px) {
+    .footerMain {
+        color: #FFF;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        
+    }
+ }
