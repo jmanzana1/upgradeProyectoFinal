@@ -1,6 +1,6 @@
-
+<p-toast></p-toast>
 <div class="contenedor">
-	<div class="m-2" *ngFor="let pelicula of peliculas">
+	<div class="m-2" *ngFor="let pelicula of peliculas.data">
 		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [boton]="botonVisible"></app-card-peli> 
 	</div>
 </div>

@@ -1,45 +1,46 @@
+import { CarteleraService } from './../../../../services/cartelera.service';
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cartelera',
   templateUrl: './cartelera.component.html',
-  styleUrls: ['./cartelera.component.scss']
+  styleUrls: ['./cartelera.component.scss'],
+  providers: [MessageService]
 })
 export class CarteleraComponent implements OnInit {
 
 	public botonVisible: boolean = true;
 
-	public peliculas = [
-		{
-			nombre: 	'La abuela',
-			imgCaratula: 	'assets/laabuela_peq.jpg'
-		},
-		{
-			nombre: 	'Avengers Endgame',
-			imgCaratula: 	'assets/advengers_endgame_peq.jpg'
-		},
-		{
-			nombre: 	'Coda',
-			imgCaratula: 	'assets/coda_peq.jpg'
-		},
-		{
-			nombre: 	'el Método Williams',
-			imgCaratula: 	'assets/elmetodowilliams_peq.jpg'
-		},
-		{
-			nombre: 	'Spiderman no Way Home',
-			imgCaratula: 	'assets/spider-man-no-way-home_peq.jpg'
-		},
-		{
-			nombre: 	'Uncharter',
-			imgCaratula: 	'assets/uncharter_peq.jpg'
-		}
-	]
+	public peliculas: any = [];
 
-	constructor() { }
+	constructor(
+		private _carteleraService: CarteleraService,
+		private _messageService: MessageService
+	) { }
 	
 	ngOnInit(): void {
 	
+		this.getPeliculas();
+	}
+
+	public getPeliculas() { 
+
+		this._carteleraService.getCartelera()
+		.subscribe({
+			next: ( data ) => { 
+				console.log("data", data)
+				this.peliculas = data;
+				console.log( "pli", this.peliculas)
+			},
+			error: ( error ) => { 
+
+				this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+
+			}
+		 });
+			
+
 	}
 
 }
