@@ -5,12 +5,12 @@ const authorize = require("../middlewares/auth");
 
 
 router.route('/').get((req, res, next) => {
-    Categorias.find({'estado':"activa"})
-        .then((categoria) => {
-            if (categoria=="") {
-                return res.status(404).json('No se encontro ninguna Categoria');
+    Sala.find()
+        .then((sala) => {
+            if (sala=="") {
+                return res.status(404).json('No se encontro ninguna Sala');
             }
-            return res.json(categoria);
+            return res.json(sala);
         })
         .catch((error) => {
             next(error)
@@ -20,12 +20,12 @@ router.route('/').get((req, res, next) => {
 
 router.route('/:id').get((req, res, next) => {
     const id = req.params.id;
-    Categorias.findById(id)
-        .then(categoria => {
-            if (!categoria) {
-                return res.status(404).json('Categoria no encontrada');
+    Sala.findById(id)
+        .then(sala => {
+            if (!sala) {
+                return res.status(404).json('Sala no encontrada');
             }
-            return res.json(categoria)
+            return res.json(sala)
         })
         .catch((error) => {
             next(error)
@@ -35,15 +35,35 @@ router.route('/:id').get((req, res, next) => {
 
 router.route('/').post(authorize, (req, res, next) => {
 
-    const newCategoria = new Categorias({
-        nombre: req.body.nombre,
-        estado:req.body.estado
+    const newSala = new Sala({
+        numeroSala: req.body.numeroSala,
+        sesion:req.body.sesion,
+        activo:req.body.activo,
+        idPelicula:req.body.idPelicula|| []
     });
 
-    newCategoria.save()
+    newSala.save()
         .then(() => {
-            return res.status(201).json(newCategoria);
+            return res.status(201).json(newSala);
         }).catch((error) => {
+            next(error);
+        });
+
+})
+
+router.route('/:id/pelicula').put(authorize, (req, res, next) => {
+
+    const salaid = req.params.id;
+    const peliculaid = req.body.idPelicula;
+
+    Sala.findByIdAndUpdate(
+        salaid,
+        { $push: { idPelicula: peliculaid } },
+         { new: true })
+        .then(salactualizado => {
+            res.status(200).json(salactualizado);
+        })
+        .catch(error => {
             next(error);
         });
 
@@ -51,12 +71,12 @@ router.route('/').post(authorize, (req, res, next) => {
 
 router.route('/:id').put(authorize, (req, res, next) => {
 
-    const categoriaid = req.params.id;
-    const categoriamodificar = new Categorias(req.body);
-    categoriamodificar._id = categoriaid;
-    Categorias.findByIdAndUpdate(categoriaid, categoriamodificar, { new: true })
-        .then(catactualizado => {
-            res.status(200).json(catactualizado);
+    const salaid = req.params.id;
+    const salamodificar = new Sala(req.body);
+    salamodificar._id = salaid;
+    Sala.findByIdAndUpdate(salaid, salamodificar, { new: true })
+        .then(salactualizado => {
+            res.status(200).json(salactualizado);
         })
         .catch(error => {
             next(error);
@@ -68,10 +88,10 @@ router.route('/:id').put(authorize, (req, res, next) => {
 
 
 router.route('/:id/').delete(authorize, (req, res, next) => {
-    const gimnasioid = req.params.id;
-    Gimnasio.findByIdAndDelete(gimnasioid)
+    const salaid = req.params.id;
+    Sala.findByIdAndDelete(salaid)
         .then(() => {
-            return res.status(200).json(`Gimnasio con id ${gimnasioid} eliminado`);
+            return res.status(200).json(`Sala con id ${salaid} ha sido eliminada`);
         })
         .catch(error => {
             next(error);

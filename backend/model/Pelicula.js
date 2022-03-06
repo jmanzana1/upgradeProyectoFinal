@@ -5,16 +5,21 @@ const Schema = mongoose.Schema;
 const PeliculaSchema = new Schema(
     {
       nombre: { type: String, required: true },
-      Descripcion: { type: String, required: true},
-      Imagen_Caratula: { type: String, required: true},
-      Imagen1: { type: String, required: true},
-      Imagen2: { type: String},
-      Imagen3: { type: String},
-      Genero: { type: String, required: true},
-      Duracion: { type: Number, required: true},
-      Pais: { type: String, required: true},
-      Imdb: { type: Number, required: true},
-      Director: { type: String, required: true}
+      descripcion: { type: String, required: true},
+      imgCarousel: { type: String, required: true},
+      imgFicha: { type: String, required: true},
+      imgCaratula: { type: String},
+      trailer: { type: String},
+      genero: { type: String, required: true},
+      duracion: { type: Number, required: true},
+      pais: { type: String, required: true},
+      imdb: { type: Number, required: true},
+      director: { type: String, required: true},
+      actores: { type: String, required: true},
+      carousel: { type: Boolean, required: true},
+      estreno: { type: Boolean, required: true},
+      proximo: { type: String, required: true}
+
     },
     {
       timestamps: true,

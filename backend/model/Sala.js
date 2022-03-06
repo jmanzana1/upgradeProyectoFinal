@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const SalaSchema = new Schema(
     {
       numeroSala: { type: Number, required: true },
-      Sesion: { type: String, required: true},
-      Activo: { type: Boolean, required: true},
-      Id_Pelicula: [{ type: mongoose.Types.ObjectId, ref: 'Pelicula' }],
+      sesion: { type: String, required: true},
+      activo: { type: Boolean, required: true},
+      idPelicula: [{ type: mongoose.Types.ObjectId, ref: 'pelicula' }]
     },
     {
       timestamps: true,

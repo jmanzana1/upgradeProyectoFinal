@@ -4,86 +4,78 @@ const Compras = require('../model/Compras');
 const authorize = require("../middlewares/auth");
 
 
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
 router.route('/').get( (req, res, next) => {
-    Productos.find()
-        .then((productos) => {
-            if (productos=="") {
-                return res.status(404).json('No se encontro ningun Producto');
+    Compras.find()
+        .then((compras) => {
+            if (compras=="") {
+                return res.status(404).json('No se encontro ninguna Compra');
             }
-            return res.json(productos);
+            return res.json(compras);
         })
         .catch((error) => {
             next(error)
         })
 });
 
-router.route('/ofertas').get( (req, res, next) => {
-    Productos.find({'oferta':true})
-        .then((productos) => {
-            if (productos=="") {
-                return res.status(404).json('No se encontro ningun Producto');
+router.route('/fecha/:date').get( (req, res, next) => {
+    const datefind = req.params.date;
+    Compras.find({"fecha":new Date(datefind)})
+        .then((compras) => {
+            if (compras=="") {
+                return res.status(404).json('No se encontro ninguna Compra');
             }
-            return res.json(productos);
+            return res.json(compras);
         })
         .catch((error) => {
             next(error)
         })
 });
 
-router.route('/masvendido').get( (req, res, next) => {
-    Productos.find({'masvendido':true})
-        .then((productos) => {
-            if (productos=="") {
-                return res.status(404).json('No se encontro ningun Producto');
+router.route('/asientos/:date/:sala').get( (req, res, next) => {
+    const datefind = req.params.date;
+    const salaid = req.params.sala;
+    Compras.find({"fecha":new Date(datefind),"idSalaSesion":salaid})
+        .then((compras) => {
+            if (compras=="") {
+                return res.status(404).json('No se encontro ninguna Compra');
             }
-            return res.json(productos);
+            let listasientos=""
+            for (let compra of compras){
+                
+                listasientos=listasientos+compra.asientosReservados+",";
+            }
+            listasientos=listasientos.slice(0,-1);
+            console.log(listasientos)
+            return res.json({
+                "asientos":listasientos
+            });
         })
         .catch((error) => {
             next(error)
         })
 });
 
-router.route('/categoria/:nombre').get( (req, res, next) => {
-    var nombre = req.params.nombre;
-    if (nombre.includes("_")){
-       var nombre = nombre.replace('_',' ')
-    }
-    console.log(nombre)
-    Categorias.find({"nombre":nombre})
-    .then((categoria) => {
-        if (categoria=="") {
-            return res.status(404).json('No se encontro ninguna Categoria con ese nombre');
-        }
-        var idcategoria=categoria[0]._id.toString()
-        console.log(idcategoria)
-
-        //busco los productos
-        Productos.find({'categoria':idcategoria})
-        .then((productos) => {
-            if (productos=="") {
-                return res.status(404).json('No se encontro ningun Producto');
-            }
-            return res.json(productos);
-        })
-        .catch((error) => {
-            next(error)
-        })
-    })
-    .catch((error) => {
-        next(error)
-    })
-
-});
 
 
 router.route('/:id').get( (req, res, next) => {
     const id = req.params.id;
-    Productos.findById(id)
-        .then(producto => {
-            if (!producto) {
-                return res.status(404).json('Producto no encontrado');
+    Compras.findById(id)
+        .then(compras => {
+            if (!compras) {
+                return res.status(404).json('Compra no encontrada');
             }
-            return res.json(producto)
+            return res.json(compras)
         })
         .catch((error) => {
             next(error)
@@ -93,51 +85,26 @@ router.route('/:id').get( (req, res, next) => {
 
 router.route('/').post(authorize, (req, res, next) => {
 
-    const newproductos = new Productos({
-        nombre: req.body.nombre,
-        descripcion: req.body.descripcion,
-        imagen: req.body.imagen,
-        precio:req.body.precio,
-        Estado:req.body.Estado,
-        oferta:req.body.oferta,
-        masvendido:req.body.masvendido,
-        categoria:req.body.categoria
+    const newCompra = new Compras({
+        fecha: req.body.fecha,
+        asientosReservados: req.body.asientosReservados,
+        precio: req.body.precio,
+        idPelicula:req.body.idPelicula,
+        idSalaSesion:req.body.idSalaSesion,
+        localizador:makeid(6)
     });
+    newCompra.fecha instanceof Date;
 
-    newproductos.save()
+    newCompra.save()
         .then(() => {
-            return res.status(201).json(newproductos);
+            return res.status(201).json(newCompra);
         }).catch((error) => {
             next(error);
         });
 
 })
 
-router.route('/:id').put(authorize, (req, res, next) => {
 
-    const productoid = req.params.id;
-    const productomodificar = new Productos(req.body);
-    productomodificar._id = productoid;
-    Productos.findByIdAndUpdate(productoid, productomodificar, { new: true })
-        .then(prodcutoactualizado => {
-            res.status(200).json(prodcutoactualizado);
-        })
-        .catch(error => {
-            next(error);
-        });
-
-})
-
-router.route('/:id').delete(authorize, (req, res, next) => {
-    const productoid = req.params.id;
-    Productos.findByIdAndDelete(productoid)
-        .then(() => {
-            return res.status(200).json(`Producto con id ${productoid} eliminado`);
-        })
-        .catch(error => {
-            next(error);
-        });
-});
 
 
 

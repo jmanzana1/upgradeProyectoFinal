@@ -1,0 +1,613 @@
+{
+	"info": {
+		"_postman_id": "ed11905a-d54b-4749-b81b-488e1de9bb2c",
+		"name": "Proyecto_final_JuaneIvan_Heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Registrar nuevo usaurio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"usuario1\",\n    \"email\":\"usuario1@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/usuarios/register-user",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"usuarios",
+								"register-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logueo usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"usuario1@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/usuarios/signin",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"usuarios",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/usuarios/",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usaurio por Id",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/usuarios/user-profile/621b8fbd7e6836f8142a2fb9",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"usuarios",
+								"user-profile",
+								"621b8fbd7e6836f8142a2fb9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Peliculas",
+			"item": [
+				{
+					"name": "Peliculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peliculas con Carouser activo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/carousel",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								"carousel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peliculas con estreno activo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/estreno",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								"estreno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pelicula por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/6223dea2d72ef1f99cf69af9",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								"6223dea2d72ef1f99cf69af9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Pelicula",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"Uncharted\", \n    \"descripcion\": \"Basada en una de las series de videojuegos más vendidas y aclamadas por la crítica de todos los tiempos, Uncharted nos presenta a un joven, astuto y carismático, Nathan Drake (Tom Holland) en su primera aventura como cazatesoros con su ingenioso compañero Victor “Sully” Sullivan (Mark Wahlberg).En una épica aventura de acción que se extiende por todo el mundo, ambos se embarcan en una peligrosa búsqueda de “el mayor tesoro nunca antes encontrado” al tiempo que rastrean las claves que les podrían conducir al hermano de Nathan, perdido hace ya mucho tiempo.\", \n    \"imgCarousel\": \"Uncharted_ES_FO.jpg\",\n    \"imgFicha\":\"Uncharted_ES_FO.jpg\",\n    \"imgCaratula\":\"Uncharted_ES_FO.jpg\",\n    \"trailer\":\"ES_ES_Uncharted_720p.webm\",\n    \"genero\":\"Acción, Pelicula de aventura\",\n    \"duracion\":115,\n    \"pais\":\"USA\",\n    \"imdb\": 6.9,\n    \"director\":\"Ruben Fleischer\",\n    \"actores\": \"Tom Holland, Mark Wahlberg, Antonio Banderas\",\n    \"carousel\": true,\n    \"estreno\":true,\n    \"proximo\":\"esto que es\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Pelicula",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"Uncharted\", \n    \"descripcion\": \"Basada en una de las series de videojuegos más vendidas y aclamadas por la crítica de todos los tiempos, Uncharted nos presenta a un joven, astuto y carismático, Nathan Drake (Tom Holland) en su primera aventura como cazatesoros con su ingenioso compañero Victor “Sully” Sullivan (Mark Wahlberg).En una épica aventura de acción que se extiende por todo el mundo, ambos se embarcan en una peligrosa búsqueda de “el mayor tesoro nunca antes encontrado” al tiempo que rastrean las claves que les podrían conducir al hermano de Nathan, perdido hace ya mucho tiempo.\", \n    \"imgCarousel\": \"Uncharted_ES_FO.jpg\",\n    \"imgFicha\":\"Uncharted_ES_FO.jpg\",\n    \"imgCaratula\":\"Uncharted_ES_FO.jpg\",\n    \"trailer\":\"ES_ES_Uncharted_720p.webm\",\n    \"genero\":\"Acción, Pelicula de aventura\",\n    \"duracion\":115,\n    \"pais\":\"USA\",\n    \"imdb\": 6.9,\n    \"director\":\"Ruben Fleischer\",\n    \"actores\": \"Tom Holland, Mark Wahlberg, Antonio Banderas\",\n    \"carousel\": true,\n    \"estreno\":true,\n    \"proximo\":\"esto que es lo que es\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/6223dea2d72ef1f99cf69af9",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								"6223dea2d72ef1f99cf69af9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Pelicula",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/6223dfd54cb65349b73b8723",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								"6223dfd54cb65349b73b8723"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Salas",
+			"item": [
+				{
+					"name": "Nueva Sala",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroSala\":1,\n    \"sesion\":\"17:00\",\n    \"activo\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Sala/",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Sala",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Sala",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroSala\":1,\n    \"sesion\":\"17:00\",\n    \"activo\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Sala/6223ea1bfa5f66826fb11daf",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Sala",
+								"6223ea1bfa5f66826fb11daf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asociar Pelicuia a Sala",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"idPelicula\":\"6223dea2d72ef1f99cf69af9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Sala/6223ea1bfa5f66826fb11daf/pelicula",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Sala",
+								"6223ea1bfa5f66826fb11daf",
+								"pelicula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Sala",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroSala\":1,\n    \"sesion\":\"17:00\",\n    \"activo\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Sala/6223eb4a4cb65349b73b8726",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Sala",
+								"6223eb4a4cb65349b73b8726"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Sala",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sala con ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Sala/6223ea1bfa5f66826fb11daf",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Sala",
+								"6223ea1bfa5f66826fb11daf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Compras",
+			"item": [
+				{
+					"name": "Nueva Compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha\": \"2022-12-30\",\n    \"asientosReservados\":\"T_2,T_3\",\n    \"precio\":25,\n    \"idPelicula\":\"6223dea2d72ef1f99cf69af9\",\n    \"idSalaSesion\":\"6223ea1bfa5f66826fb11daf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/Compras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Compras"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Todas las compras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/Compras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Compras"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compra por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/Compras/6223f46bf81e2c2cd047b270",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Compras",
+								"6223f46bf81e2c2cd047b270"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compra de una fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/Compras/fecha/2022-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Compras",
+								"fecha",
+								"2022-12-31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "asientos reservados una fecha y ID sala",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/Compras/asientos/2022-12-31/6223ea1bfa5f66826fb11daf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Compras",
+								"asientos",
+								"2022-12-31",
+								"6223ea1bfa5f66826fb11daf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzdWFyaW8xQGdtYWlsLmNvbSIsInVzZXJJZCI6IjYyMWI4ZmJkN2U2ODM2ZjgxNDJhMmZiOSIsImlhdCI6MTY0NjUyMjU4MywiZXhwIjoxNjQ2NjA4OTgzfQ.gArpWufTxV_GBRdRIpkT_5Sxy7NRviEa4uEgfZiryn8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
