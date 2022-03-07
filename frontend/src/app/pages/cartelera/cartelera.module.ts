@@ -3,28 +3,28 @@ import { CommonModule } from '@angular/common';
 
 import { CarteleraRoutingModule } from './cartelera-routing.module';
 import { CarteleraComponent } from './components/cartelera/cartelera.component';
-import { FichaClienteComponent } from './components/ficha-cliente/ficha-cliente.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-// import { CardPeliculaComponent } from 'src/app/shared2/card-pelicula/card-pelicula.component';
-
-// PrimeNG
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
+import { FichaPeliculaComponent } from './components/ficha-pelicula/ficha-pelicula.component';
+
+// PrimeNG
+import { ToastModule } from 'primeng/toast';
 
 
 
 @NgModule({
   declarations: [
     CarteleraComponent,
-    FichaClienteComponent,
-    // CardPeliculaComponent,
+    FichaPeliculaComponent,
   ],
   imports: [
     CommonModule,
     CarteleraRoutingModule,
     ImageModule,
     CardModule,
-    SharedModule
+    SharedModule,
+	ToastModule,
   ],
   // exports: [ CardPeliculaComponent ]
 })

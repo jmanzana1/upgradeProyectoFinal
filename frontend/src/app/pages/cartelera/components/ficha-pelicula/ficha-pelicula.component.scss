@@ -1,0 +1,16 @@
+.contenedor {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.video {
+	height: 445px;
+}
+
+.cardVideo {
+	vertical-align: middle;
+	margin-top: 7	0px;
+}
