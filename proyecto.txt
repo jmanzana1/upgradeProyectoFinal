@@ -8,10 +8,10 @@ Base de Datos = Javi
 	* Hero
 	* Cartelera ( Comparte componente con cartelera )
 - Navbar = Juan
-- Login / Register
+- Login / Register 
 - Cartelera = Juan 
 - Footer = Juan
-- Ficha Pelicula 
+- Ficha Pelicula = Juan
 - Proceso compra entrada
 - Admin
 	* CRUD de Películas
