@@ -10,6 +10,9 @@ const routes: Routes = [
 		path: 'cartelera', loadChildren: () => import('./pages/cartelera/cartelera.module').then( m => m.CarteleraModule)
 	},
 	{
+		path: 'compraentradas', loadChildren: () => import('./pages/steps-component/steps-component.module').then( m => m.StepsComponentModule)
+	},
+	{
 		path: 'admin', loadChildren: () => import('./pages/admin/admin.module').then( m=> m.AdminModule)
 	}
 ];
