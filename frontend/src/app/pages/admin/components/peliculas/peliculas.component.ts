@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-peliculas',
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./peliculas.component.scss']
 })
 export class PeliculasComponent implements OnInit {
+ // Peliculasform: FormGroup;
 
-  constructor() { }
+  constructor(
+    public fb: FormBuilder,
+    public router: Router
+
+  ) { }
 
   ngOnInit(): void {
   }

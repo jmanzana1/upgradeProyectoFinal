@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row align-items-center">
     <div class="col-10 mt-4 mb-4">
-    <form>
+    <form [formGroup]="Peliculasform" (ngSubmit)="loginUser()">
         <div class="mb-2">
           <label for="nombre" class="form-label">Nombre Pelicula</label>
           <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="Nombre Pelicula">
@@ -10,6 +10,23 @@
           <label for="Descripcion" class="form-label">Descripcion</label>
           <textarea class="form-control" aria-label="Descripcion" name="Descripcion" id="Descripcion"></textarea>
         </div>
+        <div class="mb-2">
+          <label for="genero" class="form-label">Genero</label>
+          <input type="text" class="form-control" id="genero" name="genero" aria-describedby="Genero Pelicula">
+        </div>
+        <div class="mb-2">
+          <label for="imgCarousel" class="form-label">Imagen Carrousel 1200x600</label>
+          <input class="form-control" type="file" name="imgCarousel">
+        </div>
+        <div class="mb-2">
+          <label for="imgFicha" class="form-label">Imagen ficha 220x330</label>
+          <input class="form-control" type="file" name="imgFicha">
+        </div>
+        <div class="mb-2">
+          <label for="trailer" class="form-label">Trailer Mp4</label>
+          <input class="form-control" type="file" name="trailer">
+        </div>
+        
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     
