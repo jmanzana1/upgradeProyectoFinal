@@ -11,7 +11,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PeliculasService {
-  urlMaster2: string = variablesConstantes.urlMaster2;
+  urlMaster2: string = variablesConstantes.urlMaster;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(
