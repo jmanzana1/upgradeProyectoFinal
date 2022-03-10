@@ -1,9 +1,17 @@
-.proxMain {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    .ficha {
-        margin: 5px;
-    }
+// .proxMain {
+//     padding: 10px;
+//     display: flex;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     .ficha {
+//         margin: 5px;
+//     }
+// }
+
+.contenedor {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
 }
