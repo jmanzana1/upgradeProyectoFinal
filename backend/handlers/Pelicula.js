@@ -82,7 +82,7 @@ router.route('/testhtml').post(cpUpload,(req, res, next) => {
 })
 
 
-router.route('/').post(authorize, cpUpload, (req, res, next) => {
+router.route('/').post(cpUpload, (req, res, next) => {
 
     const newPelicula = new Pelicula({
         nombre: req.body.nombre,
@@ -100,7 +100,8 @@ router.route('/').post(authorize, cpUpload, (req, res, next) => {
         estreno: req.body.estreno,
         proximo: req.body.proximo,
     });
-
+    console.log("Post Pelicula");
+    console.log(newPelicula);
     newPelicula.save()
         .then(() => {
             return res.status(201).json(newPelicula);

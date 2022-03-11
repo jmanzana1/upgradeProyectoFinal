@@ -11,36 +11,22 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PeliculasService {
-  urlMaster2: string = variablesConstantes.urlMaster;
+  urlMaster: string = variablesConstantes.urlMaster;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(
-    private http:HttpClient,
+    private _httpClient:HttpClient,
     public router:Router
   ) { }
 
 // Nueva Pelicula
-signUp(pelicula: Peliculas): Observable<any> {
+crearPelicula(pelicula: Peliculas) {
   console.log("Creando Pelicula")
-  let api = `${this.urlMaster2}/Pelicula/`;
-  return this.http.post(api, pelicula)
-    .pipe(
-      catchError(this.handleError)
-    )
+  let api = `${this.urlMaster}Pelicula/`;
+  console.log(pelicula)
+  return this._httpClient.post(api,pelicula);
 }
 
-handleError(error: HttpErrorResponse) {
-  console.log("HandleError")
-  let msg = '';
-  if (error.error instanceof ErrorEvent) {
-    // client-side error
-    msg = error.error.message;
-  } else {
-    // server-side error
-    msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-  }
-  return throwError(msg);
-}
 
 }
 
