@@ -12,6 +12,9 @@ import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import { ProximasComponent } from './components/proximas/proximas.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NavComponent } from './components/nav/nav.component';
+import { TodasComponent } from './components/todas/todas.component';
+import { EstrenosComponent } from './components/estrenos/estrenos.component';
 // import { CardPeliComponent } from 'src/app/shared/components/card-peli/card-peli.component';
 
 
@@ -22,6 +25,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HomepageComponent,
     CarouselComponent,
     ProximasComponent,
+    NavComponent,
+    TodasComponent,
+    EstrenosComponent,
     // CardPeliComponent
   ],
   imports: [

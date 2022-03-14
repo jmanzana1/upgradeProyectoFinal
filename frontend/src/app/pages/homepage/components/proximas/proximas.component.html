@@ -1,21 +1,7 @@
+<p>proximas works!</p>
 <p-toast></p-toast>
-<!-- <div class="proxMain"> -->
-	<!-- <div class="centerMain"> -->
-		<!-- <div class="ficha" *ngFor="let pelicula of pelis">
-			<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [id]="pelicula.id" [boton]="botonVisible"></app-card-peli> -->
-		<!-- <div style="width: 250px; height: 300px; background: green;">contenido </div> -->
-		<!-- </div> -->
-	<!-- </div> -->
-<!-- </div> -->
-
-
-<!-- <div class="row">
-	<div class="col m-2" *ngFor="let pelicula of pelis">
-		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [id]="pelicula.id" [boton]="botonVisible"></app-card-peli>
-	</div>
-</div> -->
 <div class="contenedor">
-	<div class="m-2" *ngFor="let pelicula of peliculas.data">
-		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgCaratula" [boton]="botonVisible"></app-card-peli> 
+	<div class="m-2" *ngFor="let pelicula of peliculas">
+		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgFicha" [id]="pelicula._id" [boton]="botonVisible"></app-card-peli> 
 	</div>
 </div>

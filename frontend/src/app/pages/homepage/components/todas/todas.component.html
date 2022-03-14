@@ -1,0 +1,7 @@
+<p>todas works!</p>
+<p-toast></p-toast>
+<div class="contenedor">
+	<div class="m-2" *ngFor="let pelicula of peliculas">
+		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgFicha" [id]="pelicula._id" [boton]="botonVisible"></app-card-peli> 
+	</div>
+</div>

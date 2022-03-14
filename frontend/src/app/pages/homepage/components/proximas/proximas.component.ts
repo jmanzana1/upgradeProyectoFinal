@@ -29,12 +29,11 @@ export class ProximasComponent implements OnInit {
 
   public getPeliculas() { 
 
-		this.homeservice.getCartelera()
+		this.homeservice.getProximas()
 		.subscribe({
 			next: ( data ) => { 
-				console.log("data", data)
 				this.peliculas = data;
-				console.log( "pli", this.peliculas)
+				console.log( "proximas", this.peliculas)
 			},
 			error: ( error ) => { 
 
