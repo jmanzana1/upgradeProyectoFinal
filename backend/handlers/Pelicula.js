@@ -46,6 +46,8 @@ router.route('/carousel').get((req, res, next) => {
         })
 });
 
+
+
 router.route('/estreno').get((req, res, next) => {
     Pelicula.find({'estreno':true})
         .then((pelicula) => {

@@ -32,6 +32,21 @@ router.route('/:id').get((req, res, next) => {
         })
 });
 
+//saca todas las salas y horarios de una peli
+router.route('/peliculas/:id').get((req, res, next) => {
+    const id = req.params.id;
+    Sala.find({'idPelicula':id})
+        .then(sala => {
+            if (!sala) {
+                return res.status(404).json('Sala no encontrada');
+            }
+            return res.json(sala)
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
 
 router.route('/').post(authorize, (req, res, next) => {
 
