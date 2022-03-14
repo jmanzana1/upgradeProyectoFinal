@@ -29,7 +29,7 @@ export class CarteleraComponent implements OnInit {
 		this._carteleraService.getCartelera()
 		.subscribe({
 			next: ( data ) => { 
-				console.log("data", data)
+
 				this.peliculas = data;
 				console.log( "pli", this.peliculas)
 			},

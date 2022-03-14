@@ -1,7 +1,8 @@
+<p-toast></p-toast>
 <div class="contenedor">
 	<div class="m-2">
 		<p-card>
-			<app-card-peli [nombre]="nombre" [imgCaratula]="imgCaratula" [boton]="botonVisible"></app-card-peli> 
+			<app-card-peli [nombre]="dataPelicula.nombre" [imgCaratula]="dataPelicula.imgFicha" [boton]="botonVisible"></app-card-peli> 
 
 		</p-card>
 		
@@ -10,10 +11,20 @@
 		<p-card>
 			<div class="card video">
 				<div class="card-body cardVideo">
-					<video src="assets/videos/laAbuela720.mp4" width="420px" height="236px" poster="assets/laabuela.jpg" controls></video>
+					<video src="{{dataPelicula.trailer}}" width="420px" height="236px" poster="{{dataPelicula.imgCarousel}}" controls></video>
 				</div>
+				Sinopsis:
+
+
+				{{dataPelicula.descripcion}}
 			</div>
+
+				
+
 		</p-card>
+
+			
+
 	</div>
 	<div class="m-2">
 		<p-card>
@@ -24,7 +35,7 @@
 							Duración:
 						</div>
 						<div class="col">
-							100 minutos
+							{{dataPelicula.duracion}}
 						</div>
 					</div>
 					<div class="row">
@@ -32,7 +43,7 @@
 							Pais:
 						</div>
 						<div class="col">
-							España
+							{{dataPelicula.pais}}
 						</div>
 					</div>
 					<div class="row">
@@ -40,15 +51,7 @@
 							Género:
 						</div>
 						<div class="col">
-							Terror
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Estreno:
-						</div>
-						<div class="col">
-							28-01-2022
+							{{dataPelicula.genero}}
 						</div>
 					</div>
 					<div class="row">
@@ -56,23 +59,7 @@
 							Directores:
 						</div>
 						<div class="col">
-							Paco Plaza
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Guionistas:
-						</div>
-						<div class="col">
-							Carlos Vermut
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Productores: 
-						</div>
-						<div class="col">
-							Apache Films, Atresmedia
+							{{dataPelicula.director}}
 						</div>
 					</div>
 					<div class="row">
@@ -80,23 +67,10 @@
 							Actores:	
 						</div>
 						<div class="col">
-							Almudena Amor, Chacha Huang, Karina Kolokolchykova, Vera Valdez
+							{{dataPelicula.actores}}
 						</div>
 					</div>
-				</div>
-			</div>
-		</p-card>
-	</div>
-	<div class="m-2">
-		<p-card>
-			<div class="card">
-				<div class="card-body">
-					<div class="row p-2">
-						Sinopsis: 
-					</div>
-					<div class="row p-2">
-						Susana tiene que dejar su vida en París trabajando como modelo para regresar a Madrid. Su abuela Pilar acaba de sufrir un derrame cerebral. Años atrás, cuando los padres de Susana murieron, su abuela la crio como si fuese su propia hija. Susana necesita encontrar a alguien que cuide de Pilar, pero lo que deberían ser solo unos días con su abuela, se acabarán convirtiendo en una terrorífica pesadilla.
-					</div>
+					
 				</div>
 			</div>
 		</p-card>

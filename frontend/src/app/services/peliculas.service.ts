@@ -27,6 +27,15 @@ crearPelicula(pelicula: Peliculas) {
   return this._httpClient.post(api,pelicula);
 }
 
+  	//Get película por id
+  public getPeliculaById( id: string) {
+  
+  		const url = this.urlMaster + 'Pelicula/' + id;
+  
+  		return this._httpClient.get( url );
+  		
+  }
+
 
 }
 

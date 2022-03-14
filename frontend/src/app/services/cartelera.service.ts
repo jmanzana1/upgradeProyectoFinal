@@ -16,7 +16,8 @@ export class CarteleraService {
 
 	public getCartelera() { 
 
-		const url: string = this.urlMaster;
+		const url: string = this.urlMaster + 'Pelicula';
+		console.log("ddd", url)
 
 		return this._httpClient.get( url );
 
