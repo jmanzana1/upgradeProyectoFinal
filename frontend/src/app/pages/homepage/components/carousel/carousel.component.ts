@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { HomeService } from 'src/app/services/home.services';
 import { Carousel } from './carousel/Carousel';
@@ -9,6 +9,7 @@ import { Carousel } from './carousel/Carousel';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent {
+  
   public carousels:  any = [];
   responsiveOptions;
   constructor( private homeservice: HomeService) {
@@ -47,7 +48,7 @@ export class CarouselComponent {
         next: ( carousels ) => { 
   
           this.carousels = carousels;
-          console.log( "pli", this.carousels)
+          console.log( "carousel", this.carousels)
         }
        });
         

@@ -1,5 +1,18 @@
-nav {
-    ul {
-        list-style: none;
-    }
+nav { background: #dde2e2; padding: 5px; margin: 10px 0;}
+.nav { list-style-type: none; margin: 0; }
+a { color: #24447F; text-decoration: none; text-transform: uppercase; font-size: 14px; padding: 10px 5px; margin: 0 5px; background-color: #CBD3D5;}
+a:hover { color:#FFF; background-color: orange;}
+
+// .menu li { font-size: 14px; padding: 10px 5px; margin: 0 5px; background-color: #CBD3D5;}
+
+
+.active-link {
+    color:#FFF; background-color: orange;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
 }

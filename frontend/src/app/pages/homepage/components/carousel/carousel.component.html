@@ -1,14 +1,14 @@
-Holaaa
+
 <p-carousel [value]="carousels" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
     <ng-template let-carousel pTemplate="item">
         <div class="product-item">
             <div class="product-item-content">
                 <div class="p-mb-3">
                 </div>
-                <div>Hola
+                <div>
                     <img src="{{carousel.imgCarousel}}" alt="{{carousel.nombre}}">
                 </div>
-                <div class="acceder"><a href="/pelicula/{{carousel.id}}">Acceder</a></div>
+                <div class="acceder"><a href="/cartelera/fichapelicula/{{carousel._id}}">Acceder</a></div>
             </div>
         </div>
     </ng-template>

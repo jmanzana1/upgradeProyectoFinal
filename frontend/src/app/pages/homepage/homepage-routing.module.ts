@@ -11,7 +11,8 @@ const routes: Routes = [
     children: [
       {path:'proximas', component:ProximasComponent},
       {path: 'estrenos', component:EstrenosComponent},
-      {path: 'todas', component:TodasComponent}
+      {path: 'todas', component:TodasComponent},
+      {path: '', component:TodasComponent}
     ]
   },
   
