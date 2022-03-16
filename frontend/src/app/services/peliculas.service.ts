@@ -20,12 +20,18 @@ export class PeliculasService {
   ) { }
 
 // Nueva Pelicula
-crearPelicula(pelicula: Peliculas) {
+public crearPelicula(pelicula: Peliculas) {
   console.log("Creando Pelicula")
   let api = `${this.urlMaster}Pelicula/`;
   console.log(pelicula)
   return this._httpClient.post(api,pelicula);
 }
+
+public getPeliculas(){
+  const url = this.urlMaster + 'Pelicula/';
+  return this._httpClient.get( url );
+}
+
 
   	//Get película por id
   public getPeliculaById( id: string) {

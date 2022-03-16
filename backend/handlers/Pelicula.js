@@ -61,6 +61,19 @@ router.route('/estreno').get((req, res, next) => {
         })
 });
 
+router.route('/proximo').get((req, res, next) => {
+    Pelicula.find({'proximo':true})
+        .then((pelicula) => {
+            if (pelicula=="") {
+                return res.status(404).json('No se encontro ninguna Pelicula');
+            }
+            return res.json(pelicula);
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
 
 router.route('/:id').get((req, res, next) => {
     const id = req.params.id;
@@ -76,15 +89,26 @@ router.route('/:id').get((req, res, next) => {
         })
 });
 
-const cpUpload = upload.fields([{ name: 'imgCarousel' }, { name: 'imgFicha' }, { name: 'trailer' }])
+const cpUpload = upload.fields([{ name: 'fileSourceimgCarousel' }, { name: 'fileSourceimgFicha' }, { name: 'fileSourcetrailer' }])
+const cpUploadnew = upload.fields([{ name: 'file' }])
 
-router.route('/testhtml').post(cpUpload,(req, res, next) => {
+const cpUploadtest = upload.fields([{ name: 'imgCarousel' }, { name: 'imgFicha' }, { name: 'trailer' }])
+
+router.route('/testhtml').post(cpUploadtest,(req, res, next) => {
+    console.log(req);
     console.log(req.body.nspeakers)
 
 })
 
 
+
+router.route('/subearchivo').post(cpUploadnew, (req, res, next) => {
+    return res.status(201).json({"status":"correcto"});
+})
+
+
 router.route('/').post(cpUpload, (req, res, next) => {
+    console.log(req);
 
     const newPelicula = new Pelicula({
         nombre: req.body.nombre,

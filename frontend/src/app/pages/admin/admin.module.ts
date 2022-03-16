@@ -5,12 +5,14 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { SalasComponent } from './components/salas/salas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PeliculasListComponent } from './components/peliculas-list/peliculas-list.component';
 
 
 @NgModule({
 	declarations: [
     PeliculasComponent,
-    SalasComponent
+    SalasComponent,
+    PeliculasListComponent
   ],
 	imports: [
 		CommonModule,

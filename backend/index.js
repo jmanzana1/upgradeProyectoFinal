@@ -14,9 +14,10 @@ const usaurios = require('./handlers/user')
 
 //configuracion Express
 var app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true,
+    limit: '50mb'
 }));
 app.use(cors());
 app.use('/static', express.static(__dirname + '/public'));

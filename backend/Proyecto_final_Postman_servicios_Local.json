@@ -187,6 +187,26 @@
 					"response": []
 				},
 				{
+					"name": "Peliculas con proximo activo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/Pelicula/proximo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Pelicula",
+								"proximo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Pelicula por id",
 					"request": {
 						"method": "GET",
@@ -213,7 +233,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\":\"Uncharted\", \n    \"descripcion\": \"Basada en una de las series de videojuegos más vendidas y aclamadas por la crítica de todos los tiempos, Uncharted nos presenta a un joven, astuto y carismático, Nathan Drake (Tom Holland) en su primera aventura como cazatesoros con su ingenioso compañero Victor “Sully” Sullivan (Mark Wahlberg).En una épica aventura de acción que se extiende por todo el mundo, ambos se embarcan en una peligrosa búsqueda de “el mayor tesoro nunca antes encontrado” al tiempo que rastrean las claves que les podrían conducir al hermano de Nathan, perdido hace ya mucho tiempo.\", \n    \"imgCarousel\": \"Uncharted_ES_FO.jpg\",\n    \"imgFicha\":\"Uncharted_ES_FO.jpg\",\n    \"imgCaratula\":\"Uncharted_ES_FO.jpg\",\n    \"trailer\":\"ES_ES_Uncharted_720p.webm\",\n    \"genero\":\"Acción, Pelicula de aventura\",\n    \"duracion\":115,\n    \"pais\":\"USA\",\n    \"imdb\": 6.9,\n    \"director\":\"Ruben Fleischer\",\n    \"actores\": \"Tom Holland, Mark Wahlberg, Antonio Banderas\",\n    \"carousel\": true,\n    \"estreno\":true,\n    \"proximo\":\"esto que es\"\n\n}",
+							"raw": "{\n    \"nombre\":\"Avengers Endgame\", \n    \"descripcion\": \"Es una película de superhéroes estadounidense de 2019 basada en el equipo de superhéroes Los Vengadores de Marvel Comics. Producida por Marvel Studios y distribuida por Walt Disney Studios Motion Pictures, es la secuela directa de Avengers: Infinity War (2018) y la película número 22 del Universo cinematográfico de Marvel (UCM). Dirigida por Anthony y Joe Russo y escrita por Christopher Markus y Stephen McFeely, la película cuenta con un reparto coral que incluye a Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner, Don Cheadle, Paul Rudd, Brie Larson, Karen Gillan, Danai Gurira, Benedict Wong, Jon Favreau, Bradley Cooper, Gwyneth Paltrow y Josh Brolin. En la película, los miembros supervivientes de Los Vengadores y sus aliados intentan revertir el daño causado por Thanos en Infinity War.\", \n    \"imgCarousel\": \"advengers_endgame.jpg\",\n    \"imgFicha\":\"advengers_endgame_peq.jpg\",\n    \"trailer\":\"AvengersEndgame.mp4\",\n    \"genero\":\"Acción, Pelicula de aventura, Ciencia ficción\",\n    \"duracion\":181,\n    \"pais\":\"USA\",\n    \"imdb\": 8.4,\n    \"director\":\"Anthony y Joe Russo\",\n    \"actores\": \"Robert Downey Jr.,Chris Evans,Mark Ruffalo,Chris Hemsworth\",\n    \"carousel\": true,\n    \"estreno\":true,\n    \"proximo\":false\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -427,6 +447,26 @@
 				},
 				{
 					"name": "Sala con ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/Sala/6223ea1bfa5f66826fb11daf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Sala",
+								"6223ea1bfa5f66826fb11daf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salas_horarios de una pelicula",
 					"request": {
 						"method": "GET",
 						"header": [],

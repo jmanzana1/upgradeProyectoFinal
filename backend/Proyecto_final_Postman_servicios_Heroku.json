@@ -194,6 +194,27 @@
 					"response": []
 				},
 				{
+					"name": "Peliculas con proximo activo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bakendcineproyectofinal.herokuapp.com/Pelicula/proximo",
+							"protocol": "https",
+							"host": [
+								"bakendcineproyectofinal",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Pelicula",
+								"proximo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Pelicula por id",
 					"request": {
 						"method": "GET",
