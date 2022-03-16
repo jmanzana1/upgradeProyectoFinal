@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row align-items-center">
         <div class="col-12 mt-4 mb-4">
-<table class="table table-striped">
-    <thead>
+ <p-table [value]="peliculas" responsiveLayout="scroll" [autoLayout]="true" >
+  <ng-template pTemplate="header">
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Pais</th>
@@ -14,20 +14,20 @@
         <th scope="col">Imagen</th>
         <th scope="col">Opciones</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pelicula of peliculas">
-        <th>{{pelicula.nombre}}</th>
-        <td>{{pelicula.pais}}</td>
-        <td>{{pelicula.duracion}}</td>
-        <td>{{pelicula.imdb}}</td>
-        <td>{{pelicula.carousel}}</td>
-        <td>{{pelicula.estreno}}</td>
-        <td>{{pelicula.proximo}}</td>
-        <td><img src="{{pelicula.imgFicha}}" width="50px"></td>
+    </ng-template>
+    <ng-template pTemplate="body" let-peliculas>
+      <tr>
+        <th>{{peliculas.nombre}}</th>
+        <td>{{peliculas.pais}}</td>
+        <td>{{peliculas.duracion}}</td>
+        <td>{{peliculas.imdb}}</td>
+        <td>{{peliculas.carousel}}</td>
+        <td>{{peliculas.estreno}}</td>
+        <td>{{peliculas.proximo}}</td>
+        <td><img src="{{peliculas.imgFicha}}" width="50px"></td>
         <td><a href="/admin/peliculas_alta"><i class="pi pi-plus imagebtn"></i></a><i class="pi pi-pencil imagebtn"></i><i class="pi pi-trash imagebtn"></i></td>
       </tr>
       
-    </tbody>
-  </table>
+  </ng-template>
+</p-table>
   </div></div></div>
