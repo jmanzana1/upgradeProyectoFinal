@@ -1,78 +1,27 @@
 <p-toast></p-toast>
 <div class="contenedor">
-	<div class="m-2">
-		<p-card>
+	
+	<div class="firstContent">
+			<div class="fichaContent">
 			<app-card-peli [nombre]="dataPelicula.nombre" [imgCaratula]="dataPelicula.imgFicha" [boton]="botonVisible"></app-card-peli> 
-
-		</p-card>
+			</div>
+			<div class="detailsContent stdContent">
+				<p><b>Duración:</b> {{dataPelicula.duracion}}</p>
+				<p><b>País:</b> {{dataPelicula.pais}}</p>
+				<p><b>Género:</b> {{dataPelicula.genero}}</p>
+				<p><b>Dirección:</b> {{dataPelicula.director}}</p>
+				<p><b>Reparto:</b> {{dataPelicula.actores}}</p>
+			</div>
 		
 	</div>
-	<div class="m-2">
-		<p-card>
-			<div class="card video">
-				<div class="card-body cardVideo">
-					<video src="{{dataPelicula.trailer}}" width="420px" height="236px" poster="{{dataPelicula.imgCarousel}}" controls></video>
-				</div>
-				Sinopsis:
 
-
-				{{dataPelicula.descripcion}}
-			</div>
-
-				
-
-		</p-card>
-
-			
-
-	</div>
-	<div class="m-2">
-		<p-card>
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col">
-							Duración:
-						</div>
-						<div class="col">
-							{{dataPelicula.duracion}}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Pais:
-						</div>
-						<div class="col">
-							{{dataPelicula.pais}}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Género:
-						</div>
-						<div class="col">
-							{{dataPelicula.genero}}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Directores:
-						</div>
-						<div class="col">
-							{{dataPelicula.director}}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							Actores:	
-						</div>
-						<div class="col">
-							{{dataPelicula.actores}}
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</p-card>
+	<div class="seconContent">
+		<div class="stdContent">
+			<video src="{{dataPelicula.trailer}}" width="100%" poster="{{dataPelicula.imgCarousel}}" controls></video>
+		</div>
+		<div class="stdContent sinopsis">
+			<p>Sinopsis</p>
+			<p>{{dataPelicula.descripcion}}</p>
+		</div>
 	</div>
 </div>
