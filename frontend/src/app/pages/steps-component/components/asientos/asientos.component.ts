@@ -74,12 +74,12 @@ export class AsientosComponent implements OnInit {
 
 		if( map_data.length > 0 )
 		{
-			var seatNoCounter = 1;
+			let seatNoCounter = 1;
 			
 			for (let __counter = 0; __counter < map_data.length; __counter++) {
 				
-				var row_label = "";
-				var item_map = map_data[__counter].seat_map;
+				let row_label = "";
+				let item_map = map_data[__counter].seat_map;
 		
 				//Get the label name and price
 				row_label = "Row "+item_map[0].seat_label + " - ";
@@ -97,7 +97,7 @@ export class AsientosComponent implements OnInit {
 				
 				item_map.forEach( (map_element: any) => {
 				
-					var mapObj = {
+					let mapObj = {
 						"seatRowLabel" : map_element.seat_label,
 						"seats" : [],
 						"seatPricingInformation" : row_label
@@ -105,18 +105,18 @@ export class AsientosComponent implements OnInit {
 				
 					row_label = "";
 				
-					var seatValArr = map_element.layout.split('');
+					let seatValArr = map_element.layout.split('');
 				
 					if( this.seatChartConfig.newSeatNoForRow )
 					{
 						seatNoCounter = 1; //Reset the seat label counter for new row
 					}
 					
-					var totalItemCounter = 1;
+					let totalItemCounter = 1;
 				
 					seatValArr.forEach( (item: any)  => {
 
-						var seatObj = {
+						let seatObj = {
 							"key" : map_element.seat_label + "_" + totalItemCounter,
 							"price" : map_data[__counter]["seat_price"],
 							"status" : "available"
@@ -169,7 +169,8 @@ export class AsientosComponent implements OnInit {
 		else if( seatObject.status = "booked" )
 		{
 			seatObject.status = "available";
-			var seatIndex = this.cart.selectedSeats.indexOf(seatObject.seatLabel);
+			let seatIndex = this.cart.selectedSeats.indexOf(seatObject.seatLabel);
+			
 			if( seatIndex > -1)
 			{
 			this.cart.selectedSeats.splice(seatIndex , 1);
