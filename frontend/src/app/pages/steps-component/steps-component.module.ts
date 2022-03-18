@@ -12,6 +12,8 @@ import { StepsFormComponent } from './steps-form/steps-form.component';
 import { StepsModule } from 'primeng/steps';
 import { CardModule } from 'primeng/card';
 
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 @NgModule({
 	declarations: [
     PersonalComponent,
@@ -25,6 +27,7 @@ import { CardModule } from 'primeng/card';
 	StepsComponentRoutingModule,
 	StepsModule,
 	CardModule,
+	TooltipModule.forRoot(),
 	]
 })
 export class StepsComponentModule { }
