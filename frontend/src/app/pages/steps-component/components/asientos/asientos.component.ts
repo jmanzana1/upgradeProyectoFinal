@@ -7,25 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./asientos.component.scss']
 })
 export class AsientosComponent implements OnInit {
-	//	
-	public butacas = [
-		{ 'posicion': 1, ocupada: 'libre' },
-		{ 'posicion': 2, ocupada: 'libre' },
-		{ 'posicion': 3, ocupada: 'libre' },
-		{ 'posicion': 4, ocupada: 'libre' },
-		{ 'posicion': 5, ocupada: 'libre' },
-		{ 'posicion': 6, ocupada: 'libre' },
-		{ 'posicion': 7, ocupada: 'libre' },
-		{ 'posicion': 8, ocupada: 'libre' },
-		{ 'posicion': 9, ocupada: 'libre' },
-		{ 'posicion': 10, ocupada: 'libre' },
-		{ 'posicion': 11, ocupada: 'libre' },
-		{ 'posicion': 12, ocupada: 'libre' },
-		{ 'posicion': 13, ocupada: 'libre' },
-		{ 'posicion': 14, ocupada: 'libre' },
-
-	];
 	
+	public fechaSesion: Date = new Date();
 	public sala: any = [
 		{
 			"fila": 1,
@@ -353,7 +336,11 @@ export class AsientosComponent implements OnInit {
 	}
 
 	public next() { 
-		console.log("entro")
+		let pepito = {
+			ss: 22222,
+			pp:3333
+ 		}
+		localStorage.setItem("Datos",  JSON.stringify(pepito));
 		this._router.navigate(['compraentradas/datospersonales']);
 	}
 }

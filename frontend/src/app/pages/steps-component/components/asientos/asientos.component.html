@@ -1,5 +1,6 @@
 <div class="stepsdemo-content m-3">
 	<p-card>
+		<p-calendar [(ngModel)]="fechaSesion" [inline]="true" [showWeek]="true"></p-calendar>
 
 		<div *ngFor="let filas of sala">
 			<button 
@@ -7,7 +8,7 @@
 				*ngFor="let butaca of filas.butacas" 
 				class="color1" 
 				(click)="seleccionarAsiento( filas.fila, butaca.posicion )"
-				[ngClass]="{'color1' : butaca.ocupada === 'libre', color2: butaca.ocupada==='vendida', color3: butaca.ocupada === 'reservada' }"
+				[ngClass]="{'color1': butaca.ocupada === 'libre', color2: butaca.ocupada==='vendida', color3: butaca.ocupada === 'reservada' }"
 				[disabled]="butaca.ocupada === 'vendida'"
 			>	
 				{{filas.fila}} - {{butaca.posicion}}
