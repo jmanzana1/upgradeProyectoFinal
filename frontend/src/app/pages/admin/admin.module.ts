@@ -7,6 +7,7 @@ import { SalasComponent } from './components/salas/salas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PeliculasListComponent } from './components/peliculas-list/peliculas-list.component';
 import {TableModule} from 'primeng/table';
+import { SigninComponent } from './components/signin/signin.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import {TableModule} from 'primeng/table';
     PeliculasComponent,
     SalasComponent,
     PeliculasListComponent,
+    SigninComponent,
 
   ],
 	imports: [

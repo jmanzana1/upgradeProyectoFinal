@@ -1,0 +1,15 @@
+<div class="container-form">
+    <div class="form-container">
+        <form [formGroup]="signinForm" (ngSubmit)="loginUser()" class="form">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <label>Email</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="Enter email" required>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            </div>
+            <button  type="submit">Sign in</button>
+        </form>
+    </div>
+    </div>
