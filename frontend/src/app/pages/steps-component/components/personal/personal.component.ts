@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+	  private _router: Router
+  ) { }
 
   ngOnInit(): void {
   }
+
+  public next() { 
+	console.log("entro")
+	this._router.navigate(['compraentradas/pago']);
+}
 
 }

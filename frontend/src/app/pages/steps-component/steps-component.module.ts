@@ -11,6 +11,7 @@ import { StepsFormComponent } from './steps-form/steps-form.component';
 //PrimeNG 
 import { StepsModule } from 'primeng/steps';
 import { CardModule } from 'primeng/card';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
 	declarations: [
@@ -25,6 +26,7 @@ import { CardModule } from 'primeng/card';
 	StepsComponentRoutingModule,
 	StepsModule,
 	CardModule,
+	ToastModule,
 	]
 })
 export class StepsComponentModule { }
