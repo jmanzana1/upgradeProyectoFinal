@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsientosComponent implements OnInit {
 
-	private seatConfig: any = null;
-	private seatmap = [];
-	private seatChartConfig = {
+	public seatConfig: any = null;
+	public seatmap = [] as any;
+	public mapObjetos = [] as any;
+	public seatChartConfig = {
 		showRowsLabel : true,
 		showRowWisePricing : true,
 		newSeatNoForRow : true
 	}
-	private cart = {
+	public cart = {
 		selectedSeats : [],
 		seatstoStore : [],
 		totalamount : 0,
@@ -94,8 +95,8 @@ export class AsientosComponent implements OnInit {
 				}
 				
 				row_label += " : Rs. " + map_data[__counter].seat_price;
-				
-				item_map.forEach( (map_element: any) => {
+				console.log("item map", item_map)
+				item_map.forEach( (map_element: {seat_label: string, layout: string}) => {
 				
 					let mapObj = {
 						"seatRowLabel" : map_element.seat_label,
@@ -106,20 +107,23 @@ export class AsientosComponent implements OnInit {
 					row_label = "";
 				
 					let seatValArr = map_element.layout.split('');
-				
+								
 					if( this.seatChartConfig.newSeatNoForRow )
 					{
 						seatNoCounter = 1; //Reset the seat label counter for new row
 					}
 					
 					let totalItemCounter = 1;
+					console.log("seat",seatValArr)
 				
-					seatValArr.forEach( (item: any)  => {
+					seatValArr.forEach( (item: string )  => {
 
-						let seatObj = {
-							"key" : map_element.seat_label + "_" + totalItemCounter,
-							"price" : map_data[__counter]["seat_price"],
-							"status" : "available"
+						let seatObj: { seatLabel:string, seatNo: string, key: string, price: number, status: string }  = {
+							"key": map_element.seat_label + "_" + totalItemCounter,
+							"price": map_data[__counter]["seat_price"],
+							"status": "available",
+							seatLabel: '',
+							seatNo: ''
 						};
 					
 						if( item != '_')
@@ -143,11 +147,12 @@ export class AsientosComponent implements OnInit {
 						}
 					
 						totalItemCounter++;
+						console.log("seatOb" ,seatObj)
+						//this.mapObjetos.push(seatObj);
+						//mapObj["seats"].push(seatObj);
+					}); 
 					
-						mapObj["seats"].push(seatObj);
-					});
-					
-					console.log(" \n\n\n Seat Objects " , mapObj);
+					//console.log(" \n\n\n Seat Objects " , mapObj);
 					this.seatmap.push( mapObj );
 		
 				});
@@ -158,8 +163,9 @@ export class AsientosComponent implements OnInit {
 
 	public selectSeat( seatObject : any )
 	{
+
 		console.log( "Seat to block: " , seatObject );
-		if(seatObject.status == "available")
+		/* if(seatObject.status == "available")
 		{
 			seatObject.status = "booked";
 			this.cart.selectedSeats.push(seatObject.seatLabel);
@@ -178,7 +184,7 @@ export class AsientosComponent implements OnInit {
 			this.cart.totalamount -= seatObject.price;
 			}
 			
-		}
+		} */
 	}
 
 	public blockSeats(seatsToBlock : string)

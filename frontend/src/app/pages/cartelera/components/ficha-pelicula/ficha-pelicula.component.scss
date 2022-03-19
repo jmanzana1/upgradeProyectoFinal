@@ -1,11 +1,28 @@
 .contenedor {
+	position: relative;
 	display: flex;
 	// flex-direction: row;
 	flex-wrap: wrap;
 	// align-items: flex-start;
 	justify-content: center;
 	margin-top: 20px;
-	max-width: 1400px;
+	// max-width: 1400px;
+	// background-color: yellow;
+	// opacity: 0.4;
+}
+
+.background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-blend-mode: darken;
+	// opacity: 0.4;
+
 }
 
 .stdContent {
@@ -15,12 +32,12 @@
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;
 	min-width: 286px;
-	
+	z-index: 1;
 }
 
 .firstContent {
 	min-width: 286px;
-
+	z-index: 1;
 	.fichaContent {
 		margin: 0 5px;
 		justify-content: center;
@@ -38,6 +55,7 @@
 }
 .seconContent {
 	max-width: 418px;
+	z-index: 1;
 }
 @media (min-width: 768px) {
 	.firstContent {
