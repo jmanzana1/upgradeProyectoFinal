@@ -18,7 +18,7 @@ public submitted: boolean = false;
     private formBuilder: FormBuilder
   ) {
     this.userPayForm = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.maxLength(20)]],
+      nombre: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]],
       numero: ['', [Validators.required]],
       fecha: ['', [Validators.required]],
       cvv: ['', [Validators.required]],
@@ -27,10 +27,10 @@ public submitted: boolean = false;
 
   ngOnInit(): void {/* Empty */}
 
-//   public next() { 
-// 	console.log("entro")
-// 	this._router.navigate(['compraentradas/confirmacion']);
-// }
+  public back() { 
+	// console.log("entro")
+	this._router.navigate(['compraentradas/datospersonales']);
+}
 
 //Función accionada al clickar en submit
 public onSubmit(): void {

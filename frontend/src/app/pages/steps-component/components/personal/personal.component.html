@@ -54,9 +54,11 @@
 	
 
 	<!-- Botón deshabilitado hasta que el formulario sea valid -->
-	<button type="submit" [disabled]="!userDataForm.valid">Next ></button>
-	<!-- <p-button label="Next" type="submit" [disabled]="!userDataForm.valid" icon="pi pi-angle-right" iconPos="right"></p-button> -->
-
+	<div class="footerButtoms">
+		<button (click)="back()" class="back">< Volver</button>
+		<button type="submit" [disabled]="!userDataForm.valid">Next ></button>
+		<!-- <p-button label="Next" type="submit" [disabled]="!userDataForm.valid" icon="pi pi-angle-right" iconPos="right"></p-button> -->
+	</div>
 </form>
 </ng-template>
 </p-card>

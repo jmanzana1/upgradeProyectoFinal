@@ -7,16 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./confirmacion.component.scss']
 })
 export class ConfirmacionComponent implements OnInit {
-  public usuario = localStorage.getItem('usuario');
-  // public fsubList:Array<any> = JSON.parse(localStorage.getItem('usuario'));
-
-  public pago = localStorage.getItem('pago');
   
-  constructor() { }
+  
+
+  public usuario = JSON.parse(localStorage.getItem('usuario') || '{}')
+  public pago = JSON.parse(localStorage.getItem('pago') || '{}')
+  
+  constructor(private _router: Router,) { }
 
   ngOnInit(): void {
   }
-  get user(): any {
-    return localStorage.getItem('usuario');
-}
+  
+  public back() { 
+    
+    this._router.navigate(['compraentradas/pago']);
+  }
+  
+  
+  
 }

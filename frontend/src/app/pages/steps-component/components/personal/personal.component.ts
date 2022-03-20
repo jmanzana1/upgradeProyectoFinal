@@ -33,7 +33,10 @@ export class PersonalComponent implements OnInit {
   // public nextPage() { 
 	// console.log("entro")
 	// this._router.navigate(['compraentradas/pago']);
-  
+  public back() { 
+    
+    this._router.navigate(['compraentradas/entradas/6223dea2d72ef1f99cf69af9']);
+  }
   
   
   //Función accionada al clickar en submit

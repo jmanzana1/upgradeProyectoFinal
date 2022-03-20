@@ -22,19 +22,18 @@
 
 	<fieldset>
 		<label for="numero">Número de tarjeta:</label>
-		<input type="text" id="numero" formControlName="numero" />
+		<input type="text" id="numero" formControlName="numero" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="0000-0000-0000-0000" />
 		<!-- <p-inputMask inputId="number" mask="9999-9999-9999-9999" [(ngModel)]="userPayForm" formControlName="numero"></p-inputMask> -->
 			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
 		<div *ngIf="!userPayForm.get('numero')?.valid &&
 			(userPayForm.get('numero')?.dirty || submitted)">
-		
-		<span class="alert">Has introducido mal tus numero</span>
+			<span class="alert">Has introducido mal tus numero</span>
 		</div>
 	</fieldset>
 
 	<fieldset>
 		<label for="fecha">Fecha:</label>
-		<input type="text" id="fecha" formControlName="fecha" placeholder="MM/YY" />
+		<input type="text" id="fecha" formControlName="fecha" pattern="[0-3]{2}/[0-2]{2}" placeholder="MM/YY" />
 		<!-- <p-inputMask inputId="date" mask="99/99" [(ngModel)]="userPayForm" formControlName="fecha" ></p-inputMask> -->
 			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
 		<div *ngIf="!userPayForm.get('fecha')?.valid &&
@@ -45,7 +44,7 @@
 
 	<fieldset>
 		<label for="cvv">CVV:</label>
-		<input type="text" id="cvv" formControlName="cvv" />
+		<input type="text" id="cvv" formControlName="cvv" pattern="[0-9]{3}"/>
 		<!-- <p-inputMask id="cvv" mask="999" [(ngModel)]="userPayForm" formControlName="cvv" ></p-inputMask> -->
 			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
 		<div *ngIf="!userPayForm.get('cvv')?.valid &&
@@ -57,7 +56,12 @@
 	
 
 	<!-- Botón deshabilitado hasta que el formulario sea valid -->
-	<button type="submit" [disabled]="!userPayForm.valid">Next ></button>
+	<div class="footerButtoms">
+		<button (click)="back()" class="back">< Volver</button>
+		<button type="submit" [disabled]="!userPayForm.valid">Next ></button>
+	</div>
+	<!-- <button onclick="history.back()" class="back">Go Back</button> -->
+	
 	<!-- <p-button label="Next" type="submit" [disabled]="!userDataForm.valid" icon="pi pi-angle-right" iconPos="right"></p-button> -->
 
 </form>
@@ -65,4 +69,4 @@
 </p-card>
 </div>
 
-<!-- <button (click)="next()">NExt</button> -->
+<!-- <button (click)="back()">NExt</button> -->
