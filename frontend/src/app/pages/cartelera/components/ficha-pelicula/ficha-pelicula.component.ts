@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PeliculasService } from '../../../../services/peliculas.service';
 import { MessageService } from 'primeng/api';
 
@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
 })
 export class FichaPeliculaComponent implements OnInit {
 
+	public id: string = '';
 	public nombre: string = 'La abuela';
 	public imgCaratula: string = 'assets/laabuela_peq.jpg';
 	public botonVisible: boolean = false
@@ -22,6 +23,7 @@ export class FichaPeliculaComponent implements OnInit {
 		private _peliculasService: PeliculasService,
 		private _activatedRouter: ActivatedRoute,
 		private _messageService: MessageService,
+		private _router: Router,
 	) { }
 	
 	ngOnInit(): void {
@@ -30,11 +32,16 @@ export class FichaPeliculaComponent implements OnInit {
 
 	}
 
+	public compraEntrada(id: String) {
+		
+		this._router.navigate(['compraentradas/entradas/' + id])
+	}
+
 	public getPeliculaInfo( ){
 
-		const id = this._activatedRouter.snapshot.params['id'];
+		this.id = this._activatedRouter.snapshot.params['id'];
 
-		this._peliculasService.getPeliculaById( id )
+		this._peliculasService.getPeliculaById( this.id )
 		.subscribe({
 			next: ( data ) => { 
 
@@ -48,7 +55,7 @@ export class FichaPeliculaComponent implements OnInit {
 			}
 		 });
 
-		console.log("id", id)
+		console.log("id", this.id)
 	}
 
 }

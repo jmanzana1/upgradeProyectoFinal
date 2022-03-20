@@ -1,346 +1,153 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common'
+import { FormularioCompraService } from '../../../../services/formulario-compra.service';
+import { MessageService } from 'primeng/api';
+import { Sesiones } from '../../../../models/sesiones';
 
 @Component({
-  selector: 'app-asientos',
-  templateUrl: './asientos.component.html',
-  styleUrls: ['./asientos.component.scss']
+	selector: 'app-asientos',
+	templateUrl: './asientos.component.html',
+	styleUrls: ['./asientos.component.scss'],
+	providers: [ DatePipe, MessageService ]
 })
 export class AsientosComponent implements OnInit {
 	
 	public fechaSesion: Date = new Date();
-	public sala: any = [
-		{
-			"fila": 1,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			],
-			
-		},
-		{
-			"fila": 2,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'vendida' },
-				{ 'posicion': 4, ocupada: 'vendida' },
-				{ 'posicion': 5, ocupada: 'vendida' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 3,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 4,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 5,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 6,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 7,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'vendida' },
-				{ 'posicion': 3, ocupada: 'vendida' },
-				{ 'posicion': 4, ocupada: 'vendida' },
-				{ 'posicion': 5, ocupada: 'vendida' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 8,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 9,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 10,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 11,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'vendida' },
-				{ 'posicion': 7, ocupada: 'vendida' },
-				{ 'posicion': 8, ocupada: 'vendida' },
-				{ 'posicion': 9, ocupada: 'vendida' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 12,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 13,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		},
-		{
-			"fila": 14,
-			'butacas':  [
-				{ 'posicion': 1, ocupada: 'libre' },
-				{ 'posicion': 2, ocupada: 'libre' },
-				{ 'posicion': 3, ocupada: 'libre' },
-				{ 'posicion': 4, ocupada: 'libre' },
-				{ 'posicion': 5, ocupada: 'libre' },
-				{ 'posicion': 6, ocupada: 'libre' },
-				{ 'posicion': 7, ocupada: 'libre' },
-				{ 'posicion': 8, ocupada: 'libre' },
-				{ 'posicion': 9, ocupada: 'libre' },
-				{ 'posicion': 10, ocupada: 'libre' },
-				{ 'posicion': 11, ocupada: 'libre' },
-				{ 'posicion': 12, ocupada: 'libre' },
-				{ 'posicion': 13, ocupada: 'libre' },
-				{ 'posicion': 14, ocupada: 'libre' },
-		
-			]
-		}
-	];
+	public butacasVisible: boolean = false;
+	public dataButacas: any;
+	public idPelicula: string = ''; 
+	public idSesion: string = '';
+	public dataSesion: Sesiones[];
+	public butacasSelecionadas: string = '';
+	public numeroEntradas: number = 0;
+
 
 	constructor(
-		private _router: Router
-	) { }
+		private _router: Router,
+		private datepipe: DatePipe,
+		private _activatedRouter: ActivatedRoute,
+		private _formularioCompraService: FormularioCompraService,
+		private _messageService: MessageService
+	) { 
+		this.dataSesion = [{
+			_id: '',
+			sala: '',
+			sesion: '',
+			numeroSala: 0,
+			fecha: ''
+		}]
+	}
 	
 	ngOnInit(): void {
 		
-		//this.getConfigSala();
+		this.idPelicula = this._activatedRouter.snapshot.params['id'];
 			
 	}
 		
 
-	public getConfigSala() {
+	public getSalas( evento: Date ) {
 
-		for (let filas = 1; filas < 11; filas++ ){
+		const fecha = this.datepipe.transform(evento, 'yyyy-MM-dd');
 
-			for( let butacas = 1; butacas < 15; butacas++ ){
+		this._formularioCompraService.getSalas( this.idPelicula, fecha)
+			.subscribe({
+				next: ( data: any ) => {
+					
+					this.dataSesion = data.map( ( item: Sesiones ) => {
+						return {
+							_id: item._id,
+							sala: 'sala ' + item.numeroSala,
+							sesion: item.sesion,
+							numeroSala: item.numeroSala,
+							fecha: fecha
+						}
+					})
+					console.log("data", this.dataSesion)
+				
+				},
+				error: ( error ) => {
+					
+					this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
 
-				let posicion = filas + "_" + butacas;
+				}
+			})
+		
+	}
 
-				//this.sala.push(posicion);
-				console.log("butacas", posicion);
+	public getDispoSala( fecha: string, id: string) {
 
+		this.idSesion = id;
+		
+		this._formularioCompraService.getButacas( id, fecha )
+			.subscribe({
+				next: (data: any ) => {
+					this.dataButacas = data;
+					this.butacasVisible = true;
+				},
+				error: ( error ) => {
 
-			}
-		}
+					this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+
+				}
+			})
 	}
 
 	public seleccionarAsiento( fila: number, butaca: number) {
 
+		/* console.log("estado", this.dataButacas[fila].butacas[butaca].ocupada )
+		if( this.numeroEntradas > 2 ) {
+			
+			if( this.dataButacas[fila].butacas[butaca].ocupada == 'reservada' ) {
 
-		fila = fila -1 ;
-		butaca = butaca -1;
-		
-		console.log("butaca", butaca)
-		console.log("info", this.sala)
-		console.log("info2", this.sala[fila].butacas[butaca])
-		
-		console.log("ocupada", this.sala[fila].butacas[butaca].ocupada)
-		if ( this.sala[fila].butacas[butaca].ocupada === 'libre') { this.sala[fila].butacas[butaca].ocupada = 'reservada' } else { this.sala[fila].butacas[butaca].ocupada = 'libre'};
-		
+				this.dataButacas[fila].butacas[butaca].ocupada = 'libre';
+				this.numeroEntradas -= 1;
+
+			}else {
+
+				this._messageService.add({severity:'error', summary:'Compra Entradas', detail: 'Has alcanzado el número máximo de entradas, solo puedes 10 entradas' });
+
+			}
+
+		} else { */
+
+			fila = fila -1 ;
+			butaca = butaca -1;
+			
+			if ( this.dataButacas[fila].butacas[butaca].ocupada === 'libre') 
+			{ 	
+				this.dataButacas[fila].butacas[butaca].ocupada = 'reservada' 
+				this.numeroEntradas += 1
+			
+			} else 
+			{ 
+				
+				this.dataButacas[fila].butacas[butaca].ocupada = 'libre'
+				this.numeroEntradas -= 1
+	
+			};
+			
+			this.butacasSelecionadas += this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
+
+		//}
+
 	}
 
 	public next() { 
-		let pepito = {
-			ss: 22222,
-			pp:3333
+		const butacas: string = this.butacasSelecionadas .substring(0, this.butacasSelecionadas .length - 1);
+		const numeroEntradas = butacas.split(',');
+
+		const precioFinal = 9.5 * numeroEntradas.length; 
+		let asientos = {
+			fecha: "2022-12-30",
+			asientosReservados: butacas,
+			precio: precioFinal,
+			idPelicula: this.idPelicula,
+			idSalaSesion: this.idSesion
  		}
-		localStorage.setItem("Datos",  JSON.stringify(pepito));
-		this._router.navigate(['compraentradas/datospersonales']);
+
+		 console.log("asientos", asientos)
+		localStorage.setItem("Datos",  JSON.stringify(asientos));
+		//this._router.navigate(['compraentradas/datospersonales']);
 	}
 }

@@ -1,18 +1,32 @@
+<p-toast></p-toast>
 <div class="stepsdemo-content m-3">
 	<p-card>
-		<p-calendar [(ngModel)]="fechaSesion" [inline]="true" [showWeek]="true"></p-calendar>
-
-		<div *ngFor="let filas of sala">
-			<button 
-
-				*ngFor="let butaca of filas.butacas" 
-				class="color1" 
-				(click)="seleccionarAsiento( filas.fila, butaca.posicion )"
-				[ngClass]="{'color1': butaca.ocupada === 'libre', color2: butaca.ocupada==='vendida', color3: butaca.ocupada === 'reservada' }"
-				[disabled]="butaca.ocupada === 'vendida'"
-			>	
-				{{filas.fila}} - {{butaca.posicion}}
-			</button>
+		<div class="row">
+			<div class="col-3">
+				<p-calendar [(ngModel)]="fechaSesion" [inline]="true" [firstDayOfWeek]="1" (onSelect)="getSalas($event)"></p-calendar>
+			</div>
+			<div class="col-1">
+				<div *ngIf="dataSesion[0].sala !== ''">
+					<button *ngFor="let salaSesion of dataSesion" pButton pRipple type="button" class="p-button-outlined" (click)="getDispoSala( salaSesion.fecha, salaSesion._id )">{{ salaSesion.sala }} <br> {{ salaSesion.sesion }}</button>
+				</div>
+			</div>
+			<div class="col">
+				<div *ngIf="butacasVisible">
+					<div class="screen"></div>
+					<div *ngFor="let filas of dataButacas">
+						<button 
+							*ngFor="let butaca of filas.butacas" 
+							class="butaca" 
+							(click)="seleccionarAsiento( filas.fila, butaca.posicion )"
+							[ngClass]="{'color1': butaca.ocupada === 'libre', color2: butaca.ocupada==='vendida', color3: butaca.ocupada === 'reservada' }"
+							[disabled]="butaca.ocupada === 'vendida'"
+							[ngStyle]="{'margin-right': (	butaca.posicion == 4 || butaca.posicion == 10) && filas.fila < 12 ? '30px' : '0px' }"
+						>	
+							{{ butaca.posicion }}
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</p-card>
 	<button (click)="next()">NExt</button>
