@@ -10,10 +10,10 @@ const routes: Routes = [
 	{
 		path: '', component: StepsFormComponent, children:[
 			{
-				path: '', redirectTo: 'entradas', pathMatch: 'full'
+				path: '', redirectTo: '/cartelera/fichapelicula', pathMatch: 'full'
 			},
 			{
-				path: 'entradas', component: AsientosComponent
+				path: 'entradas/:id', component: AsientosComponent
 			},
 			{
 				path: 'datospersonales', component: PersonalComponent
