@@ -24,6 +24,9 @@ export class AsientosComponent implements OnInit {
 	public numeroEntradas: number = 0;
 	public dataPelicula: any;
 
+	public fechaSeleccionada: boolean = false;
+	public sesionSeleccionada: boolean= false;
+
 
 	constructor(
 		private _router: Router,
@@ -70,6 +73,8 @@ export class AsientosComponent implements OnInit {
 
 	public getSalas( evento: Date ) {
 
+		this.fechaSeleccionada = true;
+
 		const fecha = this.datepipe.transform(evento, 'yyyy-MM-dd');
 
 		this._formularioCompraService.getSalas( this.idPelicula, fecha)
@@ -85,12 +90,11 @@ export class AsientosComponent implements OnInit {
 							fecha: fecha
 						}
 					})
-					console.log("data", this.dataSesion)
 				
 				},
 				error: ( error ) => {
 					
-					this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+					this._messageService.add({severity:'error', summary:'Error Compra Entradas', detail: error.message });
 
 				}
 			})
@@ -99,6 +103,7 @@ export class AsientosComponent implements OnInit {
 
 	public getDispoSala( fecha: string, id: string) {
 
+		this.sesionSeleccionada = true;
 		this.idSesion = id;
 		
 		this._formularioCompraService.getButacas( id, fecha )
@@ -109,7 +114,7 @@ export class AsientosComponent implements OnInit {
 				},
 				error: ( error ) => {
 
-					this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+					this._messageService.add({severity:'error', summary:'Error Compra Entradas', detail: error.message });
 
 				}
 			})
@@ -117,13 +122,17 @@ export class AsientosComponent implements OnInit {
 
 	public seleccionarAsiento( fila: number, butaca: number) {
 
-		/* console.log("estado", this.dataButacas[fila].butacas[butaca].ocupada )
-		if( this.numeroEntradas > 2 ) {
+		fila = fila -1 ;
+		butaca = butaca -1;
+		const filaButaca: string = this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
+
+		if( this.numeroEntradas > 9 ) {
 			
 			if( this.dataButacas[fila].butacas[butaca].ocupada == 'reservada' ) {
 
 				this.dataButacas[fila].butacas[butaca].ocupada = 'libre';
 				this.numeroEntradas -= 1;
+				this.butacasSelecionadas = this.butacasSelecionadas.replace( filaButaca, '' );
 
 			}else {
 
@@ -131,46 +140,63 @@ export class AsientosComponent implements OnInit {
 
 			}
 
-		} else { */
-
-			fila = fila -1 ;
-			butaca = butaca -1;
+		} else { 
 			
 			if ( this.dataButacas[fila].butacas[butaca].ocupada === 'libre') 
 			{ 	
 				this.dataButacas[fila].butacas[butaca].ocupada = 'reservada' 
 				this.numeroEntradas += 1
-				this.butacasSelecionadas += this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
+				this.butacasSelecionadas += filaButaca;
 			
 			} else 
 			{ 
 				
 				this.dataButacas[fila].butacas[butaca].ocupada = 'libre'
 				this.numeroEntradas -= 1
-				
+
+				this.butacasSelecionadas = this.butacasSelecionadas.replace( filaButaca, '' );
+
 	
 			};
 			
 
-		//}
+		}
 
 	}
 
 	public next() { 
+
 		const butacas: string = this.butacasSelecionadas .substring(0, this.butacasSelecionadas .length - 1);
 		const numeroEntradas = butacas.split(',');
 
-		const precioFinal = 9.5 * numeroEntradas.length; 
-		let asientos = {
-			fecha: "2022-12-30",
-			asientosReservados: butacas,
-			precio: precioFinal,
-			idPelicula: this.idPelicula,
-			idSalaSesion: this.idSesion
- 		}
+		if( !this.fechaSeleccionada ) { 
 
-		 console.log("asientos", asientos)
-		localStorage.setItem("Datos",  JSON.stringify(asientos));
-		//this._router.navigate(['compraentradas/datospersonales']);
+			this._messageService.add({severity:'error', summary:'Compra Entradas', detail: 'Debe de seleccionar una fecha para continuar' });
+
+		} else if( !this.sesionSeleccionada) {
+
+			this._messageService.add({severity:'error', summary:'Compra Entradas', detail: 'Debe de seleccionar una sesión para continuar' });
+
+		} else if( butacas.length === 0){
+
+			this._messageService.add({severity:'error', summary:'Compra Entradas', detail: 'Debe de seleccionar al menos una butaca para continuar' });
+
+		}
+		else
+		{
+	
+			const precioFinal = 9.5 * numeroEntradas.length; 
+			let asientos = {
+				fecha: "2022-12-30",
+				asientosReservados: butacas,
+				precio: precioFinal,
+				idPelicula: this.idPelicula,
+				idSalaSesion: this.idSesion
+			 }
+	
+			 console.log("asientos", asientos)
+			localStorage.setItem("Datos",  JSON.stringify(asientos));
+			this._router.navigate(['compraentradas/datospersonales']);
+		}
 	}
 }
