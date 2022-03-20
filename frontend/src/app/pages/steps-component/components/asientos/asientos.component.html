@@ -1,8 +1,14 @@
 <p-toast></p-toast>
 <div class="stepsdemo-content m-3">
 	<p-card>
+		<div class="row" *ngIf="dataPelicula">
+			<h2> {{ dataPelicula.nombre}} </h2>
+		</div>
 		<div class="row">
-			<div class="col-3">
+			<div class="col-2" *ngIf="dataPelicula">
+				<img src="{{ dataPelicula.imgFicha}}" alt="{{ dataPelicula.nombre}}">
+			</div>
+			<div class="col-4">
 				<p-calendar [(ngModel)]="fechaSesion" [inline]="true" [firstDayOfWeek]="1" (onSelect)="getSalas($event)"></p-calendar>
 			</div>
 			<div class="col-1">

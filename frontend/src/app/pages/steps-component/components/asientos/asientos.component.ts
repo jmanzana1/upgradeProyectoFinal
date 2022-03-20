@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common'
 import { FormularioCompraService } from '../../../../services/formulario-compra.service';
 import { MessageService } from 'primeng/api';
 import { Sesiones } from '../../../../models/sesiones';
+import { PeliculasService } from '../../../../services/peliculas.service';
 
 @Component({
 	selector: 'app-asientos',
@@ -21,6 +22,7 @@ export class AsientosComponent implements OnInit {
 	public dataSesion: Sesiones[];
 	public butacasSelecionadas: string = '';
 	public numeroEntradas: number = 0;
+	public dataPelicula: any;
 
 
 	constructor(
@@ -28,7 +30,8 @@ export class AsientosComponent implements OnInit {
 		private datepipe: DatePipe,
 		private _activatedRouter: ActivatedRoute,
 		private _formularioCompraService: FormularioCompraService,
-		private _messageService: MessageService
+		private _messageService: MessageService,
+		private _peliculasService: PeliculasService,
 	) { 
 		this.dataSesion = [{
 			_id: '',
@@ -42,7 +45,26 @@ export class AsientosComponent implements OnInit {
 	ngOnInit(): void {
 		
 		this.idPelicula = this._activatedRouter.snapshot.params['id'];
+
+		this.getPelicula();
 			
+	}
+
+	public getPelicula( ) {
+
+		this._peliculasService.getPeliculaById( this.idPelicula ) 
+			.subscribe({
+				next: ( data ) => {
+					this.dataPelicula = data;
+				},
+				error: ( error ) => {
+					
+					this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+
+				}
+			})
+
+
 	}
 		
 
@@ -118,16 +140,17 @@ export class AsientosComponent implements OnInit {
 			{ 	
 				this.dataButacas[fila].butacas[butaca].ocupada = 'reservada' 
 				this.numeroEntradas += 1
+				this.butacasSelecionadas += this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
 			
 			} else 
 			{ 
 				
 				this.dataButacas[fila].butacas[butaca].ocupada = 'libre'
 				this.numeroEntradas -= 1
+				
 	
 			};
 			
-			this.butacasSelecionadas += this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
 
 		//}
 
