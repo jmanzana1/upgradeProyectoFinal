@@ -1,6 +1,68 @@
-<div class="stepsdemo-content m-3">
+<div class="row m-3">
 	<p-card>
-		Pago
-	</p-card>
+		<ng-template pTemplate="title">
+			Información de pago
+		</ng-template>
+		<ng-template pTemplate="subtitle">
+			Introduce los datos de tu tarjeta
+		</ng-template>
+		<ng-template pTemplate="content">
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="userPayForm">
+  <!-- Fieldset del primer campo - name -->
+ 	 <fieldset>
+		<label for="nombre">Nombre del titular:</label>
+		<input type="text" id="nombre" formControlName="nombre" />
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userPayForm.get('nombre')?.valid &&
+			(userPayForm.get('nombre')?.dirty || submitted)">
+		
+		<span class="alert">Has introducido mal tu nombre</span>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<label for="numero">Número de tarjeta:</label>
+		<input type="text" id="numero" formControlName="numero" />
+		<!-- <p-inputMask inputId="number" mask="9999-9999-9999-9999" [(ngModel)]="userPayForm" formControlName="numero"></p-inputMask> -->
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userPayForm.get('numero')?.valid &&
+			(userPayForm.get('numero')?.dirty || submitted)">
+		
+		<span class="alert">Has introducido mal tus numero</span>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<label for="fecha">Fecha:</label>
+		<input type="text" id="fecha" formControlName="fecha" placeholder="MM/YY" />
+		<!-- <p-inputMask inputId="date" mask="99/99" [(ngModel)]="userPayForm" formControlName="fecha" ></p-inputMask> -->
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userPayForm.get('fecha')?.valid &&
+			(userPayForm.get('fecha')?.dirty || submitted)">
+			<span class="alert">Has introducido mal tu fecha</span>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<label for="cvv">CVV:</label>
+		<input type="text" id="cvv" formControlName="cvv" />
+		<!-- <p-inputMask id="cvv" mask="999" [(ngModel)]="userPayForm" formControlName="cvv" ></p-inputMask> -->
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userPayForm.get('cvv')?.valid &&
+			(userPayForm.get('cvv')?.dirty || submitted)">
+			<span class="alert">Has introducido mal tu cvv</span>
+		</div>
+	</fieldset>
+	
+	
+
+	<!-- Botón deshabilitado hasta que el formulario sea valid -->
+	<button type="submit" [disabled]="!userPayForm.valid">Next ></button>
+	<!-- <p-button label="Next" type="submit" [disabled]="!userDataForm.valid" icon="pi pi-angle-right" iconPos="right"></p-button> -->
+
+</form>
+</ng-template>
+</p-card>
 </div>
-<button (click)="next()">NExt</button>
+
+<!-- <button (click)="next()">NExt</button> -->

@@ -44,7 +44,7 @@ export class HomeService {
 	}
   public getProximas() { 
 
-		const url: string = this.urlMaster + 'Pelicula/proxima';
+		const url: string = this.urlMaster + 'Pelicula/proximo';
     return this.http.get( url );
 
 	}

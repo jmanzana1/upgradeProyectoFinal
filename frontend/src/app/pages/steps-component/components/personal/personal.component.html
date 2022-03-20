@@ -1,6 +1,65 @@
-<div class="stepsdemo-content m-3">
+<div class="row m-3">
 	<p-card>
-		PErsonal
-	</p-card>
+		<ng-template pTemplate="title">
+			Información 
+		</ng-template>
+		<ng-template pTemplate="subtitle">
+			Introduce tus datos personales
+		</ng-template>
+		<ng-template pTemplate="content">
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="userDataForm">
+  <!-- Fieldset del primer campo - name -->
+	<fieldset>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" formControlName="nombre" />
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userDataForm.get('nombre')?.valid &&
+			(userDataForm.get('nombre')?.dirty || submitted)">
+		
+		<span class="alert">Has introducido mal tu nombre</span>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<label for="apellidos">Apellidos:</label>
+		<input type="text" id="apellidos" formControlName="apellidos" />
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userDataForm.get('apellidos')?.valid &&
+			(userDataForm.get('apellidos')?.dirty || submitted)">
+		
+		<span class="alert">Has introducido mal tus apellidos</span>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<label for="telefono">Teléfono:</label>
+		<input type="text" id="telefono" formControlName="telefono" />
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userDataForm.get('telefono')?.valid &&
+			(userDataForm.get('telefono')?.dirty || submitted)">
+			<span class="alert">Has introducido mal tu telefono</span>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<label for="email">Email:</label>
+		<input type="text" id="email" formControlName="email" />
+			<!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+		<div *ngIf="!userDataForm.get('email')?.valid &&
+			(userDataForm.get('email')?.dirty || submitted)">
+			<span class="alert">Has introducido mal tu email</span>
+		</div>
+	</fieldset>
+	
+	
+
+	<!-- Botón deshabilitado hasta que el formulario sea valid -->
+	<button type="submit" [disabled]="!userDataForm.valid">Next ></button>
+	<!-- <p-button label="Next" type="submit" [disabled]="!userDataForm.valid" icon="pi pi-angle-right" iconPos="right"></p-button> -->
+
+</form>
+</ng-template>
+</p-card>
 </div>
-<button (click)="next()">NExt</button>
+
+<!-- <button (click)="nextPage()">NExt</button> -->
