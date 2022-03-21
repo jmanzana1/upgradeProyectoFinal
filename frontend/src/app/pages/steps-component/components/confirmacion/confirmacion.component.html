@@ -40,6 +40,21 @@
             <div class="field col-12">
                 <p>CVV: <br><b>{{pago.cvv}}</b></p>
             </div>
+            <div class="field col-12">
+                <h4><b>Asientos / Sesiones</b></h4>
+            </div>
+            <div class="field col-12">
+                <p>Película: <br><b>{{asientos.idPelicula}}</b></p>
+            </div>
+            <div class="field col-12">
+                <p>Fecha: <br><b>{{asientos.fecha}}</b></p>
+            </div>
+            <div class="field col-12">
+                <p>Asientos reservados: <br><b>{{asientos.asientosReservados}} de la sala {{asientos.idSalaSesion}}</b></p>
+            </div>
+            <div class="field col-12">
+                <p>Dinerito: <br><b>{{asientos.precio}}</b></p>
+            </div>
 
             <div class="footerButtoms">
                 <button (click)="back()" class="back">< Volver</button>

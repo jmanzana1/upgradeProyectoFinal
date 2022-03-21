@@ -12,6 +12,7 @@ export class ConfirmacionComponent implements OnInit {
 
   public usuario = JSON.parse(localStorage.getItem('usuario') || '{}')
   public pago = JSON.parse(localStorage.getItem('pago') || '{}')
+  public asientos = JSON.parse(localStorage.getItem('asientos') || '{}')
   
   constructor(private _router: Router,) { }
 
