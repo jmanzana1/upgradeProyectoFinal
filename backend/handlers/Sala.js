@@ -17,6 +17,20 @@ router.route('/').get((req, res, next) => {
         })
 });
 
+router.route('/salasdisponibles/:id/:fecha').get((req, res, next) => {
+    const idPelicula = req.params.id;
+    Sala.find({"idPelicula":idPelicula}).sort({"numeroSala":-1,"sesion":1})
+        .then(sala => {
+            if (!sala) {
+                return res.status(404).json('Sala no encontrada');
+            }
+            return res.json(sala)
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
 
 router.route('/:id').get((req, res, next) => {
     const id = req.params.id;
@@ -31,6 +45,9 @@ router.route('/:id').get((req, res, next) => {
             next(error)
         })
 });
+
+
+
 
 //saca todas las salas y horarios de una peli
 router.route('/peliculas/:id').get((req, res, next) => {
@@ -112,6 +129,8 @@ router.route('/:id/').delete(authorize, (req, res, next) => {
             next(error);
         });
 });
+
+
 
 
 

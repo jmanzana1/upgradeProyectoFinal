@@ -47,19 +47,302 @@ router.route('/asientos/:date/:sala').get( (req, res, next) => {
     const salaid = req.params.sala;
     Compras.find({"fecha":new Date(datefind),"idSalaSesion":salaid})
         .then((compras) => {
-            if (compras=="") {
-                return res.status(404).json('No se encontro ninguna Compra');
-            }
-            let listasientos=""
+            let listasientos=[]
             for (let compra of compras){
                 
-                listasientos=listasientos+compra.asientosReservados+",";
+                asie=compra.asientosReservados.split(",");
+                for (let asi of asie){
+                    listasientos.push(asi)
+                }
             }
-            listasientos=listasientos.slice(0,-1);
             console.log(listasientos)
-            return res.json({
-                "asientos":listasientos
-            });
+
+        //     objetobutacas=[
+        //         {
+        //         "fila":1,
+        //         "butacas":[
+        //         { 'posicion': 1, ocupada: 'libre' },
+		// 		{ 'posicion': 2, ocupada: 'libre' },
+		// 		{ 'posicion': 3, ocupada: 'libre' },
+		// 		{ 'posicion': 4, ocupada: 'libre' },
+		// 		{ 'posicion': 5, ocupada: 'libre' },
+		// 		{ 'posicion': 6, ocupada: 'libre' },
+		// 		{ 'posicion': 7, ocupada: 'libre' },
+		// 		{ 'posicion': 8, ocupada: 'libre' },
+		// 		{ 'posicion': 9, ocupada: 'libre' },
+		// 		{ 'posicion': 10, ocupada: 'libre' },
+		// 		{ 'posicion': 11, ocupada: 'libre' },
+		// 		{ 'posicion': 12, ocupada: 'libre' },
+		// 		{ 'posicion': 13, ocupada: 'libre' },
+		// 		{ 'posicion': 14, ocupada: 'libre' },
+        //         ]
+        //     },
+        //     {
+        //         "fila":2,
+        //         "butacas":[
+        //         { 'posicion': 1, ocupada: 'libre' },
+		// 		{ 'posicion': 2, ocupada: 'libre' },
+		// 		{ 'posicion': 3, ocupada: 'libre' },
+		// 		{ 'posicion': 4, ocupada: 'libre' },
+		// 		{ 'posicion': 5, ocupada: 'libre' },
+		// 		{ 'posicion': 6, ocupada: 'libre' },
+		// 		{ 'posicion': 7, ocupada: 'libre' },
+		// 		{ 'posicion': 8, ocupada: 'libre' },
+		// 		{ 'posicion': 9, ocupada: 'libre' },
+		// 		{ 'posicion': 10, ocupada: 'libre' },
+		// 		{ 'posicion': 11, ocupada: 'libre' },
+		// 		{ 'posicion': 12, ocupada: 'libre' },
+		// 		{ 'posicion': 13, ocupada: 'libre' },
+		// 		{ 'posicion': 14, ocupada: 'libre' },
+        //         ]
+        //     },
+        //     {
+        //         "fila":3,
+        //         "butacas":[
+        //         { 'posicion': 1, ocupada: 'libre' },
+		// 		{ 'posicion': 2, ocupada: 'libre' },
+		// 		{ 'posicion': 3, ocupada: 'libre' },
+		// 		{ 'posicion': 4, ocupada: 'libre' },
+		// 		{ 'posicion': 5, ocupada: 'libre' },
+		// 		{ 'posicion': 6, ocupada: 'libre' },
+		// 		{ 'posicion': 7, ocupada: 'libre' },
+		// 		{ 'posicion': 8, ocupada: 'libre' },
+		// 		{ 'posicion': 9, ocupada: 'libre' },
+		// 		{ 'posicion': 10, ocupada: 'libre' },
+		// 		{ 'posicion': 11, ocupada: 'libre' },
+		// 		{ 'posicion': 12, ocupada: 'libre' },
+		// 		{ 'posicion': 13, ocupada: 'libre' },
+		// 		{ 'posicion': 14, ocupada: 'libre' },
+        //         ]
+        //     }
+        // ]
+        // console.log(objetobutacas)
+
+
+            //creo el json
+            objectasiento={}
+            arrayasientosfinal=[]
+            butacasarray=[]
+            obtemp=[]
+                fila=1
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf('1_'+z)>-1){
+                        obtemp={"posicion":z,"ocupada":"vendida"}
+                    }else{
+                        obtemp={"posicion":z,"ocupada":"libre"}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+                console.log(arrayasientosfinal)
+                
+                //Fila2
+                fila=2
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila3
+                fila=3
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila4
+                fila=4
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila5
+                fila=5
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila6
+                fila=6
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila7
+                fila=7
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+                
+                //Fila8
+                fila=8
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila9
+                fila=9
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila10
+                fila=10
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+
+                //Fila11
+                fila=11
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<13;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+                //Fila12
+                fila=12
+                butacasarray=[]
+                objectasiento={}
+                objectasiento.fila=fila;
+                for (let z=1;z<15;z++){
+                    if (listasientos.indexOf(fila+'_'+z)>-1){
+                        obtemp={'posicion':z,'ocupada':'vendida'}
+                    }else{
+                        obtemp={'posicion':z,'ocupada':'libre'}
+                    }
+                    butacasarray.push(obtemp)
+                    //console.log(butacasarray)
+                }
+                objectasiento.butacas=butacasarray;
+                console.log(objectasiento)
+                arrayasientosfinal.push(objectasiento)
+
+
+            console.log(arrayasientosfinal)
+
+            return res.json(arrayasientosfinal);
         })
         .catch((error) => {
             next(error)
@@ -83,8 +366,10 @@ router.route('/:id').get( (req, res, next) => {
 });
 
 
-router.route('/').post(authorize, (req, res, next) => {
+router.route('/').post((req, res, next) => {
 
+    console.log("Esto es lo que me llega:")
+    console.log(req.body)
     const newCompra = new Compras({
         fecha: req.body.fecha,
         asientosReservados: req.body.asientosReservados,
@@ -93,8 +378,12 @@ router.route('/').post(authorize, (req, res, next) => {
         idSalaSesion:req.body.idSalaSesion,
         localizador:makeid(6)
     });
+    console.log("Esto es despues de guardarlo:")
+    console.log(newCompra)
     newCompra.fecha instanceof Date;
 
+    console.log("despues de convertir fecha")
+    console.log(newCompra)
     newCompra.save()
         .then(() => {
             return res.status(201).json(newCompra);
