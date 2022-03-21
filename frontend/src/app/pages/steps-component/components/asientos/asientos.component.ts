@@ -195,7 +195,7 @@ export class AsientosComponent implements OnInit {
 			 }
 	
 			 console.log("asientos", asientos)
-			localStorage.setItem("Datos",  JSON.stringify(asientos));
+			localStorage.setItem("asientos",  JSON.stringify(asientos));
 			this._router.navigate(['compraentradas/datospersonales']);
 		}
 	}
