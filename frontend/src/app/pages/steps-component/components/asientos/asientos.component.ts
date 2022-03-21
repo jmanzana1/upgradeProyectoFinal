@@ -14,7 +14,7 @@ import { PeliculasService } from '../../../../services/peliculas.service';
 })
 export class AsientosComponent implements OnInit {
 	
-	public fechaSesion: Date = new Date();
+	public fechaSesion: any = null ;
 	public butacasVisible: boolean = false;
 	public dataButacas: any;
 	public idPelicula: string = ''; 
@@ -75,9 +75,10 @@ export class AsientosComponent implements OnInit {
 
 		this.fechaSeleccionada = true;
 
-		const fecha = this.datepipe.transform(evento, 'yyyy-MM-dd');
+		this.fechaSesion = this.datepipe.transform(evento, 'yyyy-MM-dd') ;
 
-		this._formularioCompraService.getSalas( this.idPelicula, fecha)
+		
+		this._formularioCompraService.getSalas( this.idPelicula, this.fechaSesion)
 			.subscribe({
 				next: ( data: any ) => {
 					
@@ -87,7 +88,7 @@ export class AsientosComponent implements OnInit {
 							sala: 'sala ' + item.numeroSala,
 							sesion: item.sesion,
 							numeroSala: item.numeroSala,
-							fecha: fecha
+							fecha: this.fechaSesion
 						}
 					})
 				
@@ -187,7 +188,7 @@ export class AsientosComponent implements OnInit {
 	
 			const precioFinal = 9.5 * numeroEntradas.length; 
 			let asientos = {
-				fecha: "2022-12-30",
+				fecha: this.fechaSesion,
 				asientosReservados: butacas,
 				precio: precioFinal,
 				idPelicula: this.idPelicula,

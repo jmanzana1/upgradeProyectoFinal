@@ -25,15 +25,19 @@ export class ConfirmacionComponent implements OnInit {
     
     this._router.navigate(['compraentradas/pago']);
   }
+  public seguir() { 
+    
+    this._router.navigate(['']);
+  }
 
   public compra(){
     this.formularioComprasService.postCompra(this.asientos)
       .subscribe({
         next:(data) => {
           console.log(data)
-          localStorage.removeItem(this.asientos)
-          localStorage.removeItem(this.pago)
-          localStorage.removeItem(this.usuario)
+          localStorage.removeItem('asientos')
+          localStorage.removeItem("pago")
+          localStorage.removeItem("usuario")
 
         },
         error:(error)=>{

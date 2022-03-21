@@ -58,4 +58,6 @@ export class FichaPeliculaComponent implements OnInit {
 		console.log("id", this.id)
 	}
 
+	
+
 }
