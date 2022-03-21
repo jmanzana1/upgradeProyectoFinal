@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormularioCompraService } from 'src/app/services/formulario-compra.service';
 
 @Component({
   selector: 'app-confirmacion',
@@ -14,14 +15,31 @@ export class ConfirmacionComponent implements OnInit {
   public pago = JSON.parse(localStorage.getItem('pago') || '{}')
   public asientos = JSON.parse(localStorage.getItem('asientos') || '{}')
   
-  constructor(private _router: Router,) { }
+  constructor(private _router: Router, private formularioComprasService: FormularioCompraService) { }
 
   ngOnInit(): void {
+    this.compra();
   }
   
   public back() { 
     
     this._router.navigate(['compraentradas/pago']);
+  }
+
+  public compra(){
+    this.formularioComprasService.postCompra(this.asientos)
+      .subscribe({
+        next:(data) => {
+          console.log(data)
+          localStorage.removeItem(this.asientos)
+          localStorage.removeItem(this.pago)
+          localStorage.removeItem(this.usuario)
+
+        },
+        error:(error)=>{
+          console.log(error)
+        }
+      })
   }
   
   

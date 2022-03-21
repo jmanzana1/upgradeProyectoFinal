@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { variablesConstantes } from '../app.variables';
+import { Sesiones } from '../models/sesiones';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,12 @@ export class FormularioCompraService {
 
 		return this._httpClient.get( url );
 
+	}
+
+	public postCompra(reserva: Sesiones) {
+		const url: string = this.urlMaster + 'Compras';
+		console.log('Reserva: ', reserva)
+		return this._httpClient.post( url, reserva );
 	}
 
 }
