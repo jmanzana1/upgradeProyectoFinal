@@ -21,6 +21,7 @@ export class AsientosComponent implements OnInit {
 	public idSesion: string = '';
 	public dataSesion: Sesiones[];
 	public butacasSelecionadas: string = '';
+	public butacasDetalle: string = '';
 	public numeroEntradas: number = 0;
 	public dataPelicula: any;
 
@@ -126,6 +127,7 @@ export class AsientosComponent implements OnInit {
 		fila = fila -1 ;
 		butaca = butaca -1;
 		const filaButaca: string = this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
+		const butacasDetalleSelecciona = 'Fila: ' + this.dataButacas[fila].fila + ' Butaca: ' +  this.dataButacas[fila].butacas[butaca].posicion + ','
 
 		if( this.numeroEntradas > 9 ) {
 			
@@ -134,6 +136,7 @@ export class AsientosComponent implements OnInit {
 				this.dataButacas[fila].butacas[butaca].ocupada = 'libre';
 				this.numeroEntradas -= 1;
 				this.butacasSelecionadas = this.butacasSelecionadas.replace( filaButaca, '' );
+				this.butacasDetalle = this.butacasDetalle.replace( butacasDetalleSelecciona, '');
 
 			}else {
 
@@ -148,6 +151,8 @@ export class AsientosComponent implements OnInit {
 				this.dataButacas[fila].butacas[butaca].ocupada = 'reservada' 
 				this.numeroEntradas += 1
 				this.butacasSelecionadas += filaButaca;
+				this.butacasDetalle += butacasDetalleSelecciona;
+
 			
 			} else 
 			{ 
@@ -156,19 +161,23 @@ export class AsientosComponent implements OnInit {
 				this.numeroEntradas -= 1
 
 				this.butacasSelecionadas = this.butacasSelecionadas.replace( filaButaca, '' );
-
+				this.butacasDetalle = this.butacasDetalle.replace( butacasDetalleSelecciona, '');
 	
 			};
 			
 
 		}
 
+		console.log("butaca Detalle:", this.butacasDetalle);
+
 	}
 
 	public next() { 
 
-		const butacas: string = this.butacasSelecionadas .substring(0, this.butacasSelecionadas .length - 1);
+		const butacas: string = this.butacasSelecionadas .substring(0, this.butacasSelecionadas.length - 1);
+		const butacasDetalle: string = this.butacasDetalle.substring(0, this.butacasDetalle.length - 1);
 		const numeroEntradas = butacas.split(',');
+
 
 		if( !this.fechaSeleccionada ) { 
 
@@ -192,7 +201,9 @@ export class AsientosComponent implements OnInit {
 				asientosReservados: butacas,
 				precio: precioFinal,
 				idPelicula: this.idPelicula,
-				idSalaSesion: this.idSesion
+				idSalaSesion: this.idSesion,
+				titulo: this.dataPelicula.nombre,
+				butacas: butacasDetalle
 			 }
 	
 			 console.log("asientos", asientos)

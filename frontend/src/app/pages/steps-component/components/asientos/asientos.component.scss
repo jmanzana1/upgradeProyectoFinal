@@ -1,13 +1,13 @@
-.color1 {
-	background-color: #444451;
+.butacaLibre {
+	background-image: url('/assets/images/butacaLibre.png');
 }
 
-.color2 {
-	background-color: red;
+.butacaVendida {
+	background-image: url('/assets/images/butacaOcupada.png');
 }
 
-.color3 {
-	background-color: orange;
+.butacaReservada {
+	background-image: url('/assets/images/butacaSeleccionada.png');
 }
 
 body {
@@ -17,19 +17,19 @@ body {
 .butaca {
 	margin-top: 2px;
 	margin-left: 2px;
-	width: 30px;
-	height: 30px;
-	border-top-left-radius: 50px;
-	border-top-right-radius: 50px;
+	border: none;
+	width: 26px;
 	color: white;
 	text-align: center;
 }
 
-.screen {
-	background: #000;
-	height: 70px;
-	width: 450px;
-	margin: 15px 0;
-	transform: rotateX(-45deg);
-	box-shadow: 0 3px 10px rgba(128,128,128,0.7);
-  }
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.columnaFlex {
+	margin: 10px;
+}
