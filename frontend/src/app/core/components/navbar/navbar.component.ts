@@ -15,11 +15,19 @@ export class NavbarComponent implements OnInit {
 		this.items = [
             {
                 label:'Portada',
-                url:'/'
+                routerLink: ['/'],
+                routerLinkActiveOptions: {
+                    exact: true
+                  },
+                styleClass: 'menucus'
             },
             {
                 label:'Cartelera',
-                url:'cartelera'
+                routerLink: ['cartelera'],
+                routerLinkActiveOptions: {
+                    exact: true
+                  },
+                styleClass: 'menucus'
             },
             
             {
@@ -29,13 +37,22 @@ export class NavbarComponent implements OnInit {
                     {
                         label:'Películas',
                         // icon:'pi pi-fw pi-plus',
-                        url:'admin/peliculas'
+                        routerLink: ['admin/peliculas'],
+                        routerLinkActiveOptions: {
+                            exact: true
+                          },
+                        
                         
                     },
                     {
                         label:'Salas',
                         // icon:'pi pi-fw pi-trash',
-                        url:'admin/salas'
+                        routerLink: ['admin/salas'],
+                        routerLinkActiveOptions: {
+                            exact: true
+                          },
+                        styleClass: 'menucus'
+                        
                     },
                     // {
                     //     separator:true

@@ -1,9 +1,29 @@
-<p-menubar [model]="items" [style]="{'background-color': '#3782a3', 'color':'#FFF', 'padding-left':'200px'}">
+<!-- <p-menubar [model]="items" [style]="{'background-color': '#3782a3', 'color':'#FFF', 'padding-left':'200px'}"> -->
+<!-- <p-menubar [model]="items" [style]="{'padding-left':'200px'}">
+
     <img src="../../../../assets/LOGO.png" alt="" class="logo">
-    <ng-template pTemplate="start" [style]="{'color':'#FFF'}">
+    <ng-template pTemplate="start" >
         <img src="https://primefaces.org/primeng/showcase/assets/showcase/images/primeng-logo-dark.svg" height="40" class="mr-2">
     </ng-template>
     <ng-template pTemplate="end">
         <input type="text" pInputText placeholder="Search">
     </ng-template>
-</p-menubar>
+</p-menubar> -->
+
+
+<header>
+    <nav>
+        <div>
+            <a routerLink="" routerLinkActive="active-link"><img src="../../../../assets/LOGO.png" alt="" class="logo2"></a>
+        <!-- <img src="../../../../assets/hamburger-menu.svg" alt="" class="logo"> -->
+        </div>
+    <input type="checkbox" id="check">
+    <label for="check" class="bar-btn">
+        <img src="../../../../assets/hamburger-menu.svg" width="14" height="14"/>
+    </label>
+    <ul class="nav-menu">
+        <li><a routerLink="" routerLinkActive="active-link">Portada</a></li>
+        <li><a routerLink="cartelera" routerLinkActive="active-link">Cartelera</a></li>
+    </ul>
+</nav>
+</header>
