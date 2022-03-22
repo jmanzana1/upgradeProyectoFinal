@@ -5,9 +5,31 @@
             Confirmación
         </ng-template>
         <ng-template pTemplate="subtitle">
-            Verifica tus datos de la reserva
+            Tu reserva se ha realizado con éxito, imprime esta página y mústrala en la entrada.
         </ng-template>
         <ng-template pTemplate="content">
+
+            <div class="backgroudTicket">
+                <div class="contenTicket">
+                    <!-- <img src="../../../../../assets/LOGO.png" alt="" class="logo"> -->
+                    <h4>{{asientos.titulo}}</h4>
+                    <p>Fecha: {{asientos.fecha}}</p>
+                    <p>Número de entradas: {{numAsiento}}</p>
+                    <p>Precio total: {{asientos.precio}}€</p>
+                    <p>{{asientos.butacas}}</p>
+                    <img src="{{asientos.urlCaratula}}" width="180" alt="">
+                    <p>A nombre de: {{usuario.nombre}} {{usuario.apellidos}}</p>
+                    <p>Tarjeta: ****-****-****-{{numTarjeta}}</p>
+                </div> 
+            </div>
+
+
+            <!-- <div class="field col-12">
+                
+                <p>Nombre: <br><b>{{asientos.titulo}}</b></p>
+
+            </div>
+
             <div class="field col-12">
                 <p>Nombre: <br><b>{{usuario.nombre}} {{usuario.apellidos}}</b></p>
             </div>
@@ -19,7 +41,7 @@
             </div>
             <div class="field col-12">
                 <h4><b>Datos bancarios</b></h4>
-            </div>
+            </div> -->
             <!-- <div class="field col-12">
                 <label for="Age">Wagon Number</label>
                 <b>{{ticketInformation.seatInformation.wagon ? ticketInformation.seatInformation.wagon.wagon : '-'}}</b>
@@ -28,7 +50,7 @@
                 <label for="Age">Seat</label>
                 <b>{{ticketInformation.seatInformation.seat ? ticketInformation.seatInformation.seat.seat : '-'}}</b>
             </div> -->
-            <div class="field col-12">
+            <!-- <div class="field col-12">
                 <p>Titular de la tarjeta: <br><b>{{pago.nombre}}</b></p>
             </div>
             <div class="field col-12">
@@ -54,11 +76,11 @@
             </div>
             <div class="field col-12">
                 <p>Dinerito: <br><b>{{asientos.precio}}</b></p>
-            </div>
+            </div> -->
 
             <div class="footerButtoms">
-                <button (click)="back()" class="back">< Volver</button>
-                <button (click)="seguir()"type="submit" class="confirma">Seguir navegando ></button>
+                <!-- <button (click)="back()" class="back">< Volver</button> -->
+                <button (click)="seguir()"type="submit" class="confirma">Terminar</button>
                 <!-- <p-button label="Next" type="submit" [disabled]="!userDataForm.valid" icon="pi pi-angle-right" iconPos="right"></p-button> -->
             </div>
         </ng-template>

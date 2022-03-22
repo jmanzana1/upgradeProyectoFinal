@@ -1,2 +1,31 @@
 @import '../../styles/forms';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
 
+.backgroudTicket {
+    
+    width: 689px;
+    height: 295px;
+    background-image: url(../../../../../assets/movie-tickets.jpg);
+    display: flex;
+    justify-content: end;
+    .contenTicket {
+        position: relative;
+        font-family: 'Orbitron', sans-serif;
+        font-family: 'Special Elite', cursive;
+        font-size: 12px;
+        // background-color: pink;
+        color: #FFF;
+        margin-right: 140px;
+        width: 290px;
+        padding: 5px 0;
+        p {
+            margin: 5px;
+        }
+        img {
+            position: absolute;
+            top: 10px;
+            left: -200px;
+            box-shadow: 2px 2px 4px grey;
+        }
+    }
+}
