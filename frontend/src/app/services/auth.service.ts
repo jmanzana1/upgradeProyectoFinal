@@ -26,13 +26,22 @@ export class AuthService {
     return this.http.post(api, user)
   }
 
+  // signIn(user: User) {
+  //   console.log("Signin")
+  //   return this.http.post<any>(`${this.urlMaster}usuarios/signin`, user)
+  //     .subscribe((res: any) => {
+  //       localStorage.setItem('access_token', res.token)
+  //       console.log("el token es"+res.token)
+  //     })
+  // }
+
   signIn(user: User) {
     console.log("Signin")
     return this.http.post<any>(`${this.urlMaster}usuarios/signin`, user)
-      .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token)
-        console.log("el token es"+res.token)
-      })
+      // .subscribe((res: any) => {
+      //   localStorage.setItem('access_token', res.token)
+      //   console.log("el token es"+res.token)
+      // })
   }
 
 

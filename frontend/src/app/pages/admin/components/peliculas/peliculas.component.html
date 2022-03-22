@@ -8,34 +8,60 @@
           <label for="nombre" class="form-label">Nombre Pelicula</label>
           <input type="text" class="form-control" formControlName="nombre" id="nombre" name="nombre" aria-describedby="Nombre Pelicula">
         </div>
+        <div *ngIf="!myForm.get('nombre')?.valid && (myForm.get('nombre')?.dirty || submitted)" class="alertas">
+          Campo Obligatorio. Debe tener mas de 3 caracteres.  
+
+      </div>
         <div class="mb-2">
           <label for="descripcion" class="form-label">Descripcion</label>
           <textarea class="form-control" rows="4" aria-label="descripcion" formControlName="descripcion" name="descripcion" id="descripcion"></textarea>
         </div>
+        <div *ngIf="!myForm.get('descripcion')?.valid && (myForm.get('descripcion')?.dirty || submitted)" class="alertas">
+          Debe escribir una descripcion de como minimo 50 caracteres. 
+
+      </div>
         <div class="mb-2">
           <label for="genero" class="form-label">Genero</label>
           <input type="text" class="form-control" id="genero" formControlName="genero" name="genero" aria-describedby="Genero Pelicula">
         </div>
+        <div *ngIf="!myForm.get('genero')?.valid && (myForm.get('genero')?.dirty || submitted)" class="alertas">
+          Por favor escriba un genero para la pelicula. No debe contener numeros ni caracteres especiales. 
+      </div>
         <div class="mb-2">
           <label for="duracion" class="form-label">Duracion</label>
           <input type="text" class="form-control" id="duracion" formControlName="duracion" name="duracion" aria-describedby="Duracion Pelicula">
         </div>
+        <div *ngIf="!myForm.get('duracion')?.valid && (myForm.get('duracion')?.dirty || submitted)" class="alertas">
+          Introduzca la duracion de la pelicula en minutos. 
+      </div>
         <div class="mb-2">
           <label for="pais" class="form-label">Pais</label>
           <input type="text" class="form-control" id="pais" formControlName="pais" name="pais" aria-describedby="Pais Pelicula">
         </div>
+        <div *ngIf="!myForm.get('pais')?.valid && (myForm.get('pais')?.dirty || submitted)" class="alertas">
+          El Pais es un campo requerido. 
+      </div>
         <div class="mb-2">
           <label for="imdb" class="form-label">Imdb</label>
           <input type="text" class="form-control" id="imdb" formControlName="imdb" name="imdb" aria-describedby="Puntuacion imdb">
         </div>
+        <div *ngIf="!myForm.get('imdb')?.valid && (myForm.get('imdb')?.dirty || submitted)" class="alertas">
+          Debe introducir la puntuacion de Imdb de la pelicula
+      </div>
         <div class="mb-2">
           <label for="director" class="form-label">Director</label>
           <input type="text" class="form-control" id="director" formControlName="director" name="director" aria-describedby="Director Pelicula">
         </div>
+        <div *ngIf="!myForm.get('director')?.valid && (myForm.get('director')?.dirty || submitted)" class="alertas">
+          Escriba el director de la pelicula. 
+      </div>
         <div class="mb-2">
           <label for="actores" class="form-label">Actores</label>
           <input type="text" class="form-control" id="actores" formControlName="actores" name="actores" aria-describedby="Actores Pelicula">
         </div>
+        <div *ngIf="!myForm.get('actores')?.valid && (myForm.get('actores')?.dirty || submitted)" class="alertas">
+          Escriba el/los actores de la pelicula. Si hay mas de uno debe estar separado por comas.  
+      </div>
         <div class="mb-2">
           <label for="carousel" class="form-label">Carrousel</label>
           <select class="form-control" aria-label="carousel" name="carousel" formControlName="carousel">
@@ -43,6 +69,9 @@
             <option value="false">Desactivado</option>
           </select>
         </div>
+        <div *ngIf="!myForm.get('carousel')?.valid && (myForm.get('carousel')?.dirty || submitted)" class="alertas">
+           Seleccione una opcion 
+      </div>
       
         <div class="mb-2">
           <label for="estreno" class="form-label">Estreno</label>
@@ -51,6 +80,9 @@
             <option value="false" selected>Desactivado</option>
           </select>
         </div>
+        <div *ngIf="!myForm.get('estreno')?.valid && (myForm.get('estreno')?.dirty || submitted)" class="alertas">
+          Seleccione una opcion 
+     </div>
         <div class="mb-2">
           <label for="proximo" class="form-label">Proximo</label>
           <select class="form-control" aria-label="proximo" name="proximo" formControlName="proximo">
@@ -58,6 +90,9 @@
             <option value="false" selected>Desactivado</option>
           </select>
         </div>
+        <div *ngIf="!myForm.get('proximo')?.valid && (myForm.get('proximo')?.dirty || submitted)" class="alertas">
+          Seleccione una opcion 
+     </div>
         <div class="mb-2">
           <label for="imgCarousel" class="form-label">Imagen Carrousel 1200x600</label>
           <input class="form-control" type="file" (change)="onFileChangeimgCarousel($event)">
@@ -67,6 +102,9 @@
           <img src={{imgcarousel}}>
 
         </div>
+        <div *ngIf="imgCarouselerror==true" class="alertas">
+          Imagen no valida.  Debe ser una imagen Jpg o Png
+     </div>
         <div class="mb-2">
           <label for="imgFicha" class="form-label">Imagen ficha 220x330</label>
           <input class="form-control"  type="file"  (change)="onFileChangeimgFicha($event)">
@@ -76,6 +114,9 @@
           <img src={{imgFichaweb}}>
 
         </div>
+        <div *ngIf="imgFichaerror==true" class="alertas">
+          Imagen no valida.  Debe ser una imagen Jpg o Png
+     </div>
         <div class="mb-2">
           <label for="trailer" class="form-label">Trailer Mp4</label>
           <input class="form-control" type="file"  (change)="onFileChangetrailer($event)">
@@ -85,6 +126,9 @@
           <p>Preview trailer</p>
           <video src="{{trailerweb}}" width="420px" height="236px" controls></video>
         </div>
+        <div *ngIf="trailererror==true" class="alertas">
+          Video no valido.  Debe ser un video de tipo Mp4 o Webm
+     </div>
 
 
         

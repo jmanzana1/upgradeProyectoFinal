@@ -4,28 +4,31 @@
  <p-table [value]="peliculas" responsiveLayout="scroll" [autoLayout]="true" >
   <ng-template pTemplate="header">
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Pais</th>
-        <th scope="col">Duracion</th>
-        <th scope="col">Imdb</th>
-        <th scope="col">Carrousel</th>
-        <th scope="col">Estreno</th>
-        <th scope="col">Proximo</th>
-        <th scope="col">Imagen</th>
-        <th scope="col">Opciones</th>
+        <th scope="col" class="text-center">Nombre</th>
+        <th scope="col" class="text-center">Pais</th>
+        <th scope="col" class="text-center">Duracion</th>
+        <th scope="col" class="text-center">Imdb</th>
+        <th scope="col" class="text-center">Carrousel</th>
+        <th scope="col" class="text-center">Estreno</th>
+        <th scope="col" class="text-center">Proximo</th>
+        <th scope="col" class="text-center">Imagen</th>
+        <th scope="col" class="text-center">Opciones</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-peliculas>
       <tr>
-        <th>{{peliculas.nombre}}</th>
-        <td>{{peliculas.pais}}</td>
-        <td>{{peliculas.duracion}}</td>
-        <td>{{peliculas.imdb}}</td>
-        <td>{{peliculas.carousel}}</td>
-        <td>{{peliculas.estreno}}</td>
-        <td>{{peliculas.proximo}}</td>
-        <td><img src="{{peliculas.imgFicha}}" width="50px"></td>
-        <td><a href="/admin/peliculas_alta"><i class="pi pi-plus imagebtn"></i></a><i class="pi pi-pencil imagebtn"></i><i class="pi pi-trash imagebtn"></i></td>
+        <td class="text-center">{{peliculas.nombre}}</td>
+        <td class="text-center">{{peliculas.pais}}</td>
+        <td class="text-center"> {{peliculas.duracion}}</td>
+        <td class="text-center">{{peliculas.imdb}}</td>
+        <td class="text-center" *ngIf="peliculas.carousel==true"><i class="bi bi-check2-circle" ></i> Activo</td>
+        <td class="text-center" *ngIf="peliculas.carousel==false"><i class="bi bi-x"></i> Off</td>
+        <td class="text-center" *ngIf="peliculas.estreno==true"><i class="bi bi-check2-circle" ></i> Activo</td>
+        <td class="text-center" *ngIf="peliculas.estreno==false"><i class="bi bi-x"></i> Off</td>
+        <td class="text-center" *ngIf="peliculas.proximo==true"><i class="bi bi-check2-circle" ></i> Activo</td>
+        <td class="text-center" *ngIf="peliculas.proximo==false"><i class="bi bi-x"></i> Off</td>
+        <td class="text-center"><img src="{{peliculas.imgFicha}}" width="50px"></td>
+        <td class="text-center"><a href="/admin/peliculas_alta"><i class="pi pi-plus imagebtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Crear nueva pelicula" ></i></a><i class="pi pi-pencil imagebtn"></i><i class="pi pi-trash imagebtn"></i></td>
       </tr>
       
   </ng-template>

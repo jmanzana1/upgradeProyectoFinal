@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
+  public submitted:Boolean = false;
+  public error:Boolean = false;
 
   constructor(
     public fb: FormBuilder,
@@ -17,8 +19,8 @@ export class SigninComponent implements OnInit {
     public router: Router
   ) {
     this.signinForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: ['' , [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
     })
    }
 
@@ -26,7 +28,22 @@ export class SigninComponent implements OnInit {
   }
 
   loginUser() {
-    this.authService.signIn(this.signinForm.value)
+    this.submitted=true;
+    if (this.signinForm.valid){
+      this.error=false;
+      this.authService.signIn(this.signinForm.value)
+      .subscribe({
+        next: (data) => {
+          console.log("data",data);
+          localStorage.setItem('access_token', data.token)
+          this.router.navigate(['/admin/peliculas'])
+        },
+        error: (error)=>{
+          console.log("error",error);
+          this.error=true;
+        }
+      })
+    }
   }
 
 }

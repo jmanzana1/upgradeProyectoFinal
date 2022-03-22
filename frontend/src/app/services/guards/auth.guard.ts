@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
       console.log("authguard")
     if (this.authService.isLoggedIn !== true) {
 			//Si no hay usuario logueado no tendrá acceso
-      window.alert("Debes estar logueado para ver esta sección");
+      //window.alert("Debes estar logueado para ver esta sección");
       this.router.navigate(['/admin/signIn'])
     }
     return true;

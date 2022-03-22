@@ -12,30 +12,34 @@ import { variablesConstantes } from '../../../../app.variables';
 })
 export class PeliculasComponent implements OnInit {
 
-  urlMaster: string = variablesConstantes.urlMaster;
-  imgCarouselSrc: string = '';
-  imgFichaSrc: string = '';
-  trailerSrc: string = '';
-  fileName = '';
-  imgcarousel: string = '';
-  imgFichaweb: string = '';
-  trailerweb: string = '';
+  public urlMaster: string = variablesConstantes.urlMaster;
+  public imgCarouselSrc: string = '';
+  public imgFichaSrc: string = '';
+  public trailerSrc: string = '';
+  public fileName = '';
+  public imgcarousel: string = '';
+  public imgFichaweb: string = '';
+  public trailerweb: string = '';
+  public submitted:Boolean=false;
+  public imgCarouselerror:Boolean=false;
+  public imgFichaerror:Boolean=false;
+  public trailererror:Boolean=false;
 
   myForm = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    descripcion: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    genero: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    duracion: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    descripcion: new FormControl('', [Validators.required, Validators.minLength(50)]),
+    genero: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z ]*$')]),
+    duracion: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(3),Validators.pattern("^[0-9]*$")]),
     pais: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    imdb: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    director: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    actores: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    imdb: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    director: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    actores: new FormControl('', [Validators.required, Validators.minLength(8)]),
     carousel: new FormControl('', [Validators.required, Validators.minLength(3)]),
     estreno: new FormControl('', [Validators.required, Validators.minLength(3)]),
     proximo: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    imgCarousel: new FormControl('', [Validators.required]),
-    imgFicha: new FormControl('', [Validators.required]),
-    trailer: new FormControl('', [Validators.required]),
+    imgCarousel: new FormControl(''),
+    imgFicha: new FormControl(''),
+    trailer: new FormControl(''),
   })
  
   constructor(public peliculasService:PeliculasService, public router: Router, public http:HttpClient) {}
@@ -44,13 +48,13 @@ export class PeliculasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get f(){
-    return this.myForm.controls;
-  }
 
   onFileChangeimgCarousel(event:any) {
     const file:File = event.target.files[0];
+  
     if (file) {
+      if (file.type=="image/png" || file.type=="image/jpg"){
+        this.imgCarouselerror=false;
         this.fileName = file.name;
         const formData = new FormData();
         formData.append("file", file);
@@ -68,11 +72,17 @@ export class PeliculasComponent implements OnInit {
           }
     })
 }
+else{
+  this.imgCarouselerror=true;
+}
+}
   }
 
   onFileChangeimgFicha(event:any) {
     const file:File = event.target.files[0];
     if (file) {
+      if (file.type=="image/png" || file.type=="image/jpg"){
+        this.imgFichaerror=false;
         this.fileName = file.name;
         const formData = new FormData();
         formData.append("file", file);
@@ -90,11 +100,18 @@ export class PeliculasComponent implements OnInit {
           }
     })
 }
+else{
+  this.imgFichaerror=true;
+}
+    }
   }
 
   onFileChangetrailer(event:any) {
     const file:File = event.target.files[0];
+    console.log(file)
     if (file) {
+      if (file.type=="video/mp4" || file.type=="video/webm"){
+        this.trailererror=false;
         this.fileName = file.name;
         const formData = new FormData();
         formData.append("file", file);
@@ -112,48 +129,18 @@ export class PeliculasComponent implements OnInit {
           }
     })
 }
+else{
+  this.trailererror=true;
+}
+    }
   }
-
-
-  // onFileChangeimgCarousel2(event:any) {
-  //   const reader = new FileReader();
-  //   if(event.target.files && event.target.files.length) {
-  //     const [file] = event.target.files;
-  //     console.log(file);
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       this.imgCarouselSrc = reader.result as string;
-  //       this.myForm.patchValue({
-  //         fileSourceimgCarousel: reader.result,
-  //         imgCarousel:file.name
-  //       });
-  //     };
-  //   }
-  // }
-
-
-
-  // onFileChangetrailer(event:any) {
-  //   const reader = new FileReader();
-  //   if(event.target.files && event.target.files.length) {
-  //     const [file] = event.target.files;
-  //     console.log(file);
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       this.trailerSrc = reader.result as string;
-  //       this.myForm.patchValue({
-  //         fileSourcetrailer: reader.result,
-  //         trailer:file.name
-  //       });
-  //     };
-  //   }
-  // }
 
 
 
 
 
   CreaPeliculas(){
+    if (this.myForm.valid && this.trailererror==false && this.imgFichaerror==false &&this.imgCarouselerror==false){
     console.log("peliculas",this.myForm.value)
     this.peliculasService.crearPelicula(this.myForm.value)
     .subscribe({
@@ -164,7 +151,11 @@ export class PeliculasComponent implements OnInit {
         console.log(error);
       }
     })
+  }
+    
 
   }
 
 }
+
+
