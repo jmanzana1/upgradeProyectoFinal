@@ -8,6 +8,7 @@
 
 .butacaReservada {
 	background-image: url('/assets/images/butacaSeleccionada.png');
+	background-color: white;
 }
 
 body {
@@ -18,7 +19,8 @@ body {
 	margin-top: 2px;
 	margin-left: 2px;
 	border: none;
-	width: 26px;
+	width: 25px;
+	height: 23px;
 	color: white;
 	text-align: center;
 }
@@ -32,4 +34,8 @@ body {
 
 .columnaFlex {
 	margin: 10px;
+}
+
+.texto {
+	font-size: 10px;
 }

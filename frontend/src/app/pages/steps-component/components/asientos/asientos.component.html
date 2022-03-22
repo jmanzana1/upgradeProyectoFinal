@@ -18,6 +18,12 @@
 				<div class="mb-2">
 					<img src="/assets/images/pantalla.png" width="420px">
 				</div>
+				<div class="mb-2 texto text-center">
+					<img src="/assets/images/butacaOcupada.png"> Butaca Ocupada
+					<img src="/assets/images/butacaLibre.png"> Butaca Libre
+					<img src="/assets/images/butacaSeleccionada.png"> Butaca Seleccionada
+
+				</div>
 				<div *ngFor="let filas of dataButacas">
 					<span *ngIf="filas.fila < 10" style="color: white;">1</span>{{ filas.fila }}
 					<button 
