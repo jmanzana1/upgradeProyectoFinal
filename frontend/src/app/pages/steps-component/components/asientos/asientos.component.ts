@@ -203,7 +203,8 @@ export class AsientosComponent implements OnInit {
 				idPelicula: this.idPelicula,
 				idSalaSesion: this.idSesion,
 				titulo: this.dataPelicula.nombre,
-				butacas: butacasDetalle
+				butacas: butacasDetalle,
+				urlCaratula: this.dataPelicula.imgFicha
 			 }
 	
 			 console.log("asientos", asientos)

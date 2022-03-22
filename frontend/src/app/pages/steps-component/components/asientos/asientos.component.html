@@ -25,10 +25,10 @@
 
 				</div>
 				<div *ngFor="let filas of dataButacas">
-					<span *ngIf="filas.fila < 10" style="color: white;">1</span>{{ filas.fila }}
+					<div class="numeros">{{ filas.fila }}</div>
 					<button 
 						*ngFor="let butaca of filas.butacas" 
-						class="butaca" 
+						class="butaca buttonMedidas" 
 						(click)="seleccionarAsiento( filas.fila, butaca.posicion )"
 						[ngClass]="{'butacaLibre': butaca.ocupada === 'libre', butacaVendida: butaca.ocupada==='vendida', butacaReservada: butaca.ocupada === 'reservada' }"
 						[disabled]="butaca.ocupada === 'vendida'"
@@ -39,6 +39,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="botonCapa">
+			<button (click)="next()" class="next">Next</button>
+		</div>
 	</p-card>
-	<button (click)="next()">Next</button>
+	
 </div>

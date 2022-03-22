@@ -39,3 +39,34 @@ body {
 .texto {
 	font-size: 10px;
 }
+
+.buttonMedidas {
+	background-color: white;
+	width: 25px;
+	height: 23px;
+}
+
+.numeros {
+	width: 20px; 
+	float: left;
+	padding-top: 3px;
+}
+
+.next{
+    margin-top: 25px;
+	color: #FFF;
+	background-color: #3B82F6;
+	border: 1px solid #3B82F6;
+	padding: 5px;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+	border-radius: 6px;
+	font-size: 14px;
+	cursor: pointer;
+	&:hover{
+		background-color: #176cf5;
+	}
+}
+
+.botonCapa {
+	text-align: right;
+}
