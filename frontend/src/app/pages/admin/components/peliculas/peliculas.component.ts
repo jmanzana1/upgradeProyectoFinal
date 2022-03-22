@@ -4,11 +4,14 @@ import { FormControl, FormGroup , Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {PeliculasService} from '../../../../services/peliculas.service';
 import { variablesConstantes } from '../../../../app.variables';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-peliculas',
   templateUrl: './peliculas.component.html',
-  styleUrls: ['./peliculas.component.scss']
+  styleUrls: ['./peliculas.component.scss'],
+  providers:[MessageService]
 })
 export class PeliculasComponent implements OnInit {
 
@@ -42,7 +45,7 @@ export class PeliculasComponent implements OnInit {
     trailer: new FormControl(''),
   })
  
-  constructor(public peliculasService:PeliculasService, public router: Router, public http:HttpClient) {}
+  constructor(public peliculasService:PeliculasService, public router: Router, public http:HttpClient, private messageservice:MessageService) {}
   
 
   ngOnInit(): void {
@@ -140,6 +143,7 @@ else{
 
 
   CreaPeliculas(){
+    this.myForm.markAllAsTouched();
     if (this.myForm.valid && this.trailererror==false && this.imgFichaerror==false &&this.imgCarouselerror==false){
     console.log("peliculas",this.myForm.value)
     this.peliculasService.crearPelicula(this.myForm.value)
@@ -151,6 +155,13 @@ else{
         console.log(error);
       }
     })
+  }
+  else{
+    console.log("No valido")
+    this.myForm.markAllAsTouched();
+      
+    
+
   }
     
 

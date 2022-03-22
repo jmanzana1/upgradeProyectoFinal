@@ -8,7 +8,7 @@
           <label for="nombre" class="form-label">Nombre Pelicula</label>
           <input type="text" class="form-control" formControlName="nombre" id="nombre" name="nombre" aria-describedby="Nombre Pelicula">
         </div>
-        <div *ngIf="!myForm.get('nombre')?.valid && (myForm.get('nombre')?.dirty || submitted)" class="alertas">
+        <div *ngIf="!myForm.get('nombre')?.valid && ['required']" class="alertas">
           Campo Obligatorio. Debe tener mas de 3 caracteres.  
 
       </div>
@@ -16,7 +16,7 @@
           <label for="descripcion" class="form-label">Descripcion</label>
           <textarea class="form-control" rows="4" aria-label="descripcion" formControlName="descripcion" name="descripcion" id="descripcion"></textarea>
         </div>
-        <div *ngIf="!myForm.get('descripcion')?.valid && (myForm.get('descripcion')?.dirty || submitted)" class="alertas">
+        <div *ngIf="!myForm.get('descripcion')?.valid && (myForm.get('descripcion')?.touched || submitted)" class="alertas">
           Debe escribir una descripcion de como minimo 50 caracteres. 
 
       </div>
@@ -24,14 +24,14 @@
           <label for="genero" class="form-label">Genero</label>
           <input type="text" class="form-control" id="genero" formControlName="genero" name="genero" aria-describedby="Genero Pelicula">
         </div>
-        <div *ngIf="!myForm.get('genero')?.valid && (myForm.get('genero')?.dirty || submitted)" class="alertas">
+        <div *ngIf="!myForm.get('genero')?.valid && (myForm.get('genero')?.touched || submitted)" class="alertas">
           Por favor escriba un genero para la pelicula. No debe contener numeros ni caracteres especiales. 
       </div>
         <div class="mb-2">
           <label for="duracion" class="form-label">Duracion</label>
           <input type="text" class="form-control" id="duracion" formControlName="duracion" name="duracion" aria-describedby="Duracion Pelicula">
         </div>
-        <div *ngIf="!myForm.get('duracion')?.valid && (myForm.get('duracion')?.dirty || submitted)" class="alertas">
+        <div *ngIf="!myForm.get('duracion')?.valid && (myForm.get('duracion')?.touched || submitted)" class="alertas">
           Introduzca la duracion de la pelicula en minutos. 
       </div>
         <div class="mb-2">

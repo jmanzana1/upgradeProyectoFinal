@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 })
 export class PeliculasListComponent implements OnInit {
   public peliculas: any = [];
+  public pelicula:any = [];
 
   constructor(public peliculasService:PeliculasService,private _messageService: MessageService) { }
 
@@ -27,13 +28,23 @@ export class PeliculasListComponent implements OnInit {
 				console.log( "pli", this.peliculas)
 			},
 			error: ( error ) => { 
-
 				this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
-
 			}
 		 });
-			
-
 	}
+
+public getpelicula(idpelicula: any){
+	this.peliculasService.getPeliculaById(idpelicula)
+	.subscribe({
+		next: ( data ) => { 
+
+			console.log(data)
+		},
+		error: ( error ) => { 
+			this._messageService.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+		}
+	 });
+
+}
 
 }
