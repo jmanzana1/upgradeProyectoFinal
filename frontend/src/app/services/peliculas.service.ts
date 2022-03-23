@@ -35,12 +35,14 @@ public getPeliculas(){
 
   	//Get película por id
   public getPeliculaById( id: string) {
-  
-  		const url = this.urlMaster + 'Pelicula/' + id;
-  
-  		return this._httpClient.get( url );
-  		
+    		const url = this.urlMaster + 'Pelicula/' + id;
+    		return this._httpClient.get( url );	
   }
+
+  public borrarpelicula( id: string) {
+    const url = this.urlMaster + 'Pelicula/' + id;
+    return this._httpClient.delete( url );	
+}
 
 
 }

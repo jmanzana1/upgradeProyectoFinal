@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      console.log("authguard")
+      //console.log("authguard")
     if (this.authService.isLoggedIn !== true) {
 			//Si no hay usuario logueado no tendrá acceso
       //window.alert("Debes estar logueado para ver esta sección");

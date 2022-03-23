@@ -8,6 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PeliculasListComponent } from './components/peliculas-list/peliculas-list.component';
 import {TableModule} from 'primeng/table';
 import { SigninComponent } from './components/signin/signin.component';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
+import { ButtonModule } from 'primeng/button';
+import { SalasListComponent } from './components/salas-list/salas-list.component';
 
 
 @NgModule({
@@ -16,6 +21,7 @@ import { SigninComponent } from './components/signin/signin.component';
     SalasComponent,
     PeliculasListComponent,
     SigninComponent,
+    SalasListComponent,
 
   ],
 	imports: [
@@ -23,7 +29,11 @@ import { SigninComponent } from './components/signin/signin.component';
 		AdminRoutingModule,
 		ReactiveFormsModule,
 		FormsModule,
-		TableModule
+		TableModule,
+		ToastModule,
+		ConfirmDialogModule,
+		MessagesModule,
+		ButtonModule
 	]
 })
 export class AdminModule { }

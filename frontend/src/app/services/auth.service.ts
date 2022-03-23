@@ -21,7 +21,7 @@ export class AuthService {
 
 
   signUp(user: User): Observable<any> {
-    console.log("Signup")
+    //console.log("Signup")
     let api = `${this.urlMaster}usuarios/register-user`;
     return this.http.post(api, user)
   }
@@ -36,7 +36,7 @@ export class AuthService {
   // }
 
   signIn(user: User) {
-    console.log("Signin")
+    //console.log("Signin")
     return this.http.post<any>(`${this.urlMaster}usuarios/signin`, user)
       // .subscribe((res: any) => {
       //   localStorage.setItem('access_token', res.token)
@@ -46,12 +46,12 @@ export class AuthService {
 
 
   getToken() {
-    console.log("GetToken")
+    //console.log("GetToken")
     return localStorage.getItem('access_token');
   }
 
   get isLoggedIn(): boolean {
-    console.log("Islogged")
+    //console.log("Islogged")
     let authToken = localStorage.getItem('access_token');
     return (authToken !== null) ? true : false;
   }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup , Validators} from "@angular/forms";
-import { Router } from '@angular/router';
+import { Router ,ActivatedRoute } from '@angular/router';
 import {PeliculasService} from '../../../../services/peliculas.service';
 import { variablesConstantes } from '../../../../app.variables';
 import { MessageService } from 'primeng/api';
@@ -27,7 +27,13 @@ export class PeliculasComponent implements OnInit {
   public imgCarouselerror:Boolean=false;
   public imgFichaerror:Boolean=false;
   public trailererror:Boolean=false;
+  public imgCarouselvacio:Boolean=false;
+  public imgFichavacio:Boolean=false;
+  public trailervacio:Boolean=false;
+  public idpelicula:any='';
+  public datospelicula:any='';
 
+  // PRODUCCION
   myForm = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     descripcion: new FormControl('', [Validators.required, Validators.minLength(50)]),
@@ -44,12 +50,37 @@ export class PeliculasComponent implements OnInit {
     imgFicha: new FormControl(''),
     trailer: new FormControl(''),
   })
+
+  // TEST
+  // myForm = new FormGroup({
+  //   nombre: new FormControl('nombreTest', [Validators.required, Validators.minLength(3)]),
+  //   descripcion: new FormControl('descripciondescripciondescripciondescripciondescripcion', [Validators.required, Validators.minLength(50)]),
+  //   genero: new FormControl('genero', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z ]*$')]),
+  //   duracion: new FormControl('120', [Validators.required, Validators.minLength(2),Validators.maxLength(3),Validators.pattern("^[0-9]*$")]),
+  //   pais: new FormControl('USA', [Validators.required, Validators.minLength(3)]),
+  //   imdb: new FormControl('6.6', [Validators.required, Validators.minLength(1)]),
+  //   director: new FormControl('Paco Melenas', [Validators.required, Validators.minLength(8)]),
+  //   actores: new FormControl('Aitor tilla', [Validators.required, Validators.minLength(8)]),
+  //   carousel: new FormControl(true, [Validators.required, Validators.minLength(3)]),
+  //   estreno: new FormControl(true, [Validators.required, Validators.minLength(3)]),
+  //   proximo: new FormControl(false, [Validators.required, Validators.minLength(3)]),
+  //   imgCarousel: new FormControl(''),
+  //   imgFicha: new FormControl(''),
+  //   trailer: new FormControl(''),
+  // })
  
-  constructor(public peliculasService:PeliculasService, public router: Router, public http:HttpClient, private messageservice:MessageService) {}
+  constructor(public peliculasService:PeliculasService, public router: Router, public http:HttpClient, private messageservice:MessageService,private activatedRoute: ActivatedRoute) {}
   
 
   ngOnInit(): void {
-  }
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.idpelicula = params.get('id')
+      //console.log( this.idpelicula)
+      if (this.idpelicula!=''&& this.idpelicula!=null){
+        this.getpelicula(this.idpelicula);
+      }
+  })
+}
 
 
   onFileChangeimgCarousel(event:any) {
@@ -65,7 +96,6 @@ export class PeliculasComponent implements OnInit {
         .subscribe({
           next: (data) => {
             console.log("data",data);
-            //setTimeout(() => this.imgcarousel=this.urlMaster+"static/"+this.fileName, 1500);
             },
           complete: () =>{
             this.imgcarousel=this.urlMaster+"static/"+this.fileName
@@ -83,6 +113,7 @@ else{
 
   onFileChangeimgFicha(event:any) {
     const file:File = event.target.files[0];
+    if (this)
     if (file) {
       if (file.type=="image/png" || file.type=="image/jpg"){
         this.imgFichaerror=false;
@@ -144,12 +175,27 @@ else{
 
   CreaPeliculas(){
     this.myForm.markAllAsTouched();
+    if (this.trailerweb==''){
+      this.trailervacio=true;
+    }
+    if (this.imgFichaweb==''){
+      this.imgFichavacio=true;
+    }
+    if (this.imgcarousel==''){
+      this.imgCarouselvacio=true;
+    }
+
+
     if (this.myForm.valid && this.trailererror==false && this.imgFichaerror==false &&this.imgCarouselerror==false){
-    console.log("peliculas",this.myForm.value)
+      this.trailervacio=false;
+      this.imgFichavacio=false;
+      this.imgCarouselvacio=false;
+    //console.log("peliculas",this.myForm.value)
     this.peliculasService.crearPelicula(this.myForm.value)
     .subscribe({
       next: (data) => {
-        console.log("data",data);
+        //console.log("data",data);
+        this.router.navigate(['/admin/peliculas'])
       },
       error: (error)=>{
         console.log(error);
@@ -157,14 +203,47 @@ else{
     })
   }
   else{
-    console.log("No valido")
+    //console.log("No valido")
     this.myForm.markAllAsTouched();
-      
-    
-
+    this.messageservice.add({severity:'error', summary:'Error Formulario', detail: 'Revisa los campos del formulario. ' });
   }
     
 
+  }
+
+
+  public getpelicula(idpelicula: any){
+    this.peliculasService.getPeliculaById(idpelicula)
+    .subscribe({
+      next: ( data ) => { 
+          this.datospelicula=data;
+        this.myForm.patchValue({
+          nombre:this.datospelicula.nombre,
+          descripcion:this.datospelicula.descripcion,
+          genero:this.datospelicula.genero,
+          duracion:this.datospelicula.duracion,
+          pais:this.datospelicula.pais,
+          imdb:this.datospelicula.imdb,
+          director:this.datospelicula.director,
+          actores:this.datospelicula.actores,
+          carousel:this.datospelicula.carousel,
+          estreno:this.datospelicula.estreno,
+          proximo:this.datospelicula.proximo,
+          imgCarousel:this.datospelicula.imgCarousel,
+          imgFicha:this.datospelicula.imgFicha,
+          trailer:this.datospelicula.trailer
+
+        })
+        this.trailerweb=this.datospelicula.trailer;
+        this.imgFichaweb=this.datospelicula.imgFicha;
+        this.imgcarousel=this.datospelicula.imgCarousel;
+
+      },
+      error: ( error ) => { 
+        this.messageservice.add({severity:'error', summary:'Error Cartelera', detail: error.message });
+      }
+     });
+  
   }
 
 }
