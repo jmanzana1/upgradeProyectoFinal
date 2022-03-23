@@ -2,8 +2,14 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
 
 <div class="container">
+  <div class="row">
+    <div class="col-12 mt-4">
+  <app-menubar></app-menubar>
+</div>
+</div>
     <div class="row align-items-center">
         <div class="col-12 mt-4 mb-4">
+          
  <p-table [value]="peliculas" responsiveLayout="scroll" [autoLayout]="true" >
   <ng-template pTemplate="header">
       <tr>
@@ -31,7 +37,7 @@
         <td class="text-center" *ngIf="peliculas.proximo==true"><i class="bi bi-check2-circle" ></i> Activo</td>
         <td class="text-center" *ngIf="peliculas.proximo==false"><i class="bi bi-x"></i> Off</td>
         <td class="text-center"><img src="{{peliculas.imgFicha}}" width="50px"></td>
-        <td class="text-center"><a href="/admin/peliculas_alta"><i class="pi pi-plus imagebtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Crear nueva pelicula" ></i></a><a [routerLink]="['/admin/peliculas_edit/'+peliculas._id]"><i class="pi pi-pencil imagebtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar pelicula"  ></i></a>
+        <td class="text-center"><a [routerLink]="['/admin/peliculas_edit/'+peliculas._id]"><i class="pi pi-pencil imagebtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar pelicula"  ></i></a>
           <i class="pi pi-trash imagebtndelete" (click)="deletepeliculaclic(peliculas._id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar pelicula" ></i>
       </tr>
       

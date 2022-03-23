@@ -38,7 +38,7 @@ export class PeliculasComponent implements OnInit {
   myForm = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     descripcion: new FormControl('', [Validators.required, Validators.minLength(50)]),
-    genero: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z ]*$')]),
+    genero: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚ,]*$')]),
     duracion: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(3),Validators.pattern("^[0-9]*$")]),
     pais: new FormControl('', [Validators.required, Validators.minLength(3)]),
     imdb: new FormControl('', [Validators.required, Validators.minLength(1),Validators.pattern("^[0-9]{1}[.][0-9]{1}$")]),

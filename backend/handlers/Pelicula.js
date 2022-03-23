@@ -21,7 +21,7 @@ const upload = multer({ storage: storage })
 
 
 router.route('/').get((req, res, next) => {
-    Pelicula.find()
+    Pelicula.find().sort({createdAt : -1})
         .then((pelicula) => {
             if (pelicula=="") {
                 return res.status(404).json('No se encontro ninguna Pelicula');
@@ -34,7 +34,7 @@ router.route('/').get((req, res, next) => {
 });
 
 router.route('/carousel').get((req, res, next) => {
-    Pelicula.find({'carousel':true})
+    Pelicula.find({'carousel':true}).sort({createdAt : -1})
         .then((pelicula) => {
             if (pelicula=="") {
                 return res.status(404).json('No se encontro ninguna Pelicula');
@@ -49,7 +49,7 @@ router.route('/carousel').get((req, res, next) => {
 
 
 router.route('/estreno').get((req, res, next) => {
-    Pelicula.find({'estreno':true})
+    Pelicula.find({'estreno':true}).sort({createdAt : -1})
         .then((pelicula) => {
             if (pelicula=="") {
                 return res.status(404).json('No se encontro ninguna Pelicula');
@@ -62,7 +62,7 @@ router.route('/estreno').get((req, res, next) => {
 });
 
 router.route('/proximo').get((req, res, next) => {
-    Pelicula.find({'proximo':true})
+    Pelicula.find({'proximo':true}).sort({createdAt : -1})
         .then((pelicula) => {
             if (pelicula=="") {
                 return res.status(404).json('No se encontro ninguna Pelicula');

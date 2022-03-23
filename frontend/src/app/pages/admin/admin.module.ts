@@ -13,6 +13,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { ButtonModule } from 'primeng/button';
 import { SalasListComponent } from './components/salas-list/salas-list.component';
+import { MenubarModule } from 'primeng/menubar';
+import { MenubarComponent } from './components/menubar/menubar.component';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { SalasListComponent } from './components/salas-list/salas-list.component
     PeliculasListComponent,
     SigninComponent,
     SalasListComponent,
+    MenubarComponent,
 
   ],
 	imports: [
@@ -33,7 +36,8 @@ import { SalasListComponent } from './components/salas-list/salas-list.component
 		ToastModule,
 		ConfirmDialogModule,
 		MessagesModule,
-		ButtonModule
+		ButtonModule,
+		MenubarModule
 	]
 })
 export class AdminModule { }
