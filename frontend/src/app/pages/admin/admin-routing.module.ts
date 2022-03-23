@@ -13,6 +13,9 @@ const routes: Routes = [
 		path: '', component: PeliculasListComponent,canActivate: [AuthGuard]
 	},
 	{
+		path: 'peliculas', component: PeliculasListComponent,canActivate: [AuthGuard]
+	},
+	{
 		path: 'peliculas_alta', component: PeliculasComponent,canActivate: [AuthGuard]
 	},
 	{
