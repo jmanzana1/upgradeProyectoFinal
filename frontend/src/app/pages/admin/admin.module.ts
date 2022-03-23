@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { SalasListComponent } from './components/salas-list/salas-list.component';
 import { MenubarModule } from 'primeng/menubar';
 import { MenubarComponent } from './components/menubar/menubar.component';
+import { ComprasListComponent } from './components/compras-list/compras-list.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MenubarComponent } from './components/menubar/menubar.component';
     SigninComponent,
     SalasListComponent,
     MenubarComponent,
+    ComprasListComponent,
 
   ],
 	imports: [

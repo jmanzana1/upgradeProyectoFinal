@@ -27,7 +27,6 @@
         <td class="text-center" *ngIf="Salas.activo==false"><i class="bi bi-x"></i> Off</td>
         <td class="text-center"><div><img src="{{Salas.idPelicula[0].imgFicha}}" width="50px" /></div><div>{{Salas.idPelicula[0].nombre}}</div></td>
         <td class="text-center">
-            <a href="/admin/salas_alta"><i class="pi pi-plus imagebtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Crear nueva Sala" ></i></a>
              <a [routerLink]="['/admin/salas_edit/'+Salas._id]"><i class="pi pi-pencil imagebtn" ></i></a>
            <i class="pi pi-trash imagebtndelete" (click)="deletesalaclic(Salas._id)" ></i> 
       </tr>

@@ -6,6 +6,7 @@ import { SalasComponent } from './components/salas/salas.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { AuthGuard } from 'src/app/services/guards/auth.guard';
 import { SalasListComponent } from './components/salas-list/salas-list.component';
+import { ComprasListComponent } from './components/compras-list/compras-list.component';
 
 const routes: Routes = [
 	
@@ -32,6 +33,9 @@ const routes: Routes = [
 	},
 	{
 		path: 'signIn', component: SigninComponent
+	},
+	{
+		path: 'compras', component: ComprasListComponent,canActivate: [AuthGuard]
 	}
 ];
 

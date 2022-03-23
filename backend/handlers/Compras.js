@@ -28,6 +28,19 @@ router.route('/').get( (req, res, next) => {
         })
 });
 
+router.route('/contodo').get( (req, res, next) => {
+    Compras.find().populate("idPelicula").populate("idSalaSesion")
+        .then((compras) => {
+            if (compras=="") {
+                return res.status(404).json('No se encontro ninguna Compra');
+            }
+            return res.json(compras);
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
 router.route('/fecha/:date').get( (req, res, next) => {
     const datefind = req.params.date;
     Compras.find({"fecha":new Date(datefind)})
@@ -40,6 +53,17 @@ router.route('/fecha/:date').get( (req, res, next) => {
         .catch((error) => {
             next(error)
         })
+});
+
+router.route('/:id/').delete(authorize, (req, res, next) => {
+    const compraid = req.params.id;
+    Compras.findByIdAndDelete(compraid)
+        .then(() => {
+            return res.status(200).json(`Compra con id ${compraid} ha sido eliminada`);
+        })
+        .catch(error => {
+            next(error);
+        });
 });
 
 router.route('/asientos/:date/:sala').get( (req, res, next) => {

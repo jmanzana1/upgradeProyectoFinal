@@ -8,7 +8,7 @@ const ComprasSchema = new Schema(
       asientosReservados: { type: String, required: true },
       precio: { type: Number, required: true},
       idPelicula: [{ type: mongoose.Types.ObjectId, ref: 'Pelicula' }],
-      SalaSesion: [{ type: mongoose.Types.ObjectId, ref: 'Sala' }],
+      idSalaSesion: [{ type: mongoose.Types.ObjectId, ref: 'Sala' }],
       localizador:{ type: String, required: true }
     },
     {

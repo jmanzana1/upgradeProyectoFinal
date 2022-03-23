@@ -43,7 +43,6 @@
         <ng-container *ngFor="let peli of Peliculas">
             <option value="{{peli._id}}">{{peli.nombre}}</option>
           </ng-container>
-      <option value="false">Desactivado</option>
     </select>
   </div>
   <div *ngIf="!myForm.get('activo')?.valid && (myForm.get('activo')?.touched || myForm.get('activo')?.dirty)" class="alertas">

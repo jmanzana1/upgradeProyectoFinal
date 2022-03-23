@@ -55,7 +55,7 @@ export class MenubarComponent implements OnInit {
           {
               label:'Listado',
               icon:'pi pi-fw pi-bars',
-              url:"/admin/salas"
+              url:"/admin/compras"
           }      
       ]
     },
