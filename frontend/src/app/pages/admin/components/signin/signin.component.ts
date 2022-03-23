@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
         next: (data) => {
           console.log("data",data);
           localStorage.setItem('access_token', data.token)
-          this.router.navigate(['/admin/peliculas'])
+          this.router.navigate(['/admin'])
         },
         error: (error)=>{
           console.log("error",error);

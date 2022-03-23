@@ -47,7 +47,7 @@
           <input type="text" class="form-control" id="imdb" formControlName="imdb" name="imdb" aria-describedby="Puntuacion imdb">
         </div>
         <div *ngIf="!myForm.get('imdb')?.valid && (myForm.get('imdb')?.touched || myForm.get('imdb')?.dirty)" class="alertas">
-          Debe introducir la puntuacion de Imdb de la pelicula
+          Debe introducir la puntuacion de Imdb de la pelicula con un punto como separado.  Ejemplo 6.3
       </div>
         <div class="mb-2">
           <label for="director" class="form-label">Director</label>

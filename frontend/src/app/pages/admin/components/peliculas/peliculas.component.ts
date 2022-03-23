@@ -41,7 +41,7 @@ export class PeliculasComponent implements OnInit {
     genero: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z ]*$')]),
     duracion: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(3),Validators.pattern("^[0-9]*$")]),
     pais: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    imdb: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    imdb: new FormControl('', [Validators.required, Validators.minLength(1),Validators.pattern("^[0-9]{1}[.][0-9]{1}$")]),
     director: new FormControl('', [Validators.required, Validators.minLength(8)]),
     actores: new FormControl('', [Validators.required, Validators.minLength(8)]),
     carousel: new FormControl('', [Validators.required, Validators.minLength(3)]),
