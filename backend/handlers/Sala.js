@@ -17,6 +17,20 @@ router.route('/').get((req, res, next) => {
         })
 });
 
+router.route('/salaconPeli').get((req, res, next) => {
+    Sala.find().populate("idPelicula")
+        .then((sala) => {
+            if (sala=="") {
+                return res.status(404).json('No se encontro ninguna Sala');
+            }
+            return res.json(sala);
+        })
+        .catch((error) => {
+            next(error)
+        })
+});
+
+
 router.route('/salasdisponibles/:id/:fecha').get((req, res, next) => {
     const idPelicula = req.params.id;
     Sala.find({"idPelicula":idPelicula}).sort({"numeroSala":-1,"sesion":1})

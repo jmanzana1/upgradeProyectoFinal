@@ -7,7 +7,7 @@ const SalaSchema = new Schema(
       numeroSala: { type: Number, required: true },
       sesion: { type: String, required: true},
       activo: { type: Boolean, required: true},
-      idPelicula: [{ type: mongoose.Types.ObjectId, ref: 'pelicula' }]
+      idPelicula: [{ type: mongoose.Types.ObjectId, ref: 'Pelicula' }]
     },
     {
       timestamps: true,

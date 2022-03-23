@@ -27,6 +27,11 @@ public crearPelicula(pelicula: Peliculas) {
   return this._httpClient.post(api,pelicula);
 }
 
+public editarPelicula(id:string, pelicula: Peliculas) {
+  let api = `${this.urlMaster}Pelicula/`+id;
+  return this._httpClient.put(api,pelicula);
+}
+
 public getPeliculas(){
   const url = this.urlMaster + 'Pelicula/';
   return this._httpClient.get( url );

@@ -32,6 +32,7 @@ export class PeliculasComponent implements OnInit {
   public trailervacio:Boolean=false;
   public idpelicula:any='';
   public datospelicula:any='';
+  public esedit:boolean=false;
 
   // PRODUCCION
   myForm = new FormGroup({
@@ -78,6 +79,7 @@ export class PeliculasComponent implements OnInit {
       //console.log( this.idpelicula)
       if (this.idpelicula!=''&& this.idpelicula!=null){
         this.getpelicula(this.idpelicula);
+        this.esedit=true;
       }
   })
 }
@@ -191,16 +193,31 @@ else{
       this.imgFichavacio=false;
       this.imgCarouselvacio=false;
     //console.log("peliculas",this.myForm.value)
-    this.peliculasService.crearPelicula(this.myForm.value)
-    .subscribe({
-      next: (data) => {
-        //console.log("data",data);
-        this.router.navigate(['/admin/peliculas'])
-      },
-      error: (error)=>{
-        console.log(error);
+      if (this.esedit==false){
+        this.peliculasService.crearPelicula(this.myForm.value)
+        .subscribe({
+          next: (data) => {
+            //console.log("data",data);
+            this.router.navigate(['/admin/peliculas'])
+          },
+          error: (error)=>{
+            console.log(error);
+          }
+        })
       }
-    })
+      else{
+        this.peliculasService.editarPelicula(this.idpelicula,this.myForm.value)
+        .subscribe({
+          next: (data) => {
+            //console.log("data",data);
+            this.router.navigate(['/admin/peliculas'])
+          },
+          error: (error)=>{
+            console.log(error);
+          }
+        })
+
+      }
   }
   else{
     //console.log("No valido")
