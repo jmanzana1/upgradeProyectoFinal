@@ -1,5 +1,5 @@
 @import '../../styles/forms';
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Roboto+Mono:wght@300&family=Special+Elite&display=swap');
 
 .backgroudTicket {
     
@@ -10,8 +10,7 @@
     justify-content: end;
     .contenTicket {
         position: relative;
-        font-family: 'Orbitron', sans-serif;
-        font-family: 'Special Elite', cursive;
+        font-family: 'Roboto Mono', monospace;
         font-size: 12px;
         // background-color: pink;
         color: #FFF;

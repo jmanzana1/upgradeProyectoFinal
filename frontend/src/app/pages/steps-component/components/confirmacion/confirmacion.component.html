@@ -13,10 +13,12 @@
                 <div class="contenTicket">
                     <!-- <img src="../../../../../assets/LOGO.png" alt="" class="logo"> -->
                     <h4>{{asientos.titulo}}</h4>
-                    <p>Fecha: {{asientos.fecha}}</p>
+                    <p>Fecha reserva: {{asientos.fecha | date:'dd/MM/yyyy'}}</p>
                     <p>Número de entradas: {{numAsiento}}</p>
                     <p>Precio total: {{asientos.precio}}€</p>
                     <p>{{asientos.butacas}}</p>
+                    <p>Sala: {{asientos.sala}} | Horario: {{asientos.hora}}</p>
+                    <!-- <p>Sala: {{asientos.sala}}</p> -->
                     <img src="{{asientos.urlCaratula}}" width="180" alt="">
                     <p>A nombre de: {{usuario.nombre}} {{usuario.apellidos}}</p>
                     <p>Tarjeta: ****-****-****-{{numTarjeta}}</p>

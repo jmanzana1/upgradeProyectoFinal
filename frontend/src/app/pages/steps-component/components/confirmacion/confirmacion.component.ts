@@ -16,7 +16,6 @@ export class ConfirmacionComponent implements OnInit {
   public pago = JSON.parse(localStorage.getItem('pago') || '{}')
   public asientos = JSON.parse(localStorage.getItem('asientos') || '{}')
   public numTarjeta = this.pago.numero
-
   public numAsiento : number = 0;
   
   constructor(private _router: Router, private formularioComprasService: FormularioCompraService) { }
