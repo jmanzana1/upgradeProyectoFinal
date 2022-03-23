@@ -24,6 +24,9 @@ export class AsientosComponent implements OnInit {
 	public butacasDetalle: string = '';
 	public numeroEntradas: number = 0;
 	public dataPelicula: any;
+	public sala: number = 0;
+	public horaSesion: string = '';
+
 
 	public fechaSeleccionada: boolean = false;
 	public sesionSeleccionada: boolean= false;
@@ -59,7 +62,9 @@ export class AsientosComponent implements OnInit {
 		this._peliculasService.getPeliculaById( this.idPelicula ) 
 			.subscribe({
 				next: ( data ) => {
+
 					this.dataPelicula = data;
+
 				},
 				error: ( error ) => {
 					
@@ -84,10 +89,14 @@ export class AsientosComponent implements OnInit {
 				next: ( data: any ) => {
 					
 					this.dataSesion = data.map( ( item: Sesiones ) => {
+						
+						this.sala = item.numeroSala;
+						this.horaSesion = item.sesion;
+
 						return {
 							_id: item._id,
 							sala: 'sala ' + item.numeroSala,
-							sesion: item.sesion,
+							sesion: this.horaSesion,
 							numeroSala: item.numeroSala,
 							fecha: this.fechaSesion
 						}
@@ -111,8 +120,10 @@ export class AsientosComponent implements OnInit {
 		this._formularioCompraService.getButacas( id, fecha )
 			.subscribe({
 				next: (data: any ) => {
+
 					this.dataButacas = data;
 					this.butacasVisible = true;
+
 				},
 				error: ( error ) => {
 
@@ -126,6 +137,7 @@ export class AsientosComponent implements OnInit {
 
 		fila = fila -1 ;
 		butaca = butaca -1;
+
 		const filaButaca: string = this.dataButacas[fila].fila + "_" + this.dataButacas[fila].butacas[butaca].posicion + ',';
 		const butacasDetalleSelecciona = 'Fila: ' + this.dataButacas[fila].fila + ' Butaca: ' +  this.dataButacas[fila].butacas[butaca].posicion + ','
 
@@ -168,7 +180,6 @@ export class AsientosComponent implements OnInit {
 
 		}
 
-		console.log("butaca Detalle:", this.butacasDetalle);
 
 	}
 
@@ -198,6 +209,8 @@ export class AsientosComponent implements OnInit {
 			const precioFinal = 9.5 * numeroEntradas.length; 
 			let asientos = {
 				fecha: this.fechaSesion,
+				sala: this.sala,
+				hora: this.horaSesion,
 				asientosReservados: butacas,
 				precio: precioFinal,
 				idPelicula: this.idPelicula,
@@ -207,7 +220,7 @@ export class AsientosComponent implements OnInit {
 				urlCaratula: this.dataPelicula.imgFicha
 			 }
 	
-			 console.log("asientos", asientos)
+
 			localStorage.setItem("asientos",  JSON.stringify(asientos));
 			this._router.navigate(['compraentradas/datospersonales']);
 		}
