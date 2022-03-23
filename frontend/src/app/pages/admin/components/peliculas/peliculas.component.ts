@@ -89,7 +89,7 @@ export class PeliculasComponent implements OnInit {
     const file:File = event.target.files[0];
   
     if (file) {
-      if (file.type=="image/png" || file.type=="image/jpg"){
+      if (file.type=="image/png" || file.type=="image/jpg"|| file.type=="image/jpeg"){
         this.imgCarouselerror=false;
         this.fileName = file.name;
         const formData = new FormData();
@@ -117,7 +117,7 @@ else{
     const file:File = event.target.files[0];
     if (this)
     if (file) {
-      if (file.type=="image/png" || file.type=="image/jpg"){
+      if (file.type=="image/png" || file.type=="image/jpg"|| file.type=="image/jpeg"){
         this.imgFichaerror=false;
         this.fileName = file.name;
         const formData = new FormData();
