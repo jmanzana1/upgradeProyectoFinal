@@ -27,11 +27,12 @@ export class AsientosComponent implements OnInit {
 	public sala: number = 0;
 	public horaSesion: string = '';
 	public minDate = new Date();
+	public horaActual = new Date();
 
 
 	public fechaSeleccionada: boolean = false;
 	public sesionSeleccionada: boolean= false;
-
+	public mostrarHora: boolean = true;
 
 	constructor(
 		private _router: Router,
@@ -83,7 +84,6 @@ export class AsientosComponent implements OnInit {
 		this.fechaSeleccionada = true;
 
 		this.fechaSesion = this.datepipe.transform(evento, 'yyyy-MM-dd') ;
-
 		
 		this._formularioCompraService.getSalas( this.idPelicula, this.fechaSesion)
 			.subscribe({
@@ -94,13 +94,24 @@ export class AsientosComponent implements OnInit {
 						this.sala = item.numeroSala;
 						this.horaSesion = item.sesion;
 
+						const fechaSesionTemp = this.fechaSesion.split('-')
+
+						const horaSesionTemp = this.horaSesion.split(':')
+						let horaSesion = new Date();
+						horaSesion.setHours( parseInt(horaSesionTemp[0]), parseInt(horaSesionTemp[1]))
+						
+						this.horaActual.getDate() >= parseInt(fechaSesionTemp[2]) && horaSesion.getTime() < this.horaActual.getTime() ? this.mostrarHora = false : this.mostrarHora = true; 
+
 						return {
 							_id: item._id,
 							sala: 'sala ' + item.numeroSala,
 							sesion: this.horaSesion,
 							numeroSala: item.numeroSala,
-							fecha: this.fechaSesion
+							fecha: this.fechaSesion,
+							mostrarHora: this.mostrarHora
 						}
+
+
 					})
 				
 				},

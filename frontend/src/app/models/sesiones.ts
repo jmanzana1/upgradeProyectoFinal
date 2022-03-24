@@ -4,4 +4,5 @@ export interface Sesiones {
 	sesion: string;
 	numeroSala: number;
 	fecha: string;
+	mostrarHora?: boolean;
 }

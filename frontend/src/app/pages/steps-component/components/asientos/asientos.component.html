@@ -12,7 +12,12 @@
 				<p-calendar [minDate]="minDate" [(ngModel)]="fechaSesion" [inline]="true" [firstDayOfWeek]="1" (onSelect)="getSalas($event)"></p-calendar>
 			</div>
 			<div class="columnaFlex" *ngIf="dataSesion[0].sala !== ''">
-				<button *ngFor="let salaSesion of dataSesion" pButton pRipple type="button" class="p-button-outlined" (click)="getDispoSala( salaSesion.fecha, salaSesion._id )">{{ salaSesion.sala }} <br> {{ salaSesion.sesion }}</button>
+				<div *ngFor="let salaSesion of dataSesion">
+					<button *ngIf="salaSesion.mostrarHora"  pButton pRipple type="button" class="p-button-outlined m-2 blockBoton" (click)="getDispoSala( salaSesion.fecha, salaSesion._id )">{{ salaSesion.sala }} <br> {{ salaSesion.sesion }}</button>
+				</div>
+				<div *ngIf="dataSesion.length === 1 && dataSesion[0].mostrarHora == false" class="noSesion">
+					No hay Sessiones disponibles <br> para el día seleccionado
+				</div>
 			</div>
 			<div class="columnaFlex" *ngIf="butacasVisible">
 				<div class="mb-2">
