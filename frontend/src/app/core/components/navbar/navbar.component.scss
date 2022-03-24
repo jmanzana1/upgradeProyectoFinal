@@ -42,7 +42,7 @@ nav {
 	width: 100%;
 	height: 0vh;
 	top: 50px;
-	background-color: #000;
+	background-color: #578ea5;
 	text-align: center;
 	transition: all .5%;
 	z-index: 111;
@@ -75,14 +75,19 @@ nav {
 }
 
 #check:checked ~ .nav-menu{
-	height: 100vh;
+	height: 50vh;
 }
 
 #check:checked ~ .nav-menu li{
 	display: block;
 }
 
-.nav-menu:checked ~ .nav-menu {display: none;overflow: hidden;}
+.nav-menu:checked ~ .nav-menu {display: none; overflow: hidden; }
+
+.nav-menu:target {
+	display: none;
+}
+
 
 @media screen and (min-width: 768px) {
 	.logo2 {
