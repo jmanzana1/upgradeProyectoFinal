@@ -1,6 +1,8 @@
 <p-toast></p-toast>
 <div class="contenedor">
-	<div class="m-2" *ngFor="let pelicula of peliculas">
+	<div class="m-3 ficha" *ngFor="let pelicula of peliculas">
+		<div *ngIf="pelicula.estreno" class="aviso estreno">Estreno</div>
+		<div *ngIf="pelicula.proximo" class="aviso proximo">Próximamente</div>
 		<app-card-peli [nombre]="pelicula.nombre" [imgCaratula]="pelicula.imgFicha" [id]="pelicula._id" [boton]="botonVisible"></app-card-peli> 
 	</div>
 </div>

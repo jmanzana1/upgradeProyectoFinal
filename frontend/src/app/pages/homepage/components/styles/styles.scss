@@ -1,0 +1,28 @@
+.contenedor {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	
+}
+.ficha {
+	position: relative;
+}
+.aviso {
+	padding: 5px;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	z-index: 1;
+	color: #FFF;
+    box-shadow: 2px 2px 4px #000;
+    transform: rotate(-10deg);
+	
+}
+.proximo {
+	background-color: #FF4F2E;
+}
+.estreno {
+	background-color: #3782a3;
+}
