@@ -15,28 +15,23 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NavComponent } from './components/nav/nav.component';
 import { TodasComponent } from './components/todas/todas.component';
 import { EstrenosComponent } from './components/estrenos/estrenos.component';
-// import { CardPeliComponent } from 'src/app/shared/components/card-peli/card-peli.component';
-
-
-
 
 @NgModule({
-  declarations: [
-    HomepageComponent,
-    CarouselComponent,
-    ProximasComponent,
-    NavComponent,
-    TodasComponent,
-    EstrenosComponent,
-    // CardPeliComponent
-  ],
-  imports: [
-    CommonModule,
-    HomepageRoutingModule,
-    CarouselModule,
-    ButtonModule,
-    ToastModule,
-    SharedModule
-  ]
+	declarations: [
+		HomepageComponent,
+		CarouselComponent,
+		ProximasComponent,
+		NavComponent,
+		TodasComponent,
+		EstrenosComponent,
+	],
+	imports: [
+		CommonModule,
+		HomepageRoutingModule,
+		CarouselModule,
+		ButtonModule,
+		ToastModule,
+		SharedModule
+	]
 })
 export class HomepageModule { }

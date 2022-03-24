@@ -1,59 +1,55 @@
 <p-toast></p-toast>
 <div class="container">
 
-  <div class="row">
-    <div class="col-12 mt-4">
-  <app-menubar></app-menubar>
-</div>
+	<div class="row">
+		<div class="col-12 mt-4">
+			<app-menubar></app-menubar>
+		</div>
 
-<div class="row align-items-center">
-    <div class="col-10 mt-4 mb-4">
-    <form [formGroup]="myForm"  (ngSubmit)="CreaSalas()">
-    
+		<div class="row align-items-center">
+			<div class="col-10 mt-4 mb-4">
+				<form [formGroup]="myForm"  (ngSubmit)="CreaSalas()">
+				
 
-        <div class="mb-2">
-          <label for="nombre" class="form-label">numeroSala</label>
-          <input type="text" class="form-control" formControlName="numeroSala" id="numeroSala" name="numeroSala" aria-describedby="Numero Sala">
-        </div>
-        <div *ngIf="!myForm.get('numeroSala')?.valid && (myForm.get('numeroSala')?.touched || myForm.get('numeroSala')?.dirty)" class="alertas">
-          Escriba el numero de la Sala  
-      </div>
-        <div class="mb-2">
-          <label for="sesion" class="form-label">Sesion</label>
-          <input type="text" class="form-control" formControlName="sesion" id="sesion" name="sesion" aria-describedby="Sesion">
-        </div>
-        <div *ngIf="!myForm.get('sesion')?.valid && (myForm.get('sesion')?.touched || myForm.get('sesion')?.dirty)" class="alertas">
-          Debe Escribir el horario de la sesion en formato 15:00
-
-      </div>
-      <div class="mb-2">
-        <label for="activo" class="form-label">Activo</label>
-        <select class="form-control" aria-label="activo" name="activo" formControlName="activo">
-          <option value="true" selected>Activo</option>
-          <option value="false">Desactivado</option>
-        </select>
-      </div>
-      <div *ngIf="!myForm.get('activo')?.valid && (myForm.get('activo')?.touched || myForm.get('activo')?.dirty)" class="alertas">
-        Seleccione una opcion 
-   </div>
-
-   <div class="mb-2">
-    <label for="activo" class="form-label">Peliculas</label>
-    <select class="form-control" aria-label="idPelicula" name="idPelicula" formControlName="idPelicula">
-        <ng-container *ngFor="let peli of Peliculas">
-            <option value="{{peli._id}}">{{peli.nombre}}</option>
-          </ng-container>
-    </select>
-  </div>
-  <div *ngIf="!myForm.get('activo')?.valid && (myForm.get('activo')?.touched || myForm.get('activo')?.dirty)" class="alertas">
-    Seleccione una opcion 
-</div>
-          
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    
-    </div>
-</div>
+					<div class="mb-2">
+						<label for="nombre" class="form-label">numeroSala</label>
+						<input type="text" class="form-control" formControlName="numeroSala" id="numeroSala" name="numeroSala" aria-describedby="Numero Sala">
+					</div>
+					<div *ngIf="!myForm.get('numeroSala')?.valid && (myForm.get('numeroSala')?.touched || myForm.get('numeroSala')?.dirty)" class="alertas">
+						Escriba el numero de la Sala  
+					</div>
+					<div class="mb-2">
+						<label for="sesion" class="form-label">Sesion</label>
+						<input type="text" class="form-control" formControlName="sesion" id="sesion" name="sesion" aria-describedby="Sesion">
+					</div>
+					<div *ngIf="!myForm.get('sesion')?.valid && (myForm.get('sesion')?.touched || myForm.get('sesion')?.dirty)" class="alertas">
+						Debe Escribir el horario de la sesion en formato 15:00
+					</div>
+					<div class="mb-2">
+						<label for="activo" class="form-label">Activo</label>
+						<select class="form-control" aria-label="activo" name="activo" formControlName="activo">
+							<option value="true" selected>Activo</option>
+							<option value="false">Desactivado</option>
+						</select>
+					</div>
+					<div *ngIf="!myForm.get('activo')?.valid && (myForm.get('activo')?.touched || myForm.get('activo')?.dirty)" class="alertas">
+						Seleccione una opcion 
+					</div>
+					<div class="mb-2">
+						<label for="activo" class="form-label">Peliculas</label>
+						<select class="form-control" aria-label="idPelicula" name="idPelicula" formControlName="idPelicula">
+							<ng-container *ngFor="let peli of Peliculas">
+								<option value="{{peli._id}}">{{peli.nombre}}</option>
+							</ng-container>
+						</select>
+					</div>
+					<div *ngIf="!myForm.get('activo')?.valid && (myForm.get('activo')?.touched || myForm.get('activo')?.dirty)" class="alertas">
+						Seleccione una opcion 
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 

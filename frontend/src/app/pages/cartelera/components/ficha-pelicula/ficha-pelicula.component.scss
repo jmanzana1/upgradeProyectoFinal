@@ -1,32 +1,20 @@
 .contenedor {
 	display: flex;
-	// flex-direction: row;
 	flex-wrap: wrap;
-	// align-items: flex-start;
 	justify-content: center;
-	// max-width: 1400px;
-	// background-color: yellow;
-	// opacity: 0.4;
-	
 }
+
 .mainContent {
 	max-width: 1500px;
 	z-index: 2;
-	
 }
+
 .background {
-	// position: absolute;
-	// width: 100%;
-	// height: 100%;
-	// min-height: 1200px;
 	z-index: 0;
-	// height: 100%;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-blend-mode: darken;
-	// opacity: 0.4;
-
 }
 
 .stdContent {
@@ -65,7 +53,6 @@ button {
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-blend-mode: darken;
-	
 	}
 	
 	.firstContent {
@@ -81,8 +68,8 @@ button {
 		margin: 0;
 	}
 	.stdContent {
-		// margin-top: 0;
 		max-width: 100%;
 		margin-bottom: 10px;
 	}
+	
  }

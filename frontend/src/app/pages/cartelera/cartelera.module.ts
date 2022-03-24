@@ -14,18 +14,18 @@ import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
-  declarations: [
-    CarteleraComponent,
-    FichaPeliculaComponent,
-  ],
-  imports: [
-    CommonModule,
-    CarteleraRoutingModule,
-    ImageModule,
-    CardModule,
-    SharedModule,
-	ToastModule,
-  ],
+	declarations: [
+		CarteleraComponent,
+		FichaPeliculaComponent,
+	],
+	imports: [
+		CommonModule,
+		CarteleraRoutingModule,
+		ImageModule,
+		CardModule,
+		SharedModule,
+		ToastModule,
+	],
   // exports: [ CardPeliculaComponent ]
 })
 export class CarteleraModule { }

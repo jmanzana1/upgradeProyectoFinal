@@ -6,20 +6,20 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { EstrenosComponent } from './components/estrenos/estrenos.component';
 
 const routes: Routes = [
-  {
-    path: '',  component: HomepageComponent,
-    children: [
-      {path:'proximas', component:ProximasComponent},
-      {path: 'estrenos', component:EstrenosComponent},
-      {path: 'todas', component:TodasComponent},
-      {path: '', component:TodasComponent}
-    ]
-  },
+	{
+		path: '',  component: HomepageComponent,
+		children: [
+			{path:'proximas', component:ProximasComponent},
+			{path: 'estrenos', component:EstrenosComponent},
+			{path: 'todas', component:TodasComponent},
+			{path: '', component:TodasComponent}
+		]
+	},
   
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule]
 })
 export class HomepageRoutingModule { }

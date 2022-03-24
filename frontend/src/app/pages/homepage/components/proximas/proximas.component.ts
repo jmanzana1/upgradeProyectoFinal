@@ -10,24 +10,22 @@ import { MessageService } from 'primeng/api';
 })
 export class ProximasComponent implements OnInit {
   
-  public botonVisible: boolean = false;
+	public botonVisible: boolean = false;
+	
+	public peliculas: any = [];
+	public nombre!:any
+	public imgCaratula!:any
+	public id!:any
+	
+	constructor(private homeservice: HomeService, private messageService: MessageService) { }
 
-  
-  public peliculas: any = [];
-  public nombre!:any
-  public imgCaratula!:any
-  public id!:any
+	ngOnInit(): void {
+	
+		this.getPeliculas();
+	
+	}
 
-  constructor(private homeservice: HomeService, private messageService: MessageService) { }
-
-  ngOnInit(): void {
-    this.getPeliculas();
-    // this.homeservice.getPelisProximas().then(pelis => {
-		// 	this.pelis = pelis;
-		// });
-  }
-
-  public getPeliculas() { 
+	public getPeliculas() { 
 
 		this.homeservice.getProximas()
 		.subscribe({
@@ -41,7 +39,6 @@ export class ProximasComponent implements OnInit {
 
 			}
 		 });
-			
 
 	}
 

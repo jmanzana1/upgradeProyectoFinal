@@ -2,35 +2,37 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
 
 <div class="container">
-  <div class="row">
-    <div class="col-12 mt-4">
-  <app-menubar></app-menubar>
-</div>
+	<div class="row">
+		<div class="col-12 mt-4">
+			<app-menubar></app-menubar>
+		</div>
 
-    <div class="row align-items-center">
-        <div class="col-12 mt-4 mb-4">
- <p-table [value]="Salas" responsiveLayout="scroll" [autoLayout]="true" >
-  <ng-template pTemplate="header">
-      <tr>
-        <th scope="col" class="text-center">Numero Sala</th>
-        <th scope="col" class="text-center">Sesion</th>
-        <th scope="col" class="text-center">Activo</th>
-        <th scope="col" class="text-center">Pelicula</th>
-        <th scope="col" class="text-center">Opciones</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-Salas>
-      <tr>
-        <td class="text-center">{{Salas.numeroSala}}</td>
-        <td class="text-center">{{Salas.sesion}}</td>
-        <td class="text-center" *ngIf="Salas.activo==true"><i class="bi bi-check2-circle" ></i> Activo</td>
-        <td class="text-center" *ngIf="Salas.activo==false"><i class="bi bi-x"></i> Off</td>
-        <td class="text-center"><div><img src="{{Salas.idPelicula[0].imgFicha}}" width="50px" /></div><div>{{Salas.idPelicula[0].nombre}}</div></td>
-        <td class="text-center">
-             <a [routerLink]="['/admin/salas_edit/'+Salas._id]"><i class="pi pi-pencil imagebtn" ></i></a>
-           <i class="pi pi-trash imagebtndelete" (click)="deletesalaclic(Salas._id)" ></i> 
-      </tr>
-      
-  </ng-template>
-</p-table>
-  </div></div></div>
+		<div class="row align-items-center">
+			<div class="col-12 mt-4 mb-4">
+ 				<p-table [value]="Salas" responsiveLayout="scroll" [autoLayout]="true" >
+					<ng-template pTemplate="header">
+						<tr>
+							<th scope="col" class="text-center">Numero Sala</th>
+							<th scope="col" class="text-center">Sesion</th>
+							<th scope="col" class="text-center">Activo</th>
+							<th scope="col" class="text-center">Pelicula</th>
+							<th scope="col" class="text-center">Opciones</th>
+						</tr>
+					</ng-template>
+					<ng-template pTemplate="body" let-Salas>
+						<tr>
+							<td class="text-center">{{Salas.numeroSala}}</td>
+							<td class="text-center">{{Salas.sesion}}</td>
+							<td class="text-center" *ngIf="Salas.activo==true"><i class="bi bi-check2-circle" ></i> Activo</td>
+							<td class="text-center" *ngIf="Salas.activo==false"><i class="bi bi-x"></i> Off</td>
+							<td class="text-center"><div><img src="{{Salas.idPelicula[0].imgFicha}}" width="50px" /></div><div>{{Salas.idPelicula[0].nombre}}</div></td>
+							<td class="text-center">
+									<a [routerLink]="['/admin/salas_edit/'+Salas._id]"><i class="pi pi-pencil imagebtn" ></i></a>
+								<i class="pi pi-trash imagebtndelete" (click)="deletesalaclic(Salas._id)" ></i> 
+						</tr>
+					</ng-template>
+				</p-table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -6,7 +6,7 @@ import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { SalasComponent } from './components/salas/salas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PeliculasListComponent } from './components/peliculas-list/peliculas-list.component';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { SigninComponent } from './components/signin/signin.component';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -20,14 +20,13 @@ import { ComprasListComponent } from './components/compras-list/compras-list.com
 
 @NgModule({
 	declarations: [
-    PeliculasComponent,
-    SalasComponent,
-    PeliculasListComponent,
-    SigninComponent,
-    SalasListComponent,
-    MenubarComponent,
-    ComprasListComponent,
-
+		PeliculasComponent,
+		SalasComponent,
+		PeliculasListComponent,
+		SigninComponent,
+		SalasListComponent,
+		MenubarComponent,
+		ComprasListComponent,
   ],
 	imports: [
 		CommonModule,

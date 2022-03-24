@@ -3,41 +3,38 @@
 
 
 <div class="container">
-    <div class="row">
-      <div class="col-12 mt-4">
-    <app-menubar></app-menubar>
-  </div>
-  </div>
-  <div class="row align-items-center">
-    <div class="col-12 mt-4 mb-4">
-
-
-        <p-table [value]="compras" responsiveLayout="scroll" [autoLayout]="true" >
-            <ng-template pTemplate="header">
-                <tr>
-                  <th scope="col" class="text-center">Fecha</th>
-                  <th scope="col" class="text-center">asientosReservados</th>
-                  <th scope="col" class="text-center">precio</th>
-                  <th scope="col" class="text-center">idPelicula</th>
-                  <th scope="col" class="text-center">SalaSesion</th>
-                  <th scope="col" class="text-center">localizador</th>
-                  <th scope="col" class="text-center">Opciones</th>
-                </tr>
-              </ng-template>
-              <ng-template pTemplate="body" let-compras>
-                <tr>
-                  <td class="text-center">{{compras.fecha | date:'dd/MM/yy'}}</td>
-                  <td class="text-center">{{compras.asientosReservados}}</td>
-                  <td class="text-center"> {{compras.precio}} €</td>
-                  <td class="text-center"><div><img src="{{compras.idPelicula[0].imgFicha}}" width="50px" /></div><div>{{compras.idPelicula[0].nombre}}</div></td>
-                  <td class="text-center">Sala:{{compras.idSalaSesion[0].numeroSala}} Sesion:{{compras.idSalaSesion[0].sesion}}</td>
-                  <td class="text-center">{{compras.localizador}}</td>
-                     <td class="text-center">   <i class="pi pi-trash imagebtndelete" (click)="deletecompra(compras._id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar pelicula" ></i>
-                </tr>
-                
-            </ng-template>
-          </p-table>
-
-        
-
-    </div></div></div>
+	<div class="row">
+		<div class="col-12 mt-4">
+			<app-menubar></app-menubar>
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col-12 mt-4 mb-4">
+			<p-table [value]="compras" responsiveLayout="scroll" [autoLayout]="true" >
+				<ng-template pTemplate="header">
+					<tr>
+						<th scope="col" class="text-center">Fecha</th>
+						<th scope="col" class="text-center">asientosReservados</th>
+						<th scope="col" class="text-center">precio</th>
+						<th scope="col" class="text-center">idPelicula</th>
+						<th scope="col" class="text-center">SalaSesion</th>
+						<th scope="col" class="text-center">localizador</th>
+						<th scope="col" class="text-center">Opciones</th>
+					</tr>
+					</ng-template>
+					<ng-template pTemplate="body" let-compras>
+					<tr>
+						<td class="text-center">{{compras.fecha | date:'dd/MM/yy'}}</td>
+						<td class="text-center">{{compras.asientosReservados}}</td>
+						<td class="text-center"> {{compras.precio}} €</td>
+						<td class="text-center"><div><img src="{{compras.idPelicula[0].imgFicha}}" width="50px" /></div><div>{{compras.idPelicula[0].nombre}}</div></td>
+						<td class="text-center">Sala:{{compras.idSalaSesion[0].numeroSala}} Sesion:{{compras.idSalaSesion[0].sesion}}</td>
+						<td class="text-center">{{compras.localizador}}</td>
+							<td class="text-center">   <i class="pi pi-trash imagebtndelete" (click)="deletecompra(compras._id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar pelicula" ></i>
+					</tr>
+					
+				</ng-template>
+			</p-table>
+		</div>
+	</div>
+</div>

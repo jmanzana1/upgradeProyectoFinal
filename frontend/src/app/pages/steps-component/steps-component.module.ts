@@ -21,22 +21,22 @@ import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
 	declarations: [
-    PersonalComponent,
-    AsientosComponent,
-    PagoComponent,
-    ConfirmacionComponent,
-    StepsFormComponent,
+		PersonalComponent,
+		AsientosComponent,
+		PagoComponent,
+		ConfirmacionComponent,
+		StepsFormComponent,
   ],
 	imports: [
-	CommonModule,
-	StepsComponentRoutingModule,
-	StepsModule,
-	CardModule,
-	ToastModule,
-	CalendarModule,
-	FormsModule,
-	ReactiveFormsModule,
-	InputMaskModule
+		CommonModule,
+		StepsComponentRoutingModule,
+		StepsModule,
+		CardModule,
+		ToastModule,
+		CalendarModule,
+		FormsModule,
+		ReactiveFormsModule,
+		InputMaskModule
 	]
 })
 export class StepsComponentModule { }
