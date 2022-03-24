@@ -10,50 +10,43 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  urlMaster: string = variablesConstantes.urlMaster;
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
+	urlMaster: string = variablesConstantes.urlMaster;
+	headers = new HttpHeaders().set('Content-Type', 'application/json');
+	currentUser = {};
 
-  constructor(
-    private http:HttpClient,
-    public router:Router
-  ) { }
-
-
-  signUp(user: User): Observable<any> {
-    //console.log("Signup")
-    let api = `${this.urlMaster}usuarios/register-user`;
-    return this.http.post(api, user)
-  }
-
-  // signIn(user: User) {
-  //   console.log("Signin")
-  //   return this.http.post<any>(`${this.urlMaster}usuarios/signin`, user)
-  //     .subscribe((res: any) => {
-  //       localStorage.setItem('access_token', res.token)
-  //       console.log("el token es"+res.token)
-  //     })
-  // }
-
-  signIn(user: User) {
-    //console.log("Signin")
-    return this.http.post<any>(`${this.urlMaster}usuarios/signin`, user)
-      // .subscribe((res: any) => {
-      //   localStorage.setItem('access_token', res.token)
-      //   console.log("el token es"+res.token)
-      // })
-  }
+	constructor(
+		private http:HttpClient,
+		public router:Router,
+	) { }
 
 
-  getToken() {
-    //console.log("GetToken")
-    return localStorage.getItem('access_token');
-  }
+	signUp(user: User): Observable<any> {
+	
+		let api = `${this.urlMaster}usuarios/register-user`;
+		
+		return this.http.post(api, user);
+	}
 
-  get isLoggedIn(): boolean {
-    //console.log("Islogged")
-    let authToken = localStorage.getItem('access_token');
-    return (authToken !== null) ? true : false;
-  }
+	signIn(user: User) {
+	
+		return this.http.post<any>(`${this.urlMaster}usuarios/signin`, user);
 
+	}
+
+
+	getToken() {
+
+		return localStorage.getItem('access_token');
+		
+	}
+
+	get isLoggedIn(): boolean {
+		
+		
+		let authToken = localStorage.getItem('access_token');
+		
+		return (authToken !== null) ? true : false;
+
+	}
+	
 }

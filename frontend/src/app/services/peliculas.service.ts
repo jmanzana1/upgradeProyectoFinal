@@ -11,43 +11,53 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PeliculasService {
-  urlMaster: string = variablesConstantes.urlMaster;
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+	urlMaster: string = variablesConstantes.urlMaster;
+	headers = new HttpHeaders().set('Content-Type', 'application/json');
+	
+	constructor(
+		private _httpClient:HttpClient,
+		public router:Router
+	) { }
 
-  constructor(
-    private _httpClient:HttpClient,
-    public router:Router
-  ) { }
+	public crearPelicula(pelicula: Peliculas) {
 
-// Nueva Pelicula
-public crearPelicula(pelicula: Peliculas) {
-  console.log("Creando Pelicula")
-  let api = `${this.urlMaster}Pelicula/`;
-  console.log(pelicula)
-  return this._httpClient.post(api,pelicula);
-}
+		let api = `${this.urlMaster}Pelicula/`;
 
-public editarPelicula(id:string, pelicula: Peliculas) {
-  let api = `${this.urlMaster}Pelicula/`+id;
-  return this._httpClient.put(api,pelicula);
-}
+		return this._httpClient.post(api,pelicula);
 
-public getPeliculas(){
-  const url = this.urlMaster + 'Pelicula/';
-  return this._httpClient.get( url );
-}
+	}
 
+	public editarPelicula(id:string, pelicula: Peliculas) {
+		
+		let api = `${this.urlMaster}Pelicula/${id}`;
+		
+		return this._httpClient.put(api,pelicula);
 
-  	//Get película por id
-  public getPeliculaById( id: string) {
-    		const url = this.urlMaster + 'Pelicula/' + id;
-    		return this._httpClient.get( url );	
-  }
+	}
 
-  public borrarpelicula( id: string) {
-    const url = this.urlMaster + 'Pelicula/' + id;
-    return this._httpClient.delete( url );	
-}
+	public getPeliculas(){
+		
+		const url = this.urlMaster + 'Pelicula/';
+		
+		return this._httpClient.get( url );
+
+	}
+
+	public getPeliculaById( id: string) {
+	
+		const url = this.urlMaster + 'Pelicula/' + id;
+	
+		return this._httpClient.get( url );	
+
+	}
+
+	public borrarpelicula( id: string) {
+	
+		const url = this.urlMaster + 'Pelicula/' + id;
+	
+		return this._httpClient.delete( url );	
+	
+	}
 
 
 }

@@ -31,9 +31,11 @@ export class FormularioCompraService {
 	}
 
 	public postCompra(reserva: Sesiones) {
+		
 		const url: string = this.urlMaster + 'Compras';
-		console.log('Reserva: ', reserva)
+		
 		return this._httpClient.post( url, reserva );
+		
 	}
 
 }

@@ -10,21 +10,29 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ComprasService {
-  urlMaster: string = variablesConstantes.urlMaster;
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+	urlMaster: string = variablesConstantes.urlMaster;
+	headers = new HttpHeaders().set('Content-Type', 'application/json');
+	
+	constructor(
+		private _httpClient:HttpClient,
+		public router:Router,
+	) { }
+	
+	public getCompras(){
+	
+		const url = this.urlMaster + 'Compras/contodo';
+	
+		return this._httpClient.get( url );
+	
+	}
+	
+	public borrarCompra(id: string){
+		
+		const url = this.urlMaster + 'Compras/' + id;
+		
+		return this._httpClient.delete( url );
 
-  constructor(  private _httpClient:HttpClient,
-    public router:Router) { }
+	}
 
-    public getCompras(){
-      const url = this.urlMaster + 'Compras/contodo';
-      return this._httpClient.get( url );
-    }
-
-    public borrarCompra(id: string){
-      const url = this.urlMaster + 'Compras/' + id;
-      return this._httpClient.delete( url );
-    }
-    
 
 }
