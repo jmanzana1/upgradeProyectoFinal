@@ -7,20 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./card-peli.component.scss']
 })
 export class CardPeliComponent implements OnInit {
-  @Input() id!:string;
-  @Input() nombre!:string | undefined;
+	
+	@Input() id!:string;
+	@Input() nombre!:string | undefined;
 	@Input() imgCaratula!:string | undefined;
 	@Input() boton:boolean = false;
-  constructor(
-    private _router: Router
-  ) { }
+	
+	constructor(
+		private _router: Router,
+	) { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+	}
 
-  mostrarFichaDetalle(id: string) {
-
-    this._router.navigate(['/cartelera/fichapelicula/' + id]);
-  }
+	mostrarFichaDetalle(id: string) {
+	
+		this._router.navigate(['/cartelera/fichapelicula/' + id]);
+		
+	}
 
 }
