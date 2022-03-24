@@ -9,14 +9,14 @@
 				<img src="{{ dataPelicula.imgFicha}}" alt="{{ dataPelicula.nombre}}">
 			</div>
 			<div class="columnaFlex">
-				<p-calendar [(ngModel)]="fechaSesion" [inline]="true" [firstDayOfWeek]="1" (onSelect)="getSalas($event)"></p-calendar>
+				<p-calendar [minDate]="minDate" [(ngModel)]="fechaSesion" [inline]="true" [firstDayOfWeek]="1" (onSelect)="getSalas($event)"></p-calendar>
 			</div>
 			<div class="columnaFlex" *ngIf="dataSesion[0].sala !== ''">
 				<button *ngFor="let salaSesion of dataSesion" pButton pRipple type="button" class="p-button-outlined" (click)="getDispoSala( salaSesion.fecha, salaSesion._id )">{{ salaSesion.sala }} <br> {{ salaSesion.sesion }}</button>
 			</div>
 			<div class="columnaFlex" *ngIf="butacasVisible">
 				<div class="mb-2">
-					<img src="/assets/images/pantalla.png" width="420px">
+					<img src="/assets/images/pantalla.jpg" width="420px">
 				</div>
 				<div class="mb-2 texto text-center">
 					<img src="/assets/images/butacaOcupada.png"> Butaca Ocupada
@@ -40,7 +40,7 @@
 			</div>
 		</div>
 		<div class="botonCapa">
-			<button (click)="next()" class="next">Next</button>
+			<button (click)="next()" class="next">Next ></button>
 		</div>
 	</p-card>
 	

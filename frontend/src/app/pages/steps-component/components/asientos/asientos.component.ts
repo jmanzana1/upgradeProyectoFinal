@@ -26,6 +26,7 @@ export class AsientosComponent implements OnInit {
 	public dataPelicula: any;
 	public sala: number = 0;
 	public horaSesion: string = '';
+	public minDate = new Date();
 
 
 	public fechaSeleccionada: boolean = false;
